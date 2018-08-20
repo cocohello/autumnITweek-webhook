@@ -6,11 +6,13 @@
 
 const mysql= require('mysql');
 const memInfo = require('../Model/memberInfo');
+const Image = require('./rich-responses/image-response');
 
 exports.processResquest = (req, res) => {
 
-	if (req.body.result.action == "memberInfo") {
+	if (req.body.result.action == "work1") {
 		getMemberInfo(req, res);
+		console.log(req);
 	} 
 	
 	function getMemberInfo (req, res) {

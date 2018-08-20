@@ -12,11 +12,10 @@ module.exports = (app) => {
 	const bibiRouter = express.Router();
 	
 	app.get('/', (req, res) => {
-		console.log(req);
+		console.log(`!router.js app.get ${req} : `);
 		res.send(`お疲れ様です。`);
 	});
 	
-	//
 	app.route('/').post(memberController.processResquest);
 	
 };

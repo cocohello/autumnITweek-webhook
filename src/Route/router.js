@@ -17,8 +17,22 @@ const router = express.Router();
 	router.post('/',(req, res) => {
 		console.log(`router.js ${req}`);
 		
+		let ff_text = 'OK、申請処理始めます。';
+		let eventName = 'file_uploaded';
+		let lang = 'ja';
+		
+		const response = {
+			fulfillment_text : ff_text,
+			followup_event_input : 
+			{ event: 
+				{ name: eventName,
+		    	  languageCode: lang,
+		    	 }
+			}
+		}
+
 		res.setHeader('Content-Type', 'application/json');  
-		return res.send(JSON.stringify({ fulfillmentText: 'OOOKKKK', source: 'OOKKK' }));
+		return res.send(JSON.stringify(response));
 	});
 	
 module.exports = router;

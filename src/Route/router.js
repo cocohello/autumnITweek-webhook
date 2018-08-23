@@ -18,7 +18,7 @@ module.exports = (app) => {
 	
 	app.route('/').post((req, res) => {
 		res.setHeader('Content-Type', 'application/json');  
-		res.send(JSON.stringify({ 'speech': 'OOOOK', 'displayText': 'OOOOK' }));
+		res.send(JSON.stringify({ fulfillmentText: 'OOOKKKK', source: 'OOKKK' }));
 	});
 	
 };

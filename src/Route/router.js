@@ -12,7 +12,7 @@ module.exports = (app) => {
 	const bibiRouter = express.Router();
 	
 	app.get('/', (req, res) => {
-		console.log(`!router.js app.get ${req} : `);
+		console.log(`!router.js app.get ${req} \n`);
 		res.send(`お疲れ様です。`);
 	});
 	

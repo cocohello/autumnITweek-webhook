@@ -19,7 +19,7 @@ const {
   PLATFORMS,
   SUPPORTED_RICH_MESSAGE_PLATFORMS,
   V2_TO_V1_PLATFORM_NAME,
-} = require('./rich-response');
+} = require('./RichResponse');
 
 
 /**

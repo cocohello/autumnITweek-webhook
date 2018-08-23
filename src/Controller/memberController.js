@@ -6,7 +6,7 @@
 
 const mysql= require('mysql');
 const memInfo = require('../Model/memberInfo');
-const Image = require('./rich-responses/image-response');
+const Image = require('../Response/image-response');
 
 exports.processResquest = (req, res) => {
 

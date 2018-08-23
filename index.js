@@ -2,11 +2,15 @@
  * http://usejsdoc.org/
  */
 
+
+'use strict';
+
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const port = process.env.PORT || 8989;//heroku default port
+
 const app = express();
-const port = process.env.PORT;
 
 //use middleware
 app.use(bodyParser.json());

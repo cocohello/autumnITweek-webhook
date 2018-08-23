@@ -19,20 +19,18 @@ const router = express.Router();
 		
 		let ff_text = 'OK、申請処理始めます。';
 		let eventName = 'file_uploaded';
-		let lang = 'ja';
+		let lang = 'jp';
 		
 		const response = {
-			fulfillment_text : ff_text,
-			followup_event_input : 
-			{ event: 
+			fulfillmentText : ff_text,
+			followupEventInput : 
 				{ name: eventName,
 		    	  languageCode: lang,
-		    	 }
-			}
+		    	}
 		}
 
 		res.setHeader('Content-Type', 'application/json');  
-		return res.send(JSON.stringify(response));
+		res.send(JSON.stringify(response));
 	});
 	
 module.exports = router;

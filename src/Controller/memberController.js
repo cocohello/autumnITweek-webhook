@@ -46,34 +46,7 @@ exports.processResquest = (req, res) => {
 		});
 	}*/
 	return res.json({
-		  "fulfillmentText": "テストです",
-		  "fulfillmentMessages": [
-		    {
-		      "card": {
-		        "title": "card title",
-		        "subtitle": "card text",
-		        "imageUri": "https://assistant.google.com/static/images/molecule/Molecule-Formation-stop.png",
-		        "buttons": [
-		          {
-		            "text": "button text",
-		            "postback": "https://assistant.google.com/"
-		          }
-		        ]
-		      }
-		    }
-		  ],
-		  "source": "example.com",
-		  "payload": {
-		    "slack": {
-		      "text": "This is a text response for Slack."
-		    }
-		  },
-		   "followupEventInput": {
-		    "name": "file_uploaded",
-		    "languageCode": "jp-JA",
-		    "parameters": {
-		      "param": "param value"
-		    }
-		  }
-		});
-}
+		speeh : 'テストです',
+		displayText : 'テストです',
+		source : 'テストです'
+	});}

@@ -18,7 +18,7 @@ const router = express.Router();
 		console.log(`router.js ${req}`);
 		
 		let ff_text = 'OK、申請処理始めます。';
-		let eventName = 'file_uploaded';
+		let eventName = 'work1_process_event';
 		let lang = 'jp';
 		
 		const response = {

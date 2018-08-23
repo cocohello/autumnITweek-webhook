@@ -17,12 +17,8 @@ const router = express.Router();
 	router.post('/',(req, res) => {
 		console.log(`router.js ${JSON.stringify(req)}`);
 		
-		
-		
-		
-		
 		res.setHeader('Content-Type', 'application/json');  
-		res.send(JSON.stringify({ fulfillmentText: 'OOOKKKK', source: 'OOKKK' }));
+		return res.send(JSON.stringify({ fulfillmentText: 'OOOKKKK', source: 'OOKKK' }));
 	});
 	
 module.exports = router;

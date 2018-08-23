@@ -46,7 +46,9 @@ exports.processResquest = (req, res) => {
 		});
 	}*/
 	
-	res.setHeader('Content-Type', 'application/json');  
-	return res.send(JSON.stringify({ 'speech': 'test', 'displayText': 'test' }));
+	return res.json({
+		  "speech": "test",
+		  "displayText": "test"
+		});
 	
 }

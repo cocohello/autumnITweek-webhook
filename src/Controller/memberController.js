@@ -45,8 +45,8 @@ exports.processResquest = (req, res) => {
 			}
 		});
 	}*/
-	return res.json({
-		speeh : 'テストです',
-		displayText : 'テストです',
-		source : 'テストです'
-	});}
+	
+	res.setHeader('Content-Type', 'application/json');  
+	return res.send(JSON.stringify({ 'speech': output, 'displayText': output }));
+	
+}

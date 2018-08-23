@@ -9,7 +9,7 @@ const memInfo = require('../Model/memberInfo');
 const Image = require('../Response/image-response');
 
 exports.processResquest = (req, res) => {
-
+/*
 	if (req.body.result.action == "work1") {
 		getMemberInfo(req, res);
 		console.log(req);
@@ -44,5 +44,8 @@ exports.processResquest = (req, res) => {
 				});
 			}
 		});
-	}
+	}*/
+	return res.json({
+		speech : 'OK', displayText :'OK', source : 'OK'
+	});
 }

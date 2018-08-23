@@ -13,7 +13,7 @@ module.exports = (app) => {
 	
 	app.get('/', (req, res) => {
 		console.log(`!router.js app.get ${req} \n`);
-		res.send(`お疲れ様です。`);
+		res.send(`${req}`);
 	});
 	
 	app.route('/').post(memberController.processResquest);

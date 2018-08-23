@@ -15,7 +15,7 @@ const router = express.Router();
 	});
 	
 	router.post('/',(req, res) => {
-		console.log(`router.js ${JSON.stringify(req)}`);
+		console.log(`router.js ${req}`);
 		
 		res.setHeader('Content-Type', 'application/json');  
 		return res.send(JSON.stringify({ fulfillmentText: 'OOOKKKK', source: 'OOKKK' }));

@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname)));
 
 //route service call to router.js
 const route = require('./src/Route/router');
-route(app);
+app.use('/', route);
 
 app.listen(port, () => {
 	console.log('bibiServer listening at port %d', port);

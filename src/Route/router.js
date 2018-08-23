@@ -3,22 +3,26 @@
  */
 
 'use strict';
-var express = require('express');
+const express = require('express');
+const router = express.Router();
 
-module.exports = (app) => {
 	// match slack client with member information in DB
 	const memberController = require('../Controller/memberController');
 	
-	const bibiRouter = express.Router();
-	
-	app.get('/', (req, res) => {
+	router.get('/', (req, res) => {
 		console.log(`!router.js app.get ${req} \n`);
-		res.send(`${req}`);
+		res.send('Hello');
 	});
 	
-	app.route('/').post((req, res) => {
+	router.post('/',(req, res) => {
+		console.log(`router.js ${JSON.stringify(req)}`);
+		
+		
+		
+		
+		
 		res.setHeader('Content-Type', 'application/json');  
 		res.send(JSON.stringify({ fulfillmentText: 'OOOKKKK', source: 'OOKKK' }));
 	});
 	
-};
+module.exports = router;

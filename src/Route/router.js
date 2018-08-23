@@ -16,6 +16,9 @@ module.exports = (app) => {
 		res.send(`${req}`);
 	});
 	
-	app.route('/').post(memberController.processResquest);
+	app.route('/').post(() => {
+		res.setHeader('Content-Type', 'application/json');  
+		res.send(JSON.stringify({ 'speech': 'OOOOK', 'displayText': 'OOOOK' }));
+	});
 	
 };

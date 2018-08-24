@@ -30,7 +30,7 @@ const router = express.Router();
 		}
 
 		res.setHeader('Content-Type', 'application/json');  
-		res.send(JSON.stringify(response));
+		res.send(json(response));
 	});
 	
 module.exports = router;

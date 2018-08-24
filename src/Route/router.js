@@ -15,9 +15,9 @@ const router = express.Router();
 	});
 	
 	router.post('/',(req, res) => {
-		console.log(`router.js ${JSON.stringify(req)}`);
+		console.log(`router.js ${req.body}`);
 		
-		let ff_text = 'OK、申請処理始めます。';
+		let ff_text = 'OK';
 		let eventName = 'work1_process_event';
 		let lang = 'jp';
 		
@@ -30,7 +30,7 @@ const router = express.Router();
 		}
 
 		res.setHeader('Content-Type', 'application/json');  
-		res.send(json({fulfillmentText:'oook', languageCode : 'jp'}));
+		res.send(json(response));
 	});
 	
 module.exports = router;

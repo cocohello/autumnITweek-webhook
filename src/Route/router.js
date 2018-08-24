@@ -24,13 +24,13 @@ const router = express.Router();
 		const response = {
 			fulfillmentText : ff_text,
 			followupEventInput : 
-				{ name: eventName,
-		    	  languageCode: lang,
+				{ name : eventName,
+		    	  languageCode : lang,
 		    	}
 		}
 
 		res.setHeader('Content-Type', 'application/json');  
-		res.send(json(response));
+		res.send(JSON.stringify(response));
 	});
 	
 module.exports = router;

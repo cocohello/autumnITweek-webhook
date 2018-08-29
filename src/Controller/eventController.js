@@ -17,7 +17,7 @@ const evController = {
 			console.log(outputContexts[context]);
 		}*/
 		outputContexts.forEach(function (context, index, outputContexts) {
-			console.log(outputContexts[index]);
+			console.log(context);
 		})
 		
 		

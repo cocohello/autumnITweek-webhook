@@ -13,10 +13,12 @@ const evController = {
 		//let response;
 		//.lastIndexOf('/')
 		//const dess_path = structjson.structProtoToJson();
-		for(let context in outputContexts){
-			console.log(context);
-		}
-		
+		/*for(let context in outputContexts){
+			console.log(outputContexts[context]);
+		}*/
+		outputContexts.forEach(function (context, index, outputContexts) {
+			console.log(outputContexts[index]);
+		})
 		
 		
 		

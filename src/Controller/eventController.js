@@ -17,8 +17,8 @@ const evController = {
 			console.log(outputContexts[context]);
 		}*/
 		outputContexts.forEach(function (context, index, outputContexts) {
-			console.log(outputContexts[2]);
-			console.log(context[2]);
+			console.log(outputContexts[2]['0']);
+			console.log(outputContexts[2]['0']['dest_path']);
 		})
 		
 		

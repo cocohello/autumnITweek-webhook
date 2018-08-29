@@ -16,16 +16,16 @@ const evController = {
 		/*for(let context in outputContexts){
 			console.log(outputContexts[context]);
 		}*/
-		var parameter
+		var parameters;
 		outputContexts.forEach(function (context, index, outputContexts) {
-			if(outputContexts[index].name) {
-				
-			}
+			//if(outputContexts[index].name) {
+				parameters = outputContexts[2];
+				//console.log(parameters);
+			//}
 		})
-		console.log(parameter.parameters);
-		
-		
-		
+		console.log(parameters['0']);
+		console.log(parameters[2]);
+		console.log(parameters.dest_path);
 		
 		
 		

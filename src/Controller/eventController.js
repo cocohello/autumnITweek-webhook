@@ -13,8 +13,9 @@ const evController = {
 		//let response;
 		//.lastIndexOf('/')
 		//const dess_path = structjson.structProtoToJson();
-		for(let context in outputContexts){
-			console.log(outputContexts[context]);
+		this.outputContexts = structjson.structProtoToJson(outputContexts);
+		for(let context in this.outputContexts){
+			console.log(this.outputContexts[context]);
 		}
 		
 		

@@ -24,7 +24,8 @@ const evController = {
 			//}
 		})
 		console.log(JSON.stringify(context));
-		console.log(JSON.parse(JSON.stringify(context)));
+		console.log(context[0]);
+		console.log(context[parameters]);
 		return;
 	},
 	work2Process : function (parameter) {

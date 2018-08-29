@@ -47,8 +47,8 @@ const structjson = require('../Util/structjson');
 			let detectedEvent = req.body.queryResult.queryText;
 			switch (detectedEvent) {
 				case 'work1_process_event' :
-					console.log(structjson.jsonToStructProto(req.body.queryResult.parameters));
-					console.log(structjson.jsonToStructProto(req.body.queryResult.parameters.structValue));
+					console.log(structjson.jsonToStructProto(req.body.queryResult.outputContexts));
+					console.log(structjson.jsonToStructProto(req.body.queryResult.outputContexts.listValue));
 						//eventController.work1Process();
 					break;
 				case 'work2_process_event' :

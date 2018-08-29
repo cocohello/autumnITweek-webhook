@@ -18,10 +18,11 @@ const evController = {
 		}*/
 		var parameter
 		outputContexts.forEach(function (context, index, outputContexts) {
-			parameter = outputContexts[2];
+			if(outputContexts[index].name) {
+				
+			}
 		})
-		console.log(parameter.name);
-		console.log(parameter.parameter);
+		console.log(parameter.parameters);
 		
 		
 		

@@ -42,7 +42,9 @@ const eventController = require('../Controller/eventController');
 			}
 		} else {	//request from detectEventIntent to process login, in this case, UI Path Orchestrator 
 			console.log(`router.js !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ${req.body.queryInput}`);
-			switch (req.queryInput.event.name) {
+			
+			let detectedEvent = req.body.queryResult.queryText;
+			switch (detectedEvent) {
 				case 'work1_process_event' : 
 					eventController.work1Process(req.queryInput);
 					break;

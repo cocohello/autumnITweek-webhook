@@ -26,6 +26,7 @@ const eventController = require('../Controller/eventController');
 			let selfmsg = JSON.stringify(req.body.queryResult.fulfillmentMessages[0].text.text[0]);
 			switch (selfmsg) {
 				case 'OK、申請処理始めます。' : 
+					console.log('switch');
 					eventName = 'work1_process_event';
 					break;
 				case 'かしこまりました。少々お待ちください。' :
@@ -34,7 +35,6 @@ const eventController = require('../Controller/eventController');
 				default : eventName = null; 
 			}
 			
-			console.log(eventName);
 			response = {
 				fulfillmentText : text,
 				followupEventInput : 

@@ -18,7 +18,7 @@ const eventController = require('../Controller/eventController');
 	router.post('/',(req, res) => {
 		console.log(`router.js ${JSON.stringify(req.body)}`);
 		let response;
-		if (req.body.queryResult) {			//request from detectWebhookIntent to add followup event
+		if (req.body.responseId) {			//request from detectWebhookIntent to add followup event
 			let text = 'success to catch webhook request';
 			let eventName;
 			let lang = 'jp';
@@ -40,7 +40,7 @@ const eventController = require('../Controller/eventController');
 						languageCode : lang
 					}
 			}
-		} else if (req.body.queryInput) {	//request from detectEventIntent to process login, in this case, UI Path Orchestrator 
+		} else {	//request from detectEventIntent to process login, in this case, UI Path Orchestrator 
 			console.log(`router.js ${req.body.queryInput}`);
 			switch (req.queryInput.event.name) {
 				case 'work1_process_event' : 

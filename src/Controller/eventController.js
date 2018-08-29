@@ -4,7 +4,6 @@
 
 const orchestrator = require('../Model/orchestrator');
 
-module.exports = evController;
 
 const evController = {
 	work1Process : function (parameter) {
@@ -19,3 +18,5 @@ const evController = {
 	}
 }
 	
+
+module.exports = evController;

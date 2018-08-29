@@ -15,8 +15,8 @@ const evController = {
 		var arr = outputContexts.fields;
 		for(let context in arr){
 			//console.log(arr[context]);
-			console.log(arr[2].structValue.fields.name.parameters.structValue);
-			console.log(structjson.structProtoToJson(arr[2].structValue.fields.name.parameters.structValue));
+			console.log(arr[2].structValue.fields.name.parameters);
+			console.log(structjson.structProtoToJson(arr[2].structValue.fields.name.parameters));
 		}
 		/*var context;
 		(outputContexts.fields).forEach(function (item, index, arr) {

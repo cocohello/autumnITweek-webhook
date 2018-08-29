@@ -14,8 +14,8 @@ const evController = {
 		//const dess_path = structjson.structProtoToJson();
 		var arr = outputContexts.fields;
 		for(let context in arr){
-			console.log(arr[context]);
-			//console.log(arr[context].structValue);
+			//console.log(arr[context]);
+			console.log(arr[context].structValue);
 			//console.log(structjson.structProtoToJson(arr[context].structValue));
 		}
 		/*var context;

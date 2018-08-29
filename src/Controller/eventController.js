@@ -19,14 +19,14 @@ const evController = {
 		var parameters;
 		outputContexts.forEach(function (context, index, outputContexts) {
 			//if(outputContexts[index].name) {
-				parameters = outputContexts[2];
-				//console.log(parameters);
+				//parameters = outputContexts[2];
+				console.log(context);
 			//}
 		})
-		console.log(JSON.stringify(parameters));
+		/*console.log(JSON.stringify(parameters));
 		console.log(JSON.parse(parameters));
 		console.log(structjson.structProtoToJson(parameters));
-		
+		*/
 		
 		return;
 	},

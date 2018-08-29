@@ -13,13 +13,6 @@ const work1Process = function (parameter) {
 	const config = require('../../resource/orchestrator_Environment');
 	const O = orchestrator(config);
 	let response;
-	middleware.work1Process = (queryInput) => {
-		
-		console.log(O.login);
-		
-		
-		return null;
-	}
 	
 }
 

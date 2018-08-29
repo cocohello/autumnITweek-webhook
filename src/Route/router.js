@@ -34,6 +34,7 @@ const eventController = require('../Controller/eventController');
 				default : eventName = null; 
 			}
 			
+			console.log(eventName);
 			response = {
 				fulfillmentText : text,
 				followupEventInput : 
@@ -41,7 +42,6 @@ const eventController = require('../Controller/eventController');
 						languageCode : lang
 					}
 			}
-			
 		} else if (req.body.queryInput) {	//request from detectEventIntent to process login, in this case, UI Path Orchestrator 
 			switch (req.queryInput.event.name) {
 				case 'work1_process_event' : 

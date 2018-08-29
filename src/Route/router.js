@@ -40,7 +40,7 @@ const eventController = require('../Controller/eventController');
 					}
 			}
 			
-		} else if (req.queryInput) {	//request from detectEventIntent to process login, in this case, UI Path Orchestrator 
+		}/* else if (req.queryInput) {	//request from detectEventIntent to process login, in this case, UI Path Orchestrator 
 			switch (req.queryInput.event.name) {
 				case 'work1_process_event' : 
 					eventController.work1Process(req.queryInput);
@@ -49,7 +49,7 @@ const eventController = require('../Controller/eventController');
 					eventController.work2Process(req.queryInput);
 					break;
 			}
-		}
+		}*/
 		res.setHeader('Content-Type', 'application/json');  
 		res.send(JSON.stringify(response));
 	});

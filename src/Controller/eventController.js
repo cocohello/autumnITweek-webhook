@@ -16,8 +16,9 @@ const evController = {
 		/*for(let context in outputContexts){
 			console.log(outputContexts[context]);
 		}*/
+		var parameter
 		outputContexts.forEach(function (context, index, outputContexts) {
-			var parameter = outputContexts[2];
+			parameter = outputContexts[2];
 		})
 		console.log(parameter);
 		

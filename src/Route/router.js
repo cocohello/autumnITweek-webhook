@@ -41,7 +41,7 @@ const eventController = require('../Controller/eventController');
 					}
 			}
 		} else {	//request from detectEventIntent to process login, in this case, UI Path Orchestrator 
-			console.log(`router.js detectedEvent ${req.body}`);
+			console.log(`router.js detectedEvent ${JSON.stringify(req.body)}`);
 			
 			let detectedEvent = req.body.queryResult.queryText;
 			switch (detectedEvent) {

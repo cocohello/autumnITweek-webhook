@@ -23,10 +23,9 @@ const evController = {
 				//console.log(parameters);
 			//}
 		})
-		console.log(parameters['0']);
-		console.log(parameters[2]);
-		console.log(parameters.dest_path);
-		
+		console.log(JSON.stringify(parameters));
+		console.log(JSON.parse(parameters));
+		console.log(structjson.structProtoToJson(parameters));
 		
 		
 		return;

@@ -17,7 +17,7 @@ const eventController = require('../Controller/eventController');
 	
 	router.post('/',(req, res) => {
 		let response;
-		if (req.body.session) {			//request from detectWebhookIntent to add followup event
+		if (!req.body.originalDetectIntentRequest) {			//request from detectWebhookIntent to add followup event
 			console.log(`router.js ${JSON.stringify(req.body)}`);
 			let text = 'success to catch webhook request';
 			let eventName;

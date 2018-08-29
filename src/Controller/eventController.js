@@ -19,12 +19,12 @@ const evController = {
 		var context;
 		outputContexts.forEach(function (item, index, outputContexts) {
 			//if(outputContexts[index].name) {
-				context = outputContexts[2];
-				//console.log(context);
+				//context = outputContexts[2];
+				console.log(context);
 			//}
 		})
-		console.log(JSON.stringify(context));
-		console.log(structjson.jsonToStructProto(context));
+		//console.log(JSON.stringify(context));
+		//console.log(structjson.jsonToStructProto(context));
 		return;
 	},
 	work2Process : function (parameter) {

@@ -6,6 +6,7 @@
 const express = require('express');
 const router = express.Router();
 const eventController = require('../Controller/eventController');
+const structjson = require('../Util/structjson');
 
 
 	// match slack client with member information in DB 	const memberController = require('../Controller/memberController');

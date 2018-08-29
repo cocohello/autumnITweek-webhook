@@ -3,7 +3,6 @@
  */
 
 const orchestrator = require('../Model/orchestrator');
-const structjson = require('../Util/structjson');
 
 
 const evController = {

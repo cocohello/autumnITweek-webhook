@@ -24,9 +24,9 @@ const eventController = require('../Controller/eventController');
 			let lang = 'jp';
 			console.log(`router.js ${JSON.stringify(req.body.queryResult.fulfillmentMessages[0].text.text[0])}`);
 			let selfmsg = JSON.stringify(req.body.queryResult.fulfillmentMessages[0].text.text[0]);
-			switch (selfmsg) {
+			console.log('switch');
+			switch (selfmsg.to) {
 				case 'OK、申請処理始めます。' : 
-					console.log('switch');
 					eventName = 'work1_process_event';
 					break;
 				case 'かしこまりました。少々お待ちください。' :

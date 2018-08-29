@@ -3,7 +3,7 @@
  */
 
 const orchestrator = require('../Model/orchestrator');
-
+const structjson = require('../Util/structjson');
 
 const evController = {
 	work1Process : function (outputContexts) {
@@ -14,7 +14,9 @@ const evController = {
 		//const dess_path = structjson.structProtoToJson();
 		var arr = outputContexts.fields;
 		for(let context in arr){
-			console.log(context);
+			console.log(arr[context]);
+			console.log(arr[context].structValue);
+			console.log(structjson.structProtoToJson(arr[context].structValue));
 		}
 		/*var context;
 		(outputContexts.fields).forEach(function (item, index, arr) {

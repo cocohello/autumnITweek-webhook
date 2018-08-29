@@ -16,12 +16,13 @@ const eventController = require('../Controller/eventController');
 	});
 	
 	router.post('/',(req, res) => {
-		console.log(`router.js ${JSON.stringify(req.body)}`);
+		//console.log(`router.js ${JSON.stringify(req.body)}`);
 		let response;
 		if (req.body.queryResult) {			//request from detectWebhookIntent to add followup event
 			let text = 'success to catch webhook request';
 			let eventName;
 			let lang = 'jp';
+			console.log(`router.js ${JSON.stringify(req.body.fulfillmentMessages.text)}`);
 			switch (req.body.queryResult.fulfillmentMessages.text.text) {
 				case 'OK、申請処理始めます。' : 
 					eventName = 'work1_process_event';

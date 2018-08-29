@@ -5,7 +5,7 @@
 'use strict';
 const express = require('express');
 const router = express.Router();
-const eventController = require('./Controller/eventController');
+const eventController = require('../Controller/eventController');
 
 
 	// match slack client with member information in DB 	const memberController = require('../Controller/memberController');

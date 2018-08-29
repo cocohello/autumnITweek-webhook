@@ -16,10 +16,11 @@ const evController = {
 			console.log(outputContexts[context]);
 		}*/
 		var context;
-		outputContexts.forEach(function (item, index, outputContexts) {
+		outputContexts.fields.forEach(function (item, index, arr) {
 			//if(outputContexts[index].name) {
 				//context = outputContexts[2];
-				console.log(context);
+				console.log(item.structValue);
+				console.log(JSON.stringify(item.structValue));
 			//}
 		})
 		//console.log(JSON.stringify(context));

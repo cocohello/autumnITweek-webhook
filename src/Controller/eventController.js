@@ -5,8 +5,8 @@
 const orchestrator = require('../Model/orchestrator');
 
 module.exports = {
-	work1Process : work1Process,
-	work2Process : work2Process
+	'work1Process' : work1Process,
+	'work2Process' : work2Process
 }
 	
 const work1Process = function (parameter) {

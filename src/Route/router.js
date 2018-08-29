@@ -22,9 +22,7 @@ const eventController = require('../Controller/eventController');
 			let text = 'success to catch webhook request';
 			let eventName;
 			let lang = 'jp';
-			console.log(`router.js ${req.body.queryResult.fulfillmentMessages[0].text.text[0]}`);
 			let selfmsg = req.body.queryResult.fulfillmentMessages[0].text.text[0];
-			console.log(selfmsg);
 			switch (selfmsg) {
 				case 'OK、申請処理始めます。' : 
 					eventName = 'work1_process_event';
@@ -43,6 +41,7 @@ const eventController = require('../Controller/eventController');
 					}
 			}
 		} else if (req.body.queryInput) {	//request from detectEventIntent to process login, in this case, UI Path Orchestrator 
+			console.log(`router.js ${req.body.queryInput}`);
 			switch (req.queryInput.event.name) {
 				case 'work1_process_event' : 
 					eventController.work1Process(req.queryInput);

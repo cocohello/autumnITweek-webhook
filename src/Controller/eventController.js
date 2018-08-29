@@ -23,9 +23,8 @@ const evController = {
 				//console.log(context);
 			//}
 		})
-		console.log(json(JSON.stringify(context)));
-		console.log(json(JSON.stringify(context)).parameters['0']);
-		
+		console.log(JSON.stringify(context, '0'));
+		console.log(JSON.stringify(context, null, '0'));
 		
 		return;
 	},

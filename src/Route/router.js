@@ -22,7 +22,7 @@ const eventController = require('../Controller/eventController');
 			let text = 'success to catch webhook request';
 			let eventName;
 			let lang = 'jp';
-			console.log(`router.js ${JSON.stringify(req.body.fulfillmentMessages)}`);
+			console.log(`router.js ${JSON.stringify(req.body.queryResult.fulfillmentMessages)}`);
 			switch (req.body.queryResult.fulfillmentMessages.text.text) {
 				case 'OK、申請処理始めます。' : 
 					eventName = 'work1_process_event';

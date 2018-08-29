@@ -46,8 +46,7 @@ const eventController = require('../Controller/eventController');
 			let detectedEvent = req.body.queryResult.queryText;
 			switch (detectedEvent) {
 				case 'work1_process_event' : 
-					
-					//eventController.work1Process(req.queryInput);
+					eventController.work1Process(req.body.queryResult.outputContexts);
 					break;
 				case 'work2_process_event' :
 					eventController.work2Process(req.queryInput);

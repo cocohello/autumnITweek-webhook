@@ -18,11 +18,11 @@ const eventController = require('../Controller/eventController');
 	router.post('/',(req, res) => {
 		console.log(`router.js ${JSON.stringify(req.body)}`);
 		let response;
-		if (req.queryResult) {			//request from detectWebhookIntent to add followup event
+		if (req.body.queryResult) {			//request from detectWebhookIntent to add followup event
 			let text = 'success to catch webhook request';
 			let eventName;
 			let lang = 'jp';
-			switch (req.queryResult.fulfillmentMessages.text.text) {
+			switch (req.body.queryResult.fulfillmentMessages.text.text) {
 				case 'OK、申請処理始めます。' : 
 					eventName = 'work1_process_event';
 					break;
@@ -40,7 +40,7 @@ const eventController = require('../Controller/eventController');
 					}
 			}
 			
-		}/* else if (req.queryInput) {	//request from detectEventIntent to process login, in this case, UI Path Orchestrator 
+		} else if (req.body.queryInput) {	//request from detectEventIntent to process login, in this case, UI Path Orchestrator 
 			switch (req.queryInput.event.name) {
 				case 'work1_process_event' : 
 					eventController.work1Process(req.queryInput);
@@ -49,7 +49,7 @@ const eventController = require('../Controller/eventController');
 					eventController.work2Process(req.queryInput);
 					break;
 			}
-		}*/
+		}
 		res.setHeader('Content-Type', 'application/json');  
 		res.send(JSON.stringify(response));
 	});

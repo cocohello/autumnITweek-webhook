@@ -46,7 +46,7 @@ class Orchestrator {
 	}
 	
 	//authenticate and get bearer token
-	login () {
+	static login () {
 		this.opts.url = api+'/Account'
 		this.opts.json = this.config
 		var token;

@@ -62,14 +62,14 @@ class Orchestrator {
 	//[END log in]
 	}
 	
-	//get assetId
-	getAsset (token, assetName) {
-		let idArr = [];
+	// put asset
+	putAsset (token, assetName) {
+		let valueArr = [];
 		token.then( tk => {
-			console.log(tk);
 			this.opts.url = odata+`/Assets?$filter=contains(Name, '${assetName}')&$top=4`;
 			this.opts.headers = { Authorization: 'Bearer ' + tk };
 			console.log(this.opts);
+			
 				request.get(this.opts, function(err, res, body) {
 					if (err) {
 						console.log('uipath orchestrator error: ', err);
@@ -79,17 +79,22 @@ class Orchestrator {
 						let arr = body.value;
 						for(let asset in arr){
 							if (arr[asset]['Name'] !== 'work1_OBatPath') {
-								idArr[(arr[asset]['Name'])] = arr[asset]['Id'];
+								valueArr[(arr[asset]['Name'])] = arr[asset];
 								
 							}
 						}
-						return idArr;
+						return (tk, valueArr);
 					}
 				});
-			})
+			}).then((tk, valueArr) => {
+				console.log(tk);
+				console.log(valueArr);
+			});
 	}
 	
-	putAsset (token) {
+	/*putAsset (token, valueArr) {
+		valueArr
+		console.log(valueArr+'\n');
 		//authenticate 
 		this.opts.url = odata+'/Assets(44474)'
 		this.opts.json = {
@@ -121,7 +126,7 @@ class Orchestrator {
 			console.log('success to put Asset ');
 		})
 	//[END log in]
-	}
+	}*/
 	
 	
 }

@@ -16,7 +16,7 @@ const token = O.login();
 
 const evController = {
 	work1Process : function (outputContexts) {
-		O.putAsset();
+		O.putAsset(token);
 		/*//const config = require('../../resource/orchestrator_Environment');
 		//const O = orchestrator(config);
 		//let response;

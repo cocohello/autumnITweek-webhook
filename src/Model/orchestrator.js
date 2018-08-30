@@ -67,7 +67,7 @@ class Orchestrator {
 	//[END log in]
 	}
 	
-	putAsset() {
+	putAsset(token) {
 		//authenticate 
 		this.opts.url = odata+'/Assets(44474)'
 		this.opts.json = {
@@ -83,6 +83,7 @@ class Orchestrator {
 			"Id": 44474,
 			"KeyValueList": []
 		}
+		this.opts.headers = {Authorization: 'Bearer ' + token}
 		return new Promise((resolve, reject) => {
 			request.post(this.opts, function(err, res, body) {
 				if (err) {

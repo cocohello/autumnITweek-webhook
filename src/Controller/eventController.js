@@ -33,7 +33,7 @@ const evController = {
 		
 		//UI Path//
 		const idArr = O.getAsset(token, 'work1');
-		console.log(idArr);
+		console.log('idArr'+idArr);
 		//O.putAsset(token, );
 		//const config = require('../../resource/orchestrator_Environment');
 		//const O = orchestrator(config);

@@ -86,7 +86,7 @@ class Orchestrator {
 		this.opts.headers = {Authorization: 'Bearer ' + token}
 		console.log(this.opts);
 		return new Promise((resolve, reject) => {
-			request.post(this.opts, function(err, res, body) {
+			request.put(this.opts, function(err, res, body) {
 				if (err) {
 					console.log('uipath orchestrator error: ', err);
 					reject(err);

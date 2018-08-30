@@ -12,7 +12,7 @@ const evController = {
 		//let response;
 		//.lastIndexOf('/')
 		//const dess_path = structjson.structProtoToJson();
-		var arr = outputContexts.fields.structValue.fields.parameters;
+		var arr = outputContexts.fields;
 		/*for(let context in arr){
 			//console.log(arr[context]);
 			console.log(arr[context].structValue.fields.parameters);
@@ -22,8 +22,9 @@ const evController = {
 		arr.forEach(function (item, index, arr) {
 			//if(outputContexts[index].name) {
 				//context = outputContexts[2];
-				console.log(arr[2]);
+				console.log(item);
 				console.log('\n');
+				console.log(arr[2].structValue.fields.parameters);
 				//console.log(arr[2].);
 			//}
 		})

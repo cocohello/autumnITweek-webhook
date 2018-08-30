@@ -66,7 +66,7 @@ class Orchestrator {
 	getAsset (token, assetName) {
 		token.then( tk => {
 			console.log(tk);
-			this.opts.url = odata+`/Assets?$filter=contains(Name, ${assetName})&$top=4`;
+			this.opts.url = odata+`/Assets?$filter=contains(Name, '${assetName}')&$top=4`;
 			this.opts.headers = { Authorization: 'Bearer ' + tk };
 			console.log(this.opts);
 			return new Promise((resolve, reject) => {

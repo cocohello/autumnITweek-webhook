@@ -55,13 +55,11 @@ class Orchestrator {
 					reject(err);
 				} else {
 					console.log('uipath orchestrator authenticate response: \n', res.statusCode);
-					resolve(res);
+					token = res.body.result;
+					console.log('login\n'+token);
+					resolve(token);
 				}
 			})
-		}).then(res => {
-			token = res.body.result;
-			console.log('login\n'+token);
-			return token;
 		})
 	//[END log in]
 	}

@@ -13,7 +13,9 @@ const O = orchestrator({
 
 //sign in to Orchestrator and get token
 
-const token = O.login();
+const token = O.login().then(result => {
+	return result;
+});
 console.log('eve'+token);
 const evController = {
 	work1Process : function (outputContexts) {

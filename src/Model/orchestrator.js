@@ -69,20 +69,18 @@ class Orchestrator {
 			this.opts.url = odata+`/Assets?$filter=contains(Name, '${assetName}')&$top=4`;
 			this.opts.headers = { Authorization: 'Bearer ' + tk };
 			console.log(this.opts);
-			return new Promise((resolve, reject) => {
 				request.get(this.opts, function(err, res, body) {
 					if (err) {
 						console.log('uipath orchestrator error: ', err);
-						reject(err);
+						return;
 					} else {
 						console.log('uipath orchestrator getAsset response: \n', res.statusCode);
-						resolve(body);
+						for(let asset in body.value){
+							console.log(asset);
+						}
 					}
 				});
-			}).then(body => {
-				console.log(body);
 			})
-		});
 		
 	}
 	putAsset (token) {

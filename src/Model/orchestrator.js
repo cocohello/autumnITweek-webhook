@@ -40,13 +40,9 @@ class Orchestrator {
 		'Content-Type' : 'application/json'
 	};
 	this.opts = opts;
-	//sign in to Orchestrator and get token
-	this.token = login();
-	//[END contructor]
-	}
 	
-	//authenticate and get bearer token
-	static login () {
+	//sign in to Orchestrator and get token
+	this.token = () => {
 		this.opts.url = api+'/Account'
 		this.opts.json = this.config
 		var token;
@@ -67,6 +63,9 @@ class Orchestrator {
 		})
 	//[END log in]
 	}
+	//[END contructor]
+	}
+	
 	
 	//get assetId
 	getAsset (assetName) {

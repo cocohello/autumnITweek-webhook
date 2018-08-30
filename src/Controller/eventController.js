@@ -2,7 +2,7 @@
  * http://usejsdoc.org/
  */
 
-//const structjson = require('../Util/structjson');
+const structjson = require('../Util/structjson');
 const path = require('path');
 const orchestrator = require('../Model/orchestrator');
 const O = orchestrator({

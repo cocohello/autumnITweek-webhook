@@ -27,7 +27,7 @@ const evController = {
 		
 		for(let context in arr){
 			if(arr[context].name === 'projects/autumn-it-week-2018/agent/sessions/7d0ec78ea1139d0a6d12170a9f32d323/contexts/work1_process_event'){
-				dest_path = arr[context][parameter]['0']['dest_path'];
+				dest_path = arr[context][parameters]['0']['dest_path'];
 			}
 		}
 		

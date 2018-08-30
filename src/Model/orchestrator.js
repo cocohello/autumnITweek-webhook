@@ -67,6 +67,7 @@ class Orchestrator {
 	//[END log in]
 	}
 	
+	
 	putAsset(token) {
 		//authenticate 
 		this.opts.url = odata+'/Assets(44474)'

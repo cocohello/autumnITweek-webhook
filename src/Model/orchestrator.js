@@ -64,8 +64,8 @@ class Orchestrator {
 	
 	// put asset
 	putAsset (token, assetName) {
-		let valueArr = [];
 		token.then( tk => {
+			let valueArr = [];
 			this.opts.url = odata+`/Assets?$filter=contains(Name, '${assetName}')&$top=4`;
 			this.opts.headers = { Authorization: 'Bearer ' + tk };
 			//console.log(this.opts);
@@ -80,16 +80,13 @@ class Orchestrator {
 						for(let asset in arr){
 							if (arr[asset]['Name'] !== 'work1_OBatPath') {
 								valueArr[(arr[asset]['Name'])] = arr[asset];
-								
 							}
 						}
-						//console.log(tk);
-						//console.log(valueArr);
-						return valueArr;
 					}
 				});
-			}).then(valueArr => {
-				console.log(valueArr);
+				return valueArr;
+			}).then( valueArr => {
+				console.log('thenthen\n'+valueArr);
 			});
 	}
 	

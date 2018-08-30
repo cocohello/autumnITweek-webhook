@@ -5,7 +5,11 @@
 //const structjson = require('../Util/structjson');
 const path = require('path');
 const orchestrator = require('../Model/orchestrator');
-const O = orchestrator(path.join('..', 'resource', 'orchestrator_Environment'));
+const O = orchestrator({
+	tenancyName: 'bibibot',                          	
+	usernameOrEmailAddress: 'lee@bbnetwork.co.jp', 				
+	password: 'bbn043_bbn043',
+});
 
 const evController = {
 	work1Process : function (outputContexts) {

@@ -24,7 +24,7 @@ const evController = {
 				//context = outputContexts[2];
 				console.log(arr[2]);
 				console.log('\n');
-				console.log(arr[2].fields['0']);
+				//console.log(arr[2].);
 			//}
 		})
 		//console.log(JSON.stringify(context));

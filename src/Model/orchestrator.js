@@ -50,20 +50,21 @@ class Orchestrator {
 		this.opts.url = api+'/Account'
 		var token;
 		return new Promise((resolve, reject) => {
-		request.post(this.opts, function(err, res, body) {
-			if (err) {
-				console.log('uipath orchestrator error: ', err);
-				reject(err);
-			} else {
-				console.log('uipath orchestrator authenticate response: \n', res.body);
-				resolve(res);
-			}
+			request.post(this.opts, function(err, res, body) {
+				if (err) {
+					console.log('uipath orchestrator error: ', err);
+					reject(err);
+				} else {
+					console.log('uipath orchestrator authenticate response: \n', res.body);
+					resolve(res);
+				}
+			})
+		}).then(res => {
+			token = res.body.result;
+			console.log(token);
+			return token;
 		})
-	}).then(res => {
-		token = res.body.result;
-		console.log(token);
-		return token;
-	})
+	}
 }
 
 

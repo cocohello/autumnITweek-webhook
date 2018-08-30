@@ -26,12 +26,13 @@ const evController = {
 		for(let context in arr){
 			let name = arr[context].name;
 			console.log(name.substr(name.lastIndexOf('/'), name.length-1));
-			if(name.substr(name.lastIndexOf('/'), name.length-1) === 'work1_process_event') { 
+			if(name.substr(name.lastIndexOf('/')+1, name.length-1) === 'work1_process_event') { 
 				output = arr[context];
 			}
 		}
 		
-		//let dest_path = output['parameters']['0']['dest_path'];
+		let dest_path = output['parameters']['0']['dest_path'];
+		console.log(dest_path);
 		/*for(let item in parameter){
 			console.log(item);
 		}

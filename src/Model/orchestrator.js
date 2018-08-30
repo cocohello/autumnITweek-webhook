@@ -70,27 +70,27 @@ class Orchestrator {
 			this.opts.headers = { Authorization: 'Bearer ' + tk };
 			//console.log(this.opts);
 			
-				request.get(this.opts, function(err, res, body) {
-					if (err) {
-						console.log('uipath orchestrator error: ', err);
-						return;
-					} else {
-						console.log('uipath orchestrator getAsset response: \n', res.statusCode);
-						let arr = body.value;
-						for(let asset in arr){
-							if (arr[asset]['Name'] !== 'work1_OBatPath') {
-								valueArr[(arr[asset]['Name'])] = arr[asset];
+				return new Promise ((resolve, reject) => {
+					request.get(this.opts, function(err, res, body) {
+						if (err) {
+							console.log('uipath orchestrator error: ', err);
+							reject(err);
+						} else {
+							console.log('uipath orchestrator getAsset response: \n', res.statusCode);
+							let arr = body.value;
+							for(let asset in arr){
+								if (arr[asset]['Name'] !== 'work1_OBatPath') {
+									valueArr[(arr[asset]['Name'])] = arr[asset];
+								}
 							}
+							console.log(1);
+							console.log(valueArr);
+							resolve(valueArr);
 						}
-						console.log(1);
-						console.log(valueArr);
-					}
+					})
 				});
-				console.log(2);
-				console.log(valueArr);
-				return valueArr;
 			}).then( valueArr => {
-				console.log(3);
+				console.log(2);
 				console.log(valueArr);
 			});
 	}

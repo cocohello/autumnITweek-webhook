@@ -20,12 +20,12 @@ const evController = {
 		//const config = require('../../resource/orchestrator_Environment');
 		//const O = orchestrator(config);
 		//let response;
-		//.lastIndexOf('/')
 		const arr = structjson.structProtoToJson(outputContexts);
 		let output;/* = structjson.structProtoToJson(outputContexts)['2']['parameters']['0']['dest_path'];*/
 		
 		for(let context in arr){
-			if(arr[context].name === 'projects/autumn-it-week-2018/agent/sessions/7d0ec78ea1139d0a6d12170a9f32d323/contexts/work1_process_event'){
+			let name = arr[context].name;
+			if(name.substr(name.lastIndexOf('/'), name.length-1) === 'work1_process_event') { 
 				output = arr[context];
 			}
 		}

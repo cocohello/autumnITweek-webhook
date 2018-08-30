@@ -13,8 +13,9 @@ const O = orchestrator({
 
 //sign in to Orchestrator and get token
 
-const token = O.login().then(result => {
-	return result;
+let token;
+O.login().then(result => {
+	token = result;
 });
 console.log('eve'+token);
 const evController = {

@@ -21,16 +21,16 @@ const evController = {
 		//const O = orchestrator(config);
 		//let response;
 		//.lastIndexOf('/')
-		let dest_path;
 		const arr = structjson.structProtoToJson(outputContexts);
-		//var parameter = structjson.structProtoToJson(outputContexts)['2']['parameters']['0']['dest_path'];
+		let output;/* = structjson.structProtoToJson(outputContexts)['2']['parameters']['0']['dest_path'];*/
 		
 		for(let context in arr){
 			if(arr[context].name === 'projects/autumn-it-week-2018/agent/sessions/7d0ec78ea1139d0a6d12170a9f32d323/contexts/work1_process_event'){
-				dest_path = arr[context];
+				output = arr[context];
 			}
 		}
 		
+		let dest_path = output['parameters']['0']['dest_path'];
 		console.log(dest_path);
 		/*for(let item in parameter){
 			console.log(item);

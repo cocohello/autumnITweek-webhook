@@ -13,7 +13,7 @@ const O = orchestrator({
 
 //sign in to Orchestrator and get token
 
-const token = O.login().values();
+const token = O.login();
 const evController = {
 	work1Process : function (outputContexts) {
 		//get the receipt folder path from request query

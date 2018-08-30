@@ -68,7 +68,7 @@ class Orchestrator {
 		token.then( tk => {
 			this.opts.url = odata+`/Assets?$filter=contains(Name, '${assetName}')&$top=4`;
 			this.opts.headers = { Authorization: 'Bearer ' + tk };
-			console.log(this.opts);
+			//console.log(this.opts);
 			
 				request.get(this.opts, function(err, res, body) {
 					if (err) {
@@ -83,12 +83,14 @@ class Orchestrator {
 								
 							}
 						}
-						return (tk, valueArr);
+						console.log(tk);
+						console.log(valueArr);
+						return valueArr;
 					}
 				});
-			}).then((tk, valueArr) => {
-				console.log(tk);
-				console.log(valueArr);
+			}).then(valueArr => {
+				console.log('then'+tk);
+				console.log('then'+valueArr);
 			});
 	}
 	

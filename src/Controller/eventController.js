@@ -15,6 +15,7 @@ const O = orchestrator({
 
 let token;
 O.login().then(result => {
+	console.log('then'+result);
 	token = result;
 });
 console.log('eve'+token);

@@ -48,7 +48,7 @@ class Orchestrator {
 		this.opts.url = api+'/Account'
 		this.opts.json = this.config
 		var token;
-		return new Promise((resolve, reject) => {
+		new Promise((resolve, reject) => {
 			request.post(this.opts, function(err, res, body) {
 				if (err) {
 					console.log('uipath orchestrator error: ', err);

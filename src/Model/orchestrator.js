@@ -44,8 +44,8 @@ class Orchestrator {
 	//[END contructor]
 	}
 	
-	login() {
-		//authenticate 
+	//authenticate and get bearer token
+	login () {
 		this.opts.url = api+'/Account'
 		this.opts.json = this.config
 		var token;
@@ -67,8 +67,27 @@ class Orchestrator {
 	//[END log in]
 	}
 	
-	
-	putAsset(token) {
+	//get assetId
+	getAsset (token, assetName) {
+		this.opts.url = odata+`/Assets?$filter=contains(Name, ${assetName})&$top=4`;
+		this.opts.headers = { Authorization: 'Bearer ' + token };
+		console.log(this.opts);
+		return new Promise((resolve, reject) => {
+			request.get(this.opts, function(err, res, body) {
+				if (err) {
+					console.log('uipath orchestrator error: ', err);
+					reject(err);
+				} else {
+					console.log('uipath orchestrator getAsset response: \n', res.statusCode);
+					resolve(body);
+				}
+			});
+		}).then(body => {
+			console.log(body);
+		})
+		
+	}
+	putAsset (token) {
 		//authenticate 
 		this.opts.url = odata+'/Assets(44474)'
 		this.opts.json = {

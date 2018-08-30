@@ -83,14 +83,13 @@ class Orchestrator {
 								
 							}
 						}
-						console.log(tk);
-						console.log(valueArr);
+						//console.log(tk);
+						//console.log(valueArr);
 						return valueArr;
 					}
 				});
 			}).then(valueArr => {
-				console.log('then'+tk);
-				console.log('then'+valueArr);
+				console.log(valueArr);
 			});
 	}
 	

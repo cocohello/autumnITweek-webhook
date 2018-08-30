@@ -44,22 +44,23 @@ class Orchestrator {
 		opts.tenancyName = config.tenancyName;
 	}
 
-	//authenticate 
-	request.post(opts, function(err, res, body) {
-		console.log('REQUEST RETRIEVE STATUS', res.status);
-		if (err) {
-			debug('uipath orchestrator error: ', err);
-		} else {
-			debug('uipath orchestrator authenticate response: \n', res);
-			this.token = body.result;
-		}
-	})
+	this.opts = opts;
+	
 	//[END contructor]
 	}
 	
 	login() {
-		console.log(this.token);
-		return this.token;
+		//authenticate 
+		request.post(this.opts, function(err, res, body) {
+			if (err) {
+				debug('uipath orchestrator error: ', err);
+			} else {
+				debug('uipath orchestrator authenticate response: \n', res);
+				var token = body.result;
+			}
+		})
+		console.log(token);
+		return token;
 	}
 }
 

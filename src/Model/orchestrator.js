@@ -18,32 +18,28 @@ class Orchestrator {
 	constructor(config) {//config is a parameter contains LoginModel
 	this.config = config;
 
-	const opts = {};
 
-	if (config.usernameOrEmailAddress) {
-		opts.usernameOrEmailAddress = config.usernameOrEmailAddress;
-	} else {
+	if (!config.usernameOrEmailAddress) {
 		try {
 			const env = path.join('..', 'resource', 'orchestrator_Environment');
-			this.projectId = env.usernameOrEmailAddress;
+			this.config.usernameOrEmailAddress = env.usernameOrEmailAddress;
 		} catch (err) {
 			throw new Error('username Or EmailAddress must be provided or available in the keyFile.');
 		}
 	}
-	if (config.password) {
-		opts.password = config.password;
-	} else {
+	if (!config.password) {
 		try {
 			const env = path.join('..', 'resource', 'orchestrator_Environment');
-			this.password = env.password;
+			this.config.password = env.password;
 		} catch (err) {
 			throw new Error('password must be provided or available in the keyFile.');
 		}
 	}
-	if (config.tenancyName) {
-		opts.tenancyName = config.tenancyName;
-	}
 
+	const opts = {
+		'Content-Type' : 'application/json'
+	};
+	opts.json = this.config;
 	this.opts = opts;
 	
 	//[END contructor]
@@ -51,6 +47,8 @@ class Orchestrator {
 	
 	login() {
 		//authenticate 
+		this.opts.url = api+'/Account'
+		
 		request.post(this.opts, function(err, res, body) {
 			if (err) {
 				console.log('uipath orchestrator error: ', err);

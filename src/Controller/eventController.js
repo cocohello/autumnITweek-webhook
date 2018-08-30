@@ -14,12 +14,7 @@ const O = orchestrator({
 //sign in to Orchestrator and get token
 
 const token = O.login();
-let tk;
-token.then(result => {
-	console.log('result'+result);
-	tk = result;
-})
-console.log('eve'+tk);
+console.log('eve'+token);
 const evController = {
 	work1Process : function (outputContexts) {
 		//get the receipt folder path from request query

@@ -75,8 +75,9 @@ class Orchestrator {
 						return;
 					} else {
 						console.log('uipath orchestrator getAsset response: \n', res.statusCode);
-						for(let asset in body.value){
-							console.log(asset);
+						let arr = body.value;
+						for(let asset in arr){
+							console.log(arr[asset]);
 						}
 					}
 				});

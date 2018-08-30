@@ -21,7 +21,6 @@ const evController = {
 			}
 			//console.log(structjson.structProtoToJson(arr[2].structValue.fields.parameters));
 		}
-		console.log(parameter.structValue);
 		for(let item in parameter){
 			console.log(item);
 		}

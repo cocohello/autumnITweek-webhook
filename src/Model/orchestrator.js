@@ -82,13 +82,16 @@ class Orchestrator {
 								valueArr[(arr[asset]['Name'])] = arr[asset];
 							}
 						}
-						console.log('forif\n'+valueArr);
+						console.log(1);
+						console.log(valueArr);
 					}
 				});
-				console.log('then\n'+valueArr);
+				console.log(2);
+				console.log(valueArr);
 				return valueArr;
 			}).then( valueArr => {
-				console.log('thenthen\n'+valueArr);
+				console.log(3);
+				console.log(valueArr);
 			});
 	}
 	

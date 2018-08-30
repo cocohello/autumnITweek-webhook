@@ -40,9 +40,11 @@ class Orchestrator {
 		'Content-Type' : 'application/json'
 	};
 	this.opts = opts;
+	//[END contructor]
+	}
 	
-	//sign in to Orchestrator and get token
-	this.token = () => {
+	//authenticate and get bearer token
+	login () {
 		this.opts.url = api+'/Account'
 		this.opts.json = this.config
 		var token;
@@ -58,19 +60,16 @@ class Orchestrator {
 			})
 		}).then(res => {
 			token = res.body.result;
-			console.log(token);
+			console.log('login\n'+token);
 			return token;
 		})
 	//[END log in]
 	}
-	//[END contructor]
-	}
-	
 	
 	//get assetId
-	getAsset (assetName) {
+	getAsset (token, assetName) {
 		this.opts.url = odata+`/Assets?$filter=contains(Name, ${assetName})&$top=4`;
-		this.opts.headers = { Authorization: 'Bearer ' + this.token };
+		this.opts.headers = { Authorization: 'Bearer ' + token };
 		console.log(this.opts);
 		return new Promise((resolve, reject) => {
 			request.get(this.opts, function(err, res, body) {
@@ -87,7 +86,7 @@ class Orchestrator {
 		})
 		
 	}
-	putAsset () {
+	putAsset (token) {
 		//authenticate 
 		this.opts.url = odata+'/Assets(44474)'
 		this.opts.json = {
@@ -103,7 +102,7 @@ class Orchestrator {
 			"Id": 44474,
 			"KeyValueList": []
 		}
-		this.opts.headers = {Authorization: 'Bearer ' + this.token}
+		this.opts.headers = {Authorization: 'Bearer ' + token}
 		console.log(this.opts);
 		return new Promise((resolve, reject) => {
 			request.put(this.opts, function(err, res, body) {

@@ -58,6 +58,7 @@ class Orchestrator {
 	}
 	
 	login() {
+		console.log(this.token);
 		return this.token;
 	}
 }

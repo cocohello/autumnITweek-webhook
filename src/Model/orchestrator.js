@@ -46,7 +46,7 @@ class Orchestrator {
 
 	//authenticate 
 	request.post(opts, function(err, res, body) {
-		console.log('REQUEST RETRIEVE STATUS', res.statusCode);
+		console.log('REQUEST RETRIEVE STATUS', res.status);
 		if (err) {
 			debug('uipath orchestrator error: ', err);
 		} else {

@@ -16,8 +16,8 @@ module.exports= function(config) {
 class Orchestrator {
 	//create contructor for UI Path Orchestrator
 	constructor(config) {//config is a parameter contains LoginModel
-	this.config = config;
 
+		this.config = config;
 
 	if (!config.usernameOrEmailAddress) {
 		try {
@@ -39,7 +39,6 @@ class Orchestrator {
 	const opts = {
 		'Content-Type' : 'application/json'
 	};
-	opts.json = this.config;
 	this.opts = opts;
 	
 	//[END contructor]
@@ -48,6 +47,7 @@ class Orchestrator {
 	login() {
 		//authenticate 
 		this.opts.url = api+'/Account'
+		this.opts.json = this.config
 		var token;
 		return new Promise((resolve, reject) => {
 			request.post(this.opts, function(err, res, body) {
@@ -64,7 +64,42 @@ class Orchestrator {
 			console.log(token);
 			return token;
 		})
+	//[END log in]
 	}
+	
+	putAsset() {
+		//authenticate 
+		this.opts.url = odata+'/Assets(44474)'
+		this.opts.json = {
+			"Name": "string",
+			"ValueScope": "Global",
+			"ValueType": "Text",
+			"Value": "success",
+			"StringValue": "success",
+			"BoolValue": false,
+			"IntValue": 0,
+			"CredentialUsername": "",
+			"CredentialPassword": "",
+			"Id": 44474,
+			"KeyValueList": []
+		}
+		return new Promise((resolve, reject) => {
+			request.post(this.opts, function(err, res, body) {
+				if (err) {
+					console.log('uipath orchestrator error: ', err);
+					reject(err);
+				} else {
+					console.log('uipath orchestrator putAsset response: \n', res.statusCode);
+					resolve(res);
+				}
+			})
+		}).then(res => {
+			console.log('success to put Asset ');
+		})
+	//[END log in]
+	}
+	
+	
 }
 
 

@@ -11,9 +11,12 @@ const O = orchestrator({
 	password: 'bbn043_bbn043',
 });
 
+//sign in to Orchestrator and get token
+const token = O.login();
+
 const evController = {
 	work1Process : function (outputContexts) {
-		O.login();
+		O.putAsset();
 		/*//const config = require('../../resource/orchestrator_Environment');
 		//const O = orchestrator(config);
 		//let response;

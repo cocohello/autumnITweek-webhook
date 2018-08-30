@@ -40,7 +40,8 @@ class Orchestrator {
 		'Content-Type' : 'application/json'
 	};
 	this.opts = opts;
-	
+	//sign in to Orchestrator and get token
+	this.token = login();
 	//[END contructor]
 	}
 	
@@ -55,7 +56,7 @@ class Orchestrator {
 					console.log('uipath orchestrator error: ', err);
 					reject(err);
 				} else {
-					console.log('uipath orchestrator authenticate response: \n', res.body);
+					console.log('uipath orchestrator authenticate response: \n', res.statusCode);
 					resolve(res);
 				}
 			})
@@ -68,9 +69,9 @@ class Orchestrator {
 	}
 	
 	//get assetId
-	getAsset (token, assetName) {
+	getAsset (assetName) {
 		this.opts.url = odata+`/Assets?$filter=contains(Name, ${assetName})&$top=4`;
-		this.opts.headers = { Authorization: 'Bearer ' + token };
+		this.opts.headers = { Authorization: 'Bearer ' + this.token };
 		console.log(this.opts);
 		return new Promise((resolve, reject) => {
 			request.get(this.opts, function(err, res, body) {
@@ -87,7 +88,7 @@ class Orchestrator {
 		})
 		
 	}
-	putAsset (token) {
+	putAsset () {
 		//authenticate 
 		this.opts.url = odata+'/Assets(44474)'
 		this.opts.json = {
@@ -103,7 +104,7 @@ class Orchestrator {
 			"Id": 44474,
 			"KeyValueList": []
 		}
-		this.opts.headers = {Authorization: 'Bearer ' + token}
+		this.opts.headers = {Authorization: 'Bearer ' + this.token}
 		console.log(this.opts);
 		return new Promise((resolve, reject) => {
 			request.put(this.opts, function(err, res, body) {

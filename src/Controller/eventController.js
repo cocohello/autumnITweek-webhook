@@ -11,9 +11,6 @@ const O = orchestrator({
 	password: 'bbn043_bbn043',
 });
 
-//sign in to Orchestrator and get token
-const token = O.login();
-
 const evController = {
 	work1Process : function (outputContexts) {
 		//get the receipt folder path from request query
@@ -28,10 +25,11 @@ const evController = {
 		}
 		
 		let dest_path = output['parameters']['0']['dest_path'];
+		console.log(dest_path);
 		//set asset value to the receipt folder path in orchestrator
 		
 		//UI Path//
-		O.getAsset(token, 'work1');
+		O.getAsset('work1');
 		
 		//O.putAsset(token, );
 		//const config = require('../../resource/orchestrator_Environment');

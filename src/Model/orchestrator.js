@@ -53,9 +53,9 @@ class Orchestrator {
 		//authenticate 
 		request.post(this.opts, function(err, res, body) {
 			if (err) {
-				debug('uipath orchestrator error: ', err);
+				console.log('uipath orchestrator error: ', err);
 			} else {
-				debug('uipath orchestrator authenticate response: \n', res);
+				console.log('uipath orchestrator authenticate response: \n', res);
 				var token = body.result;
 			}
 		})

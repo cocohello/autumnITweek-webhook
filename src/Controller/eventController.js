@@ -58,6 +58,5 @@ O.login().then(token => {
 			return;
 		}
 	}
+	module.exports = evController;
 });
-
-module.exports = evController;

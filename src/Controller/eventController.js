@@ -32,8 +32,8 @@ const evController = {
 		//set asset value to the receipt folder path in orchestrator
 		
 		//UI Path//
-		O.getAsset(token, 'work1');
-		
+		const idArr = O.getAsset(token, 'work1');
+		console.log();
 		//O.putAsset(token, );
 		//const config = require('../../resource/orchestrator_Environment');
 		//const O = orchestrator(config);

@@ -64,6 +64,7 @@ class Orchestrator {
 	
 	//get assetId
 	getAsset (token, assetName) {
+		let idArr = [];
 		token.then( tk => {
 			console.log(tk);
 			this.opts.url = odata+`/Assets?$filter=contains(Name, '${assetName}')&$top=4`;
@@ -76,19 +77,18 @@ class Orchestrator {
 					} else {
 						console.log('uipath orchestrator getAsset response: \n', res.statusCode);
 						let arr = body.value;
-						let idArr = [];
 						for(let asset in arr){
 							if (arr[asset]['Name'] !== 'work1_OBatPath') {
 								idArr[(arr[asset]['Name'])] = arr[asset]['Id'];
 								
 							}
 						}
-						console.log(idArr);
+						return idArr;
 					}
 				});
 			})
-		
 	}
+	
 	putAsset (token) {
 		//authenticate 
 		this.opts.url = odata+'/Assets(44474)'

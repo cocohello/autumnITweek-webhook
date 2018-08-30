@@ -5,7 +5,7 @@
 //const structjson = require('../Util/structjson');
 const path = require('path');
 const orchestrator = require('../Model/orchestrator');
-const O = orchestrater(path.join('..', 'resource', 'orchestrator_Environment'));
+const O = orchestrator(path.join('..', 'resource', 'orchestrator_Environment'));
 
 const evController = {
 	work1Process : function (outputContexts) {

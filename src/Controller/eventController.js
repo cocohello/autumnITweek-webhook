@@ -12,7 +12,7 @@ const O = orchestrator({
 });
 
 //sign in to Orchestrator and get token
-const token = O.login();
+//const token = O.login();
 
 const evController = {
 	work1Process : function (outputContexts) {
@@ -23,8 +23,8 @@ const evController = {
 		//.lastIndexOf('/')
 		//const dess_path = structjson.structProtoToJson();
 		var arr = outputContexts.fields;
-		var parameter = structjson.structProtoToJson(outputContexts);
-		console.log(parameter['2']['0']);
+		var parameter = structjson.structProtoToJson(outputContexts)['2'];
+		console.log(parameter);
 		for(let context in arr){
 			//console.log(arr[context].name);
 			//if(arr[context].name.stringValue === 'projects/autumn-it-week-2018/agent/sessions/7d0ec78ea1139d0a6d12170a9f32d323/contexts/work1_process_event'){

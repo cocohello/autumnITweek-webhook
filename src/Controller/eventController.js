@@ -30,8 +30,8 @@ const evController = {
 			}
 		}
 		
-		let dest_path = output['parameters']['0']['dest_path'];
-		console.log(dest_path);
+		//let dest_path = output['parameters']['0']['dest_path'];
+		console.log(output);
 		/*for(let item in parameter){
 			console.log(item);
 		}

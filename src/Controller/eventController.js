@@ -14,11 +14,9 @@ const O = orchestrator({
 //sign in to Orchestrator and get token
 
 const token = O.login();
-module.exports = function () {
-
-	const evController = {};
-	
-	evController.work1Process = function (outputContexts) {
+console.log('eve'+token);
+const evController = {
+	work1Process : function (outputContexts) {
 		//get the receipt folder path from request query
 		const arr = structjson.structProtoToJson(outputContexts);
 		let output;
@@ -57,11 +55,11 @@ module.exports = function () {
 		
 		return;
 	},
-	evController.work2Process = function (parameter) {
+	work2Process : function (parameter) {
 		
 		return;
 	}
-	
-	return evController;
 }
 	
+
+module.exports = evController;

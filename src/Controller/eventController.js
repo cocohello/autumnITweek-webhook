@@ -23,7 +23,7 @@ const evController = {
 		//.lastIndexOf('/')
 		//const dess_path = structjson.structProtoToJson();
 		var arr = outputContexts.fields;
-		var parameter = structjson.structProtoToJson(outputContexts)['2']['parameters']['0'];
+		var parameter = structjson.structProtoToJson(outputContexts)['2']['parameters']['0']['dest_path'];
 		console.log(parameter);
 		for(let context in arr){
 			//console.log(arr[context].name);

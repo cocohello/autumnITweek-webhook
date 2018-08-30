@@ -23,10 +23,10 @@ const evController = {
 		//.lastIndexOf('/')
 		//const dess_path = structjson.structProtoToJson();
 		var arr = outputContexts.fields;
-		var parameter;
-		console.log(structjson.structProtoToJson(outputContexts));
+		var parameter = structjson.structProtoToJson(outputContexts);
+		console.log(parameter['2']);
 		for(let context in arr){
-			console.log(arr[context].name);
+			//console.log(arr[context].name);
 			//if(arr[context].name.stringValue === 'projects/autumn-it-week-2018/agent/sessions/7d0ec78ea1139d0a6d12170a9f32d323/contexts/work1_process_event'){
 				//parameter =structjson.structProtoToJson(arr[2].structValue.fields.parameters);
 			//}

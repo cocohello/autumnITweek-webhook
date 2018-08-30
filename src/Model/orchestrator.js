@@ -48,16 +48,17 @@ class Orchestrator {
 	login() {
 		//authenticate 
 		this.opts.url = api+'/Account'
-		
+		var token;
 		request.post(this.opts, function(err, res, body) {
 			if (err) {
 				console.log('uipath orchestrator error: ', err);
 			} else {
-				console.log('uipath orchestrator authenticate response: \n', res);
-				var token = body.result;
+				console.log('uipath orchestrator authenticate response: \n', res.body);
+				token = body.result;
 			}
-		})
+		}).then(res => {
 		console.log(token);
+		})
 		return token;
 	}
 }

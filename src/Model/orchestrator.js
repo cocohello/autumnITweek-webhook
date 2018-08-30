@@ -66,6 +66,7 @@ class Orchestrator {
 	
 	//get assetId
 	getAsset (token, assetName) {
+		console.log(token);
 		this.opts.url = odata+`/Assets?$filter=contains(Name, ${assetName})&$top=4`;
 		this.opts.headers = { Authorization: 'Bearer ' + token };
 		console.log(this.opts);

@@ -128,6 +128,7 @@ class Orchestrator {
 	}//[end getReleaseId]
 	
 	static initializeOpts(opts) {
+		console.log(opts);
 		opts.url = '';
 		opts.json = {};
 		return opts;

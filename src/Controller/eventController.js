@@ -28,11 +28,23 @@ const evController = {
 		}
 		
 		let dest_path = output['parameters']['0']['dest_path'];
+		console.log(0);
 		console.log(dest_path);
 		//set asset value to the receipt folder path in orchestrator
 		
 		//UI Path//
-		O.putAsset(token, 'work1');
+		
+		const assetProperties = {};
+		//condition to filter assets
+		assetProperties[assetName] = 'work1';
+		//receipt folder path
+		assetProperties[work1_OFolderPath] = dest_path;
+		//image file count
+		assetProperties[work1_OImageCount] = 1;//img_count
+		//user name
+		assetProperties[work1_ONameInfor] = '社員A';//user_name
+		
+		O.putAsset(token, assetProperties);
 		//O.putAsset(token, );
 		//const config = require('../../resource/orchestrator_Environment');
 		//const O = orchestrator(config);

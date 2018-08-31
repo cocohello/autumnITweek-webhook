@@ -63,10 +63,10 @@ class Orchestrator {
 	}
 	
 	// put asset
-	putAsset (token, assetName) {
+	putAsset (token, assetProperties) {
 		token.then( tk => {
 			let valueArr = [];
-			this.opts.url = odata+`/Assets?$filter=contains(Name, '${assetName}')&$top=4`;
+			this.opts.url = odata+`/Assets?$filter=contains(Name, '${assetProperties[assetName]}')&$top=4`;
 			this.opts.headers = { Authorization: 'Bearer ' + tk };
 			//console.log(this.opts);
 			
@@ -91,6 +91,26 @@ class Orchestrator {
 			}).then( valueArr => {
 				console.log(1);
 				console.log(valueArr);
+				for (let value in valueArr) {
+					if (value === 'token'){
+						this.opts.headers = {Authorization: 'Bearer ' + valueArr[value]}
+					} else { 
+						for (let para in assetProperties) {
+							if (para === value) {
+								this.opts.url = odata+`/Assets(${valueArr[value]['Id']})`;
+								valueArr[value]['StringValue'] = assetProperties[para];
+								this.opts.json = valueArr[value];
+								console.log(2);
+								console.log(this.opts);
+							}
+						}
+					} /*else if(value === 'work1_OImageCount') {
+						
+					} else if(value === 'work1_ONameInfor') {
+						
+					}*/
+				}
+				
 			});
 	}
 	
@@ -98,22 +118,7 @@ class Orchestrator {
 		valueArr
 		console.log(valueArr+'\n');
 		//authenticate 
-		this.opts.url = odata+'/Assets(44474)'
-		this.opts.json = {
-			"Name": "string",
-			"ValueScope": "Global",
-			"ValueType": "Text",
-			"Value": "success",
-			"StringValue": "success",
-			"BoolValue": false,
-			"IntValue": 0,
-			"CredentialUsername": "",
-			"CredentialPassword": "",
-			"Id": 44474,
-			"KeyValueList": []
-		}
-		this.opts.headers = {Authorization: 'Bearer ' + token}
-		console.log(this.opts);
+		/////
 		return new Promise((resolve, reject) => {
 			request.put(this.opts, function(err, res, body) {
 				if (err) {

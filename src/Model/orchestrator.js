@@ -82,13 +82,13 @@ class Orchestrator {
 							}
 						}
 						console.log(0);
-						console.log(valueArr);
 						resolve(valueArr);
 					}).on('error', err => {
 						console.log('uipath orchestrator error: ', err);
 						reject(err);
 					});
 				}).then(valueArr => {//[end promise1]
+					console.log(valueArr);
 					return new Promise((resolve, reject) => {
 						let flag = 0;
 						for (let value in valueArr) {

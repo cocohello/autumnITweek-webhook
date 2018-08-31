@@ -55,6 +55,7 @@ class Orchestrator {
 				} else {
 					console.log('uipath orchestrator authenticate response: \n', res.statusCode);
 					resolve(res.body.result);
+					console.log(res.body.result);
 					this.opts.headers = { Authorization: 'Bearer ' + res.body.result };
 				}
 			})

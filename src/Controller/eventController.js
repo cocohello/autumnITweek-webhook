@@ -52,15 +52,10 @@ const evController = {
 		}*/
 		
 			const value1 = await O.getAsset(token, assetProperties);
+			console.log(3);
+			console.log(value2);
 			const value2 = await O.putAsset(value1);
-					
-			return function(value1, value2){
-				return new Promise((resolve, reject) => {
-					console.log(3);
-					console.log(value2);
-					resolve(value2);
-				})
-			}();
+			return value2;		
 	},
 	work2Process : function (parameter) {
 		

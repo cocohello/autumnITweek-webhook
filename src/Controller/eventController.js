@@ -15,7 +15,7 @@ const O = orchestrator({
 
 const token = O.login();
 const evController = {
-	work1Process : function (outputContexts) {
+	work1Process : async function (outputContexts) {
 		//get the receipt folder path from request query
 		const arr = structjson.structProtoToJson(outputContexts);
 		let output;
@@ -43,7 +43,8 @@ const evController = {
 		//user name
 		assetProperties['work1_ONameInfor'] = '社員A';//user_name
 		
-		O.putAsset(token, assetProperties);
+		await O.putAsset(token, assetProperties);
+		
 		O.test();
 		
 		

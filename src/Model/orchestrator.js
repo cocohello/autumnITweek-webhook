@@ -103,7 +103,6 @@ class Orchestrator {
 											valueArr[value]['IntValue'] = assetProperties[para];
 										}
 										this.opts.json = valueArr[value];
-										
 										request.put(this.opts, function(err, res, body) {
 											if (err) {
 												console.log('uipath orchestrator error: ', err);
@@ -114,7 +113,9 @@ class Orchestrator {
 									}
 								}
 							} 
-						}console.log(1);
+						}
+						resolve(res.statusCode);
+						console.log(1);
 					});//[end promise2]
 				});//[end promise1.then]
 				

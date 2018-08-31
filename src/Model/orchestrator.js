@@ -68,13 +68,12 @@ class Orchestrator {
 			let valueArr = [];
 			this.opts.url = odata+`/Assets?$filter=contains(Name, '${assetProperties['assetName']}')&$top=4`;
 			this.opts.headers = { Authorization: 'Bearer ' + tk };
-			//console.log(this.opts);
 			
-				new Promise ((resolve, reject) => {
-					request.get(this.opts, function(err, res, body) {
+				return new Promise (async (resolve, reject) => {
+					try{
+					await request.get(this.opts, async function(err, res, body) {
 						if (err) {
 							console.log('uipath orchestrator error: ', err);
-							reject(err);
 						} else {
 							console.log('uipath orchestrator getAsset response: \n', res.statusCode);
 							let arr = body.value;
@@ -85,10 +84,8 @@ class Orchestrator {
 								}
 							}
 							console.log(0);
-							resolve(valueArr);
 						}
 					})
-				}).then( valueArr => {
 					
 					for (let value in valueArr) {
 						if (value === 'token'){
@@ -104,7 +101,7 @@ class Orchestrator {
 									}
 									this.opts.json = valueArr[value];
 									
-									request.put(this.opts, function(err, res, body) {
+									await request.put(this.opts, function(err, res, body) {
 										if (err) {
 											console.log('uipath orchestrator error: ', err);
 										} else {
@@ -115,7 +112,11 @@ class Orchestrator {
 							}
 						} 
 					}console.log(1);
-				})
+						resolve(tk);
+					}catch(err){
+						reject(err);
+					}
+				});
 				
 			})//[end token.then]
 	}

@@ -123,8 +123,12 @@ class Orchestrator {
 		});
 	}
 	
-	getReleaseID(){
-		this.opts.url = odata+`/Releases?$filter=contains(ProcessKey,'${ProcessKey}')`;
+	getReleaseId(token, processKey){
+		this.opts.url = odata+`/Releases?$filter=contains(ProcessKey,'${processKey}')`;
+		//this.opts.headers = { Authorization: 'Bearer ' + token };
+		
+		console.log(this.opts);
+		
 	}
 	test(){console.log('please!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');}
 	

@@ -107,6 +107,7 @@ class Orchestrator {
 										request.put(this.opts, function(err, res, body) {
 											if (err) {
 												console.log('uipath orchestrator error: ', err);
+												reject(err);
 											} else {
 												console.log('uipath orchestrator putAsset response: \n', res.statusCode);
 												if(res.statusCode===200){

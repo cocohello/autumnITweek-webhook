@@ -119,7 +119,7 @@ class Orchestrator {
 				} 
 			}
 			console.log(1);
-			resolve(body);
+			resolve(flag);
 		});
 	}
 	

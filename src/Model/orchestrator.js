@@ -121,7 +121,7 @@ class Orchestrator {
 		this.opts.url = odata+`/Releases?$filter=contains(ProcessKey,'${processKey}')`;
 		return new Promise((resolve, reject) => {
 			request.get(this.opts, function(err, res, body) {
-				console.log(body.value.Key);
+				console.log(body.value);
 				resolve(body.value.Key);
 			})
 		})

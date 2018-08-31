@@ -84,44 +84,7 @@ class Orchestrator {
 						console.log('uipath orchestrator error: ', err);
 						reject(err);
 					});
-				}).then(valueArr => {//[end promise1]
-					return new Promise((resolve, reject) => {
-						let flag = 0;
-						for (let value in valueArr) {
-							if (value === 'token'){
-								this.opts.headers = {Authorization: 'Bearer ' + valueArr[value]}
-							} else { 
-								console.log(assetProperties);
-								for (let para in assetProperties) {
-									if (para === value) {
-										this.opts.url = odata+`/Assets(${valueArr[value]['Id']})`;
-										if (typeof assetProperties[para] === 'string') {
-											valueArr[value]['StringValue'] = assetProperties[para];
-										} else if (typeof assetProperties[para] === 'number') {
-											valueArr[value]['IntValue'] = assetProperties[para];
-										}
-										this.opts.json = valueArr[value];
-										request.put(this.opts, function(err, res, body) {
-											if (err) {
-												console.log('uipath orchestrator error: ', err);
-												reject(err);
-											} else {
-												console.log('uipath orchestrator putAsset response: \n', res.statusCode);
-												if(res.statusCode == 200){
-													flag++;	
-												}
-											}
-										})
-									}
-								}
-							} 
-						}
-						resolve(flag);
-						console.log(1);
-						return flag;
-					});//[end promise2]
-				});//[end promise1.then]
-				
+				})
 			})//[end token.then]
 	}
 	

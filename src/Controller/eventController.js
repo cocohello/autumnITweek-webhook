@@ -53,6 +53,7 @@ const evController = {
 		
 			const value1 = await O.getAsset(token, assetProperties);
 			const value2 = await O.putAsset(value1);
+			return console.log(2);
 	},
 	work2Process : function (parameter) {
 		

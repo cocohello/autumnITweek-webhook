@@ -70,7 +70,7 @@ class Orchestrator {
 			this.opts.headers = { Authorization: 'Bearer ' + tk };
 			//console.log(this.opts);
 			
-				return new Promise ((resolve, reject) => {
+				new Promise ((resolve, reject) => {
 					request.get(this.opts, function(err, res, body) {
 						if (err) {
 							console.log('uipath orchestrator error: ', err);
@@ -84,133 +84,41 @@ class Orchestrator {
 									valueArr[(arr[asset]['Name'])] = arr[asset];
 								}
 							}
+							console.log(0);
 							resolve(valueArr);
 						}
 					})
-				});
-			}).then( valueArr => {
-				console.log(1);
-				console.log(valueArr);
-				for (let value in valueArr) {
-					if (value === 'token'){
-						this.opts.headers = {Authorization: 'Bearer ' + valueArr[value]}
-					} else { 
-						for (let para in assetProperties) {
-							if (para === value) {
-								this.opts.url = odata+`/Assets(${valueArr[value]['Id']})`;
-								if (typeof assetProperties[para] === 'string') {
-									valueArr[value]['StringValue'] = assetProperties[para];
-								} else if (typeof assetProperties[para] === 'number') {
-									valueArr[value]['IntValue'] = assetProperties[para];
-								}
-								this.opts.json = valueArr[value];
-								
-								request.put(this.opts, function(err, res, body) {
-									if (err) {
-										console.log('uipath orchestrator error: ', err);
-									} else {
-										console.log('uipath orchestrator putAsset response: \n', res.statusCode);
-										console.log(2);
-										console.log(res);
+				}).then( valueArr => {
+					
+					for (let value in valueArr) {
+						if (value === 'token'){
+							this.opts.headers = {Authorization: 'Bearer ' + valueArr[value]}
+						} else { 
+							for (let para in assetProperties) {
+								if (para === value) {
+									this.opts.url = odata+`/Assets(${valueArr[value]['Id']})`;
+									if (typeof assetProperties[para] === 'string') {
+										valueArr[value]['StringValue'] = assetProperties[para];
+									} else if (typeof assetProperties[para] === 'number') {
+										valueArr[value]['IntValue'] = assetProperties[para];
 									}
-								})
-								
+									this.opts.json = valueArr[value];
+									
+									request.put(this.opts, function(err, res, body) {
+										if (err) {
+											console.log('uipath orchestrator error: ', err);
+										} else {
+											console.log('uipath orchestrator putAsset response: \n', res.statusCode);
+										}
+									})
+								}
 							}
-						}
-					} /*else if(value === 'work1_OImageCount') {
-						
-					} else if(value === 'work1_ONameInfor') {
-						
-					}*/
-				}
+						} 
+					}console.log(1);
+				})
 				
-			});
+			})//[end token.then]
 	}
 	
-/*	putAsset (token, valueArr) {
-		valueArr
-		console.log(valueArr+'\n');
-		//authenticate 
-		/////
-		return new Promise((resolve, reject) => {
-			request.put(this.opts, function(err, res, body) {
-				if (err) {
-					console.log('uipath orchestrator error: ', err);
-					reject(err);
-				} else {
-					console.log('uipath orchestrator putAsset response: \n', res.statusCode);
-					resolve(res);
-				}
-			})
-		}).then(res => {
-			console.log('success to put Asset ');
-		})
-	//[END log in]
-	}*/
-	
-	
 }
 
-
-/*
-function askForPassword(callback) {
-    var readline = require('readline');
-    // noinspection JSUnresolvedVariable
-    var Writable = require('stream').Writable;
-    var rl;
-    var mutableStdout = new Writable({
-        write: function (chunk, encoding, callback) {
-            // noinspection JSLint
-            if (!this.muted) {
-                process.stdout.write(chunk, encoding);
-            }
-            callback();
-        }
-    });
-    mutableStdout.muted = false;
-    rl = readline.createInterface({
-        input: process.stdin,
-        output: mutableStdout,
-        terminal: true
-    });
-
-    rl.question('Password: ', function (password) {
-        callback(password);
-        rl.close();
-    });
-    mutableStdout.muted = true;
-}
-
-askForPassword(function (password) {
-    *//** @type {number} *//*
-    var startTimestamp = Date.now();
-    *//** @type {Orchestrator} *//*
-    var test = new Orchestrator({
-    	usernameOrEmailAddress: ENVIRONMENT.emailAddres,
-        tenancyName: ENVIRONMENT.tenancyName,
-        password: password
-    });
-
-    *//** @param {number} count *//*
-    function testGetUsers(count) {
-        test.get('/odata/Users', {}, function (err, data) {
-            console.log('This is attempt #' + count + ': ' + (Date.now() - startTimestamp));
-            if (err) {
-                console.error('Error: ' + err);
-            }
-            console.log('Data: ' + util.inspect(data));
-        });
-    }
-
-    // by executing multiple requests without waiting we validate the queueing behavior
-    testGetUsers(1);
-    testGetUsers(2);
-    test.v2.odata.getUsers({}, function (err, data) {
-        console.log('This is attempt #3: ' + (Date.now() - startTimestamp));
-        if (err) {
-            console.error('Error: ' + err);
-        }
-        console.log('Data: ' + util.inspect(data));
-    });
-});
-*/

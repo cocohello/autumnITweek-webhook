@@ -72,10 +72,10 @@ class Orchestrator {
 			this.opts.headers = { Authorization: 'Bearer ' + tk };
 				return new Promise((resolve, reject) => {
 					let valueArr = [];
+					valueArr['token'] = tk;
 					request.get(this.opts, function(err, res, body) {
 						console.log('uipath orchestrator getAsset response: \n', res.statusCode);
 						let arr = body.value;
-						valueArr['token'] = tk;
 						for(let asset in arr){
 							if (arr[asset]['Name'] !== 'work1_OBatPath') {
 								valueArr[(arr[asset]['Name'])] = arr[asset];

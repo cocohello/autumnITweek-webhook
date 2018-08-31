@@ -118,8 +118,8 @@ class Orchestrator {
 								}
 							} 
 						}
-						resolve('putAsset success '+flag);
 						console.log(1);
+						resolve('putAsset success '+flag);
 					});//[end promise2]
 				});//[end promise1.then]
 				

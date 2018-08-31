@@ -119,14 +119,16 @@ class Orchestrator {
 								}
 							} 
 						}
+						resolve(flag);
 						console.log(1);
 						console.log(flag);
-						resolve(flag);
 					});//[end promise2]
 				});//[end promise1.then]
 				
 			})//[end token.then]
 	}
+	
+	test(){console.log('please!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');}
 	
 }
 

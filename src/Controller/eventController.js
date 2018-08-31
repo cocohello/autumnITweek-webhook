@@ -43,7 +43,8 @@ const evController = {
 		//user name
 		assetProperties['work1_ONameInfor'] = '社員A';//user_name
 		
-		console.log(O.putAsset(token, assetProperties));
+		O.putAsset(token, assetProperties);
+		O.test();
 		
 		
 		return;

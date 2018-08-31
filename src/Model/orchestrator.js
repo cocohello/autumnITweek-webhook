@@ -119,7 +119,7 @@ class Orchestrator {
 										} else {
 											console.log('uipath orchestrator putAsset response: \n', res.statusCode);
 										}
-									}).
+									})
 								}
 							}
 						} 

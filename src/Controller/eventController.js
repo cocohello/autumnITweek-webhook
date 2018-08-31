@@ -44,13 +44,17 @@ const evController = {
 		//user name
 		assetProperties['work1_ONameInfor'] = '社員A';//user_name
 		
-		token.then( tk => {
-			O.getAsset(tk, assetProperties).then( result => {
-				console.log(0);
+		token.then( result => {
+			console.log(0);
+			console.log(result);			
+			O.getAsset(assetProperties).then( result => {
+				console.log(1);
+				console.log(result);
 				O.putAsset(result, assetProperties).then(result => {
-					console.log(1);
+					console.log(2);
+					console.log(result);
 					O.getReleaseId(result, 'assetTest').then(result => {
-						console.log(2);
+						console.log(3);
 						console.log(result);
 					})
 				})

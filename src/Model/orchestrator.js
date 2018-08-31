@@ -54,15 +54,15 @@ class Orchestrator {
 					reject(err);
 				} else {
 					console.log('uipath orchestrator authenticate response: \n', res.statusCode);
+					this.opts.headers = { Authorization: 'Bearer ' + res.body.result };
 					resolve(res.body.result);
 				}
 			})
 		})
 	}//[end log in]
 
-	getAsset (token, assetProperties) {
+	getAsset (assetProperties) {
 		this.opts.url = odata+`/Assets?$filter=contains(Name, '${assetProperties['assetName']}')&$top=4`;
-		this.opts.headers = { Authorization: 'Bearer ' + token };
 			return new Promise((resolve, reject) => {
 				let valueArr = [];
 				request.get(this.opts, function(err, res, body) {

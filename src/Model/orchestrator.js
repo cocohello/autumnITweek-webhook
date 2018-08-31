@@ -98,7 +98,11 @@ class Orchestrator {
 						for (let para in assetProperties) {
 							if (para === value) {
 								this.opts.url = odata+`/Assets(${valueArr[value]['Id']})`;
-								valueArr[value]['StringValue'] = assetProperties[para];
+								if (typeof assetProperties[para] === 'string') {
+									valueArr[value]['StringValue'] = assetProperties[para];
+								} else if (typeof assetProperties[para] === 'number') {
+									valueArr[value]['IntValue'] = assetProperties[para];
+								}
 								this.opts.json = valueArr[value];
 								
 								request.put(this.opts, function(err, res, body) {

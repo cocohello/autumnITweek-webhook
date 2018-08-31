@@ -62,85 +62,67 @@ class Orchestrator {
 	//[END log in]
 	}
 
-
-	
-/*	const makeRequest = async () => {
-	  const value1 = await promise1()
-	  const value2 = await promise2(value1)
-	  return promise3(value1, value2)
-	}*/
-	// put asset
-	putAsset (token, assetProperties) {
-		token.then(async tk => {
+	getAsset (token, assetProperties) {
+		token.then(tk => {
 			let valueArr = [];
 			this.opts.url = odata+`/Assets?$filter=contains(Name, '${assetProperties['assetName']}')&$top=4`;
 			this.opts.headers = { Authorization: 'Bearer ' + tk };
 			
-			const getA = await () => {
-				return new Promise((reject, resolve) => {
-					request.get(this.opts, function(err, res, body) {
-						console.log('uipath orchestrator getAsset response: \n', res.statusCode);
-						let arr = body.value;
-						valueArr['token'] = tk;
-						for(let asset in arr){
-							if (arr[asset]['Name'] !== 'work1_OBatPath') {
-								valueArr[(arr[asset]['Name'])] = arr[asset];
+			return new Promise((reject, resolve) => {
+				request.get(this.opts, function(err, res, body) {
+					console.log('uipath orchestrator getAsset response: \n', res.statusCode);
+					let arr = body.value;
+					valueArr['token'] = tk;
+					for(let asset in arr){
+						if (arr[asset]['Name'] !== 'work1_OBatPath') {
+							valueArr[(arr[asset]['Name'])] = arr[asset];
+						}
+					}
+					valueArr['token'] = tk;
+					console.log(0);
+					resove(valueArr);
+				}).on('error', err => {
+					console.log('uipath orchestrator error: ', err);
+					reject(err);
+				});
+			});//[end promise]
+		})//[end token.then]
+	}//[end getAsset]	
+
+	putAsset (value1) {
+		value1.then(valueArr => {
+			return new Promise((reject, resolve) => {
+				for (let value in valueArr) {
+					if (value === 'token'){
+						this.opts.headers = {Authorization: 'Bearer ' + valueArr[value]}
+					} else { 
+						for (let para in assetProperties) {
+							if (para === value) {
+								this.opts.url = odata+`/Assets(${valueArr[value]['Id']})`;
+								if (typeof assetProperties[para] === 'string') {
+									valueArr[value]['StringValue'] = assetProperties[para];
+								} else if (typeof assetProperties[para] === 'number') {
+									valueArr[value]['IntValue'] = assetProperties[para];
+								}
+								this.opts.json = valueArr[value];
+								
+								request.put(this.opts, function(err, res, body) {
+									if (err) {
+										console.log('uipath orchestrator error: ', err);
+									} else {
+										console.log('uipath orchestrator putAsset response: \n', res.statusCode);
+									}
+								})
 							}
 						}
-						console.log(0);
-						resove(valueArr);
-					}).on('error', err => {
-						console.log('uipath orchestrator error: ', err);
-						reject(err);
-					});
-				});
-			}();
-			
-			const putA = await (getA) => {
-				return new Promise((reject, resolve) => {
-					for (let value in getA) {
-						if (value === 'token'){
-							this.opts.headers = {Authorization: 'Bearer ' + getA[value]}
-						} else { 
-							for (let para in assetProperties) {
-								if (para === value) {
-									this.opts.url = odata+`/Assets(${getA[value]['Id']})`;
-									if (typeof assetProperties[para] === 'string') {
-										getA[value]['StringValue'] = assetProperties[para];
-									} else if (typeof assetProperties[para] === 'number') {
-										getA[value]['IntValue'] = assetProperties[para];
-									}
-									this.opts.json = getA[value];
-									
-									request.put(this.opts, function(err, res, body) {
-										if (err) {
-											console.log('uipath orchestrator error: ', err);
-										} else {
-											console.log('uipath orchestrator putAsset response: \n', res.statusCode);
-										}
-									})
-								}
-							}
-						} 
-					}
-					console.log(1);
-					resolve(getA['token']);
-				});
-			}();
-			
-			return (getA, putA) => {
-				return new Promise((reject, resolve) => {
-					console.log(2);
-					console.log(putA);
-					if(typeof putA !== 'undefined'){
-						resolve(putA);
-					}else{
-						reject();
-					}
-				});
-			}();
-		})//[end token.then]
-	}
-	
-}
+					} 
+				}
+				console.log(1);
+				console.log(valueArr['token']);
+				resolve(valueArr['token']);
+			}
+			);//[end promise]
+		})//[end value1.then]
+	}//[end putAsset function]
+}//[END orchestrator Class]
 

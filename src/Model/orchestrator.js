@@ -76,13 +76,13 @@ class Orchestrator {
 						}
 					}
 					resolve(valueArr);
-					this.opts.url = '';
-					this.opts.json = {};
 				}).on('error', err => {
 					console.log('uipath orchestrator error: ', err);
 					reject(err);
 				});
 			})
+		this.opts.url = '';
+		this.opts.json = {};
 	}//[end getAsset]
 	
 	putAsset (valueArr, assetProperties) {
@@ -113,9 +113,9 @@ class Orchestrator {
 				}
 			}
 			resolve(flag);
-			this.opts.url = '';
-			this.opts.json = {};
 		});
+		this.opts.url = '';
+		this.opts.json = {};
 	}//[end putAsset]
 	
 	getReleaseId(processKey){

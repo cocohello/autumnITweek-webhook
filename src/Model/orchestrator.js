@@ -94,7 +94,7 @@ class Orchestrator {
 						reject(err);
 					});
 				});
-			}
+			}();
 			
 			const putA = await (getA) => {
 				return new Promise((reject, resolve) => {
@@ -126,7 +126,7 @@ class Orchestrator {
 					console.log(1);
 					resolve(getA['token']);
 				});
-			}
+			}();
 			
 			return (getA, putA) => {
 				return new Promise((reject, resolve) => {
@@ -138,7 +138,7 @@ class Orchestrator {
 						reject();
 					}
 				});
-			};
+			}();
 		})//[end token.then]
 	}
 	

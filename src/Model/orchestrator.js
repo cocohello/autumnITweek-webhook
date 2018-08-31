@@ -62,7 +62,7 @@ class Orchestrator {
 	//[END log in]
 	}
 
-
+	Promise.all([value1, promise2(value1)])
 	
 	
 	// put asset
@@ -121,7 +121,7 @@ class Orchestrator {
 						}
 						resolve(flag);
 						console.log(1);
-						console.log(flag);
+						return flag;
 					});//[end promise2]
 				});//[end promise1.then]
 				

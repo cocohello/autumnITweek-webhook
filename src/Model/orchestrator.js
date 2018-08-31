@@ -127,9 +127,10 @@ class Orchestrator {
 		this.opts = Orchestrator.initializeOpts(this.opts);
 	}//[end getReleaseId]
 	
-	static initializeOpts() {
-		this.opts[url] = '';
-		this.opts[json] = {}
+	static initializeOpts(opts) {
+		opts[url] = '';
+		opts[json] = {}
+		return opts;
 	}
 	
 }

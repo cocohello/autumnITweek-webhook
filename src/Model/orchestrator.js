@@ -93,7 +93,6 @@ class Orchestrator {
 				if (value === 'token'){
 					this.opts.headers = {Authorization: 'Bearer ' + valueArr[value]}
 				} else { 
-					console.log(assetProperties);
 					for (let para in assetProperties) {
 						if (para === value) {
 							this.opts.url = odata+`/Assets(${valueArr[value]['Id']})`;
@@ -127,6 +126,7 @@ class Orchestrator {
 		this.opts.url = odata+`/Releases?$filter=contains(ProcessKey,'${processKey}')`;
 		//this.opts.headers = { Authorization: 'Bearer ' + token };
 		
+		console.log(2);
 		console.log(this.opts);
 		
 	}

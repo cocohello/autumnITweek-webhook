@@ -88,7 +88,6 @@ class Orchestrator {
 						reject(err);
 					});
 				}).then(valueArr => {//[end promise1]
-					console.log(valueArr);
 					return new Promise((resolve, reject) => {
 						let flag = 0;
 						for (let value in valueArr) {
@@ -104,6 +103,7 @@ class Orchestrator {
 											valueArr[value]['IntValue'] = assetProperties[para];
 										}
 										this.opts.json = valueArr[value];
+										console.log(opts);
 										request.put(this.opts, function(err, res, body) {
 											if (err) {
 												console.log('uipath orchestrator error: ', err);

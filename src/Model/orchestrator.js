@@ -45,8 +45,9 @@ class Orchestrator {
 	
 	//authenticate and get bearer token
 	login () {
-		this.opts.url = api+'/Account'
-		this.opts.json = this.config
+		this.opts.url = api+'/Account';
+		this.opts.json = this.config;
+		let token;
 		return new Promise((resolve, reject) => {
 			request.post(this.opts, function(err, res, body) {
 				if (err) {
@@ -55,11 +56,10 @@ class Orchestrator {
 				} else {
 					console.log('uipath orchestrator authenticate response: \n', res.statusCode);
 					resolve(body.result);
-					console.log(this.opts);
-					this.opts.headers = { Authorization: 'Bearer ' + body.result };
-					
+					token = body.result;
 				}
 			})
+			this.opts.headers = { Authorization: 'Bearer ' + token };
 		})
 	}//[end log in]
 

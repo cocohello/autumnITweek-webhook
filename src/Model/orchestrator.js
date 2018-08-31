@@ -129,7 +129,7 @@ class Orchestrator {
 	
 	static initializeOpts(opts) {
 		opts.url = '';
-		opts.json = {}
+		opts.json = {};
 		return opts;
 	}
 	

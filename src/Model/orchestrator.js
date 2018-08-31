@@ -83,7 +83,7 @@ class Orchestrator {
 							}
 						}
 						console.log(0);
-						resove(valueArr);
+						resolve(valueArr);
 					}).on('error', err => {
 						console.log('uipath orchestrator error: ', err);
 						reject(err);

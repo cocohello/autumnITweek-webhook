@@ -45,10 +45,10 @@ const evController = {
 		assetProperties['work1_ONameInfor'] = '社員A';//user_name
 		
 		token.then( tk => {
-			O.putAsset(tk, assetProperties).then( result => {
-			console.log(result);
-			O.test();
-		})
+			O.getAsset(tk, assetProperties).then( result => {
+				O.putAsset(result).then(result => {
+					O.test});
+			})
 		})
 		
 		

@@ -62,9 +62,6 @@ class Orchestrator {
 	//[END log in]
 	}
 
-	Promise.all([value1, promise2(value1)])
-	
-	
 	// put asset
 	putAsset (token, assetProperties) {
 		token.then(tk => {

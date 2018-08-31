@@ -47,7 +47,6 @@ class Orchestrator {
 	login () {
 		this.opts.url = api+'/Account'
 		this.opts.json = this.config
-		var token;
 		return new Promise((resolve, reject) => {
 			request.post(this.opts, function(err, res, body) {
 				if (err) {
@@ -59,16 +58,13 @@ class Orchestrator {
 				}
 			})
 		})
-	//[END log in]
-	}
+	}//[end log in]
 
-	// put asset
 	getAsset (token, assetProperties) {
 		this.opts.url = odata+`/Assets?$filter=contains(Name, '${assetProperties['assetName']}')&$top=4`;
 		this.opts.headers = { Authorization: 'Bearer ' + token };
 			return new Promise((resolve, reject) => {
 				let valueArr = [];
-				valueArr['token'] = token;
 				request.get(this.opts, function(err, res, body) {
 					console.log('uipath orchestrator getAsset response: \n', res.statusCode);
 					let arr = body.value;
@@ -77,60 +73,63 @@ class Orchestrator {
 							valueArr[(arr[asset]['Name'])] = arr[asset];
 						}
 					}
-					console.log(0);
 					resolve(valueArr);
+					initializeOpts();
 				}).on('error', err => {
 					console.log('uipath orchestrator error: ', err);
 					reject(err);
 				});
 			})
-	}
+	}//[end getAsset]
 	
 	putAsset (valueArr, assetProperties) {
 		return new Promise((resolve, reject) => {
 			let flag = 0;
 			for (let value in valueArr) {
-				if (value === 'token'){
-					this.opts.headers = {Authorization: 'Bearer ' + valueArr[value]}
-				} else { 
-					for (let para in assetProperties) {
-						if (para === value) {
-							this.opts.url = odata+`/Assets(${valueArr[value]['Id']})`;
-							if (typeof assetProperties[para] === 'string') {
-								valueArr[value]['StringValue'] = assetProperties[para];
-							} else if (typeof assetProperties[para] === 'number') {
-								valueArr[value]['IntValue'] = assetProperties[para];
-							}
-							this.opts.json = valueArr[value];
-							request.put(this.opts, function(err, res, body) {
-								if (err) {
-									console.log('uipath orchestrator error: ', err);
-									reject(err);
-								} else {
-									console.log('uipath orchestrator putAsset response: \n', res.statusCode);
-									if(res.statusCode == 200){
-										flag++;	
-									}
-								}
-							})
+				for (let para in assetProperties) {
+					if (para === value) {
+						this.opts.url = odata+`/Assets(${valueArr[value]['Id']})`;
+						if (typeof assetProperties[para] === 'string') {
+							valueArr[value]['StringValue'] = assetProperties[para];
+						} else if (typeof assetProperties[para] === 'number') {
+							valueArr[value]['IntValue'] = assetProperties[para];
 						}
+						this.opts.json = valueArr[value];
+						request.put(this.opts, function(err, res, body) {
+							if (err) {
+								console.log('uipath orchestrator error: ', err);
+								reject(err);
+							} else {
+								console.log('uipath orchestrator putAsset response: \n', res.statusCode);
+								if(res.statusCode == 200){
+									flag++;	
+								}
+							}
+						})
 					}
-				} 
+				}
 			}
-			console.log(1);
-			resolve(valueArr['token']);
+			resolve(flag);
+			initializeOpts();
 		});
-	}
+	}//[end putAsset]
 	
-	getReleaseId(token, processKey){
+	getReleaseId(processKey){
 		this.opts.url = odata+`/Releases?$filter=contains(ProcessKey,'${processKey}')`;
-		//this.opts.headers = { Authorization: 'Bearer ' + token };
+		return new Promise((resolve, reject) => {
+			request.get(this.opts, function(err, res, body) {
+				console.log(body.value.Key);
+				resolve(body.value.Key);
+			})
+		})
+		initializeOpts();
 		
-		console.log(2);
-		console.log(this.opts);
-		
+	}//[end getReleaseId]
+	
+	static initializeOpts(){
+		this.opts[url] = '';
+		this.opts[json] = {}
 	}
-	test(){console.log('please!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');}
 	
 }
 

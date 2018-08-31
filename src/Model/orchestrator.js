@@ -103,9 +103,10 @@ class Orchestrator {
 								reject(err);
 							} else {
 								console.log('uipath orchestrator putAsset response: \n', res.statusCode);
-								if(res.statusCode == 200){
+								console.log(typeof res.statusCode);
+								/*if(res.statusCode == 200){
 									flag++;	
-								}
+								}*/
 							}
 						})
 					}
@@ -121,8 +122,8 @@ class Orchestrator {
 		this.opts.url = odata+`/Releases?$filter=contains(ProcessKey,'${processKey}')`;
 		return new Promise((resolve, reject) => {
 			request.get(this.opts, function(err, res, body) {
-				console.log(body.value);
-				resolve(body.value.Key);
+				console.log(body)
+				resolve(body);
 			})
 		})
 		this.opts.url = '';

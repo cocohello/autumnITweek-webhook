@@ -89,8 +89,8 @@ class Orchestrator {
 		})//[end token.then]
 	}//[end getAsset]	
 
-	putAsset (value1) {
-		value1.then(valueArr => {
+	putAsset (valueArr) {
+		//value1.then(valueArr => {
 			return new Promise((reject, resolve) => {
 				for (let value in valueArr) {
 					if (value === 'token'){
@@ -122,7 +122,7 @@ class Orchestrator {
 				resolve(valueArr['token']);
 			}
 			);//[end promise]
-		})//[end value1.then]
+		//})//[end value1.then]
 	}//[end putAsset function]
 }//[END orchestrator Class]
 

@@ -51,6 +51,7 @@ const evController = {
 					console.log(1);
 					O.getReleaseId(result, 'assetTest').then(result => {
 						console.log(2);
+						console.log(result);
 					})
 				})
 			})

@@ -123,7 +123,6 @@ class Orchestrator {
 			})
 		})
 		initializeOpts();
-		
 	}//[end getReleaseId]
 	
 	static initializeOpts(){

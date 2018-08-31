@@ -36,13 +36,13 @@ const evController = {
 		
 		const assetProperties = {};
 		//condition to filter assets
-		assetProperties[assetName] = 'work1';
+		assetProperties['assetName'] = 'work1';
 		//receipt folder path
-		assetProperties[work1_OFolderPath] = dest_path;
+		assetProperties['work1_OFolderPath'] = dest_path;
 		//image file count
-		assetProperties[work1_OImageCount] = 1;//img_count
+		assetProperties['work1_OImageCount'] = 1;//img_count
 		//user name
-		assetProperties[work1_ONameInfor] = '社員A';//user_name
+		assetProperties['work1_ONameInfor'] = '社員A';//user_name
 		
 		O.putAsset(token, assetProperties);
 		//O.putAsset(token, );

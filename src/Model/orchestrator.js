@@ -110,7 +110,7 @@ class Orchestrator {
 												reject(err);
 											} else {
 												console.log('uipath orchestrator putAsset response: \n', res.statusCode);
-												if(res.statusCode===200){
+												if(res.statusCode=== '200'){
 													flag++;	
 												}
 											}

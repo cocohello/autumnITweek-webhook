@@ -76,7 +76,7 @@ class Orchestrator {
 			this.opts.url = odata+`/Assets?$filter=contains(Name, '${assetProperties['assetName']}')&$top=4`;
 			this.opts.headers = { Authorization: 'Bearer ' + tk };
 			
-			const getA = await promise1(() => {
+			const getA = await () => {
 				return new Promise((reject, resolve) => {
 					request.get(this.opts, function(err, res, body) {
 						console.log('uipath orchestrator getAsset response: \n', res.statusCode);
@@ -94,10 +94,9 @@ class Orchestrator {
 						reject(err);
 					});
 				});
-			});
+			}
 			
-			const putA = await promise2((getA) => {
-				
+			const putA = await (getA) => {
 				return new Promise((reject, resolve) => {
 					for (let value in getA) {
 						if (value === 'token'){
@@ -127,9 +126,9 @@ class Orchestrator {
 					console.log(1);
 					resolve(getA['token']);
 				});
-			});
+			}
 			
-			return promise3((getA, putA) => {
+			return (getA, putA) => {
 				return new Promise((reject, resolve) => {
 					console.log(2);
 					console.log(putA);
@@ -139,7 +138,7 @@ class Orchestrator {
 						reject();
 					}
 				});
-			});
+			};
 		})//[end token.then]
 	}
 	

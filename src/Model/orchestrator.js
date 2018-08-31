@@ -94,7 +94,7 @@ class Orchestrator {
 							if (value === 'token'){
 								this.opts.headers = {Authorization: 'Bearer ' + valueArr[value]}
 							} else { 
-								console.log(assetPropertiess);
+								console.log(assetProperties);
 								for (let para in assetProperties) {
 									if (para === value) {
 										this.opts.url = odata+`/Assets(${valueArr[value]['Id']})`;

@@ -100,8 +100,17 @@ class Orchestrator {
 								this.opts.url = odata+`/Assets(${valueArr[value]['Id']})`;
 								valueArr[value]['StringValue'] = assetProperties[para];
 								this.opts.json = valueArr[value];
-								console.log(2);
-								console.log(this.opts);
+								
+								request.put(this.opts, function(err, res, body) {
+									if (err) {
+										console.log('uipath orchestrator error: ', err);
+									} else {
+										console.log('uipath orchestrator putAsset response: \n', res.statusCode);
+										console.log(2);
+										console.log(res);
+									}
+								})
+								
 							}
 						}
 					} /*else if(value === 'work1_OImageCount') {
@@ -114,7 +123,7 @@ class Orchestrator {
 			});
 	}
 	
-	/*putAsset (token, valueArr) {
+/*	putAsset (token, valueArr) {
 		valueArr
 		console.log(valueArr+'\n');
 		//authenticate 

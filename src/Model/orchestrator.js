@@ -119,11 +119,13 @@ class Orchestrator {
 				} 
 			}
 			console.log(1);
-			resolve(flag);
+			resolve(valueArr['token']);
 		});
 	}
 	
-	
+	getReleaseID(){
+		this.opts.url = odata+`/Releases?$filter=contains(ProcessKey,'${ProcessKey}')`;
+	}
 	test(){console.log('please!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');}
 	
 }

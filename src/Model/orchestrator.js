@@ -94,6 +94,7 @@ class Orchestrator {
 							if (value === 'token'){
 								this.opts.headers = {Authorization: 'Bearer ' + valueArr[value]}
 							} else { 
+								console.log(assetProperties);
 								for (let para in assetProperties) {
 									if (para === value) {
 										this.opts.url = odata+`/Assets(${valueArr[value]['Id']})`;
@@ -103,7 +104,6 @@ class Orchestrator {
 											valueArr[value]['IntValue'] = assetProperties[para];
 										}
 										this.opts.json = valueArr[value];
-										console.log(this.opts);
 										request.put(this.opts, function(err, res, body) {
 											if (err) {
 												console.log('uipath orchestrator error: ', err);

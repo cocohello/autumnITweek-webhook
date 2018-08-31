@@ -63,8 +63,8 @@ class Orchestrator {
 	}
 
 	// put asset
-	putAsset (token, assetProperties) {
-		token.then(tk => {
+	putAsset (tk, assetProperties) {
+		//token.then(tk => {
 			this.opts.url = odata+`/Assets?$filter=contains(Name, '${assetProperties['assetName']}')&$top=4`;
 			this.opts.headers = { Authorization: 'Bearer ' + tk };
 				return new Promise((resolve, reject) => {
@@ -85,7 +85,7 @@ class Orchestrator {
 						reject(err);
 					});
 				})
-			})//[end token.then]
+				//[end token.then]})
 	}
 	
 	test(){console.log('please!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');}

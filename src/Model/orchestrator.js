@@ -86,7 +86,7 @@ class Orchestrator {
 			})
 	}
 	
-	putAsset (valueArr) {
+	putAsset (valueArr, assetProperties) {
 		return new Promise((resolve, reject) => {
 			let flag = 0;
 			for (let value in valueArr) {

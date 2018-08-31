@@ -90,6 +90,7 @@ class Orchestrator {
 					});
 				}).then(valueArr => {//[end promise1]
 					return new Promise((resolve, reject) => {
+						let flag = 0;
 						for (let value in valueArr) {
 							if (value === 'token'){
 								this.opts.headers = {Authorization: 'Bearer ' + valueArr[value]}
@@ -108,13 +109,16 @@ class Orchestrator {
 												console.log('uipath orchestrator error: ', err);
 											} else {
 												console.log('uipath orchestrator putAsset response: \n', res.statusCode);
+												if(res.statusCode===200){
+													flag++;	
+												}
 											}
 										})
 									}
 								}
 							} 
 						}
-						resolve(res.statusCode);
+						resolve('putAsset success '+flag);
 						console.log(1);
 					});//[end promise2]
 				});//[end promise1.then]

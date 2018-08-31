@@ -70,7 +70,6 @@ class Orchestrator {
 		token.then(tk => {
 			this.opts.url = odata+`/Assets?$filter=contains(Name, '${assetProperties['assetName']}')&$top=4`;
 			this.opts.headers = { Authorization: 'Bearer ' + tk };
-			
 				return new Promise((resolve, reject) => {
 					let valueArr = [];
 					request.get(this.opts, function(err, res, body) {
@@ -83,6 +82,7 @@ class Orchestrator {
 							}
 						}
 						console.log(0);
+						console.log(valueArr);
 						resolve(valueArr);
 					}).on('error', err => {
 						console.log('uipath orchestrator error: ', err);
@@ -119,7 +119,8 @@ class Orchestrator {
 							} 
 						}
 						console.log(1);
-						resolve('putAsset success '+flag);
+						console.log(flag);
+						resolve(flag);
 					});//[end promise2]
 				});//[end promise1.then]
 				

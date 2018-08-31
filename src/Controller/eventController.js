@@ -46,7 +46,7 @@ const evController = {
 		
 		token.then( result => {
 			console.log(0);
-			console.log(result);			
+			console.log(result);
 			O.getAsset(assetProperties).then( result => {
 				console.log(1);
 				console.log(result);

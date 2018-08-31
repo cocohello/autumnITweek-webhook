@@ -76,7 +76,7 @@ class Orchestrator {
 						}
 					}
 					resolve(valueArr);
-					initializeOpts();
+					Orchestrator.initializeOpts();
 				}).on('error', err => {
 					console.log('uipath orchestrator error: ', err);
 					reject(err);
@@ -112,7 +112,7 @@ class Orchestrator {
 				}
 			}
 			resolve(flag);
-			initializeOpts();
+			Orchestrator.initializeOpts();
 		});
 	}//[end putAsset]
 	
@@ -124,7 +124,7 @@ class Orchestrator {
 				resolve(body.value.Key);
 			})
 		})
-		initializeOpts();
+		Orchestrator.initializeOpts();
 	}//[end getReleaseId]
 	
 	static initializeOpts() {

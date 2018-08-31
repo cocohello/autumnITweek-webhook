@@ -40,8 +40,8 @@ class Orchestrator {
 		'Content-Type' : 'application/json'
 	};
 	this.opts = opts;
-	//[END contructor]
-	}
+	}//[END contructor]
+	
 	
 	//authenticate and get bearer token
 	login () {
@@ -125,7 +125,7 @@ class Orchestrator {
 		initializeOpts();
 	}//[end getReleaseId]
 	
-	static initializeOpts(){
+	static initializeOpts() {
 		this.opts[url] = '';
 		this.opts[json] = {}
 	}

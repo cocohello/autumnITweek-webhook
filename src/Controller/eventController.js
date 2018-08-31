@@ -43,9 +43,19 @@ const evController = {
 		//user name
 		assetProperties['work1_ONameInfor'] = '社員A';//user_name
 		
-		console.log(O.putAsset(token, assetProperties));
+		const makeAssetProcess = () => {
+			return new Promise((resolve, reject) => {
+				resolve(O.putAsset(token, assetProperties));
+			}).catch((err) => {
+			console.log(err)
+			})
+		}
+
+		makeAssetProcess().then(()=>{
+			O.test();
+		});
 		
-		O.test();
+		
 		
 		
 		return;

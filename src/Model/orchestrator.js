@@ -86,6 +86,7 @@ class Orchestrator {
 	
 	putAsset (valueArr, assetProperties) {
 			let flag = 0;
+		return new Promise((resolve, reject) => {
 			for (let value in valueArr) {
 				for (let para in assetProperties) {
 					if (para === value) {
@@ -96,7 +97,6 @@ class Orchestrator {
 							valueArr[value]['IntValue'] = assetProperties[para];
 						}
 						this.opts.json = valueArr[value];
-						return new Promise((resolve, reject) => {
 						request.put(this.opts, function(err, res, body) {
 							if (err) {
 								console.log('uipath orchestrator error: ', err);
@@ -104,16 +104,16 @@ class Orchestrator {
 							} else {
 								console.log('uipath orchestrator putAsset response: \n', res.statusCode);
 								if(res.statusCode == 200){
-									console.log('come here?');
 									flag+1;	
+									console.log('come here?');
 								}
 							}
-							resolve(flag);
 						})
-					})
 					}
 				}
 			}
+				resolve(flag);
+		})//
 		this.opts.url = '';
 		this.opts.json = {};
 	}//[end putAsset]

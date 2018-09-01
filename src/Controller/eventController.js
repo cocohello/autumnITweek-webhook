@@ -13,7 +13,6 @@ const O = orchestrator({
 
 //sign in to Orchestrator and get token
 
-const token = O.login();
 
 const evController = {
 	work1Process : function (outputContexts) {
@@ -54,7 +53,9 @@ const evController = {
 			})
 		})*/
 		
+		const token = O.login();
 		console.log(0);
+		console.log(token);
 		var result1 = O.getAsset(token, assetProperties);
 		console.log(1);
 		console.log(result1);

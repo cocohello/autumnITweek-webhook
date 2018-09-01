@@ -48,23 +48,24 @@ class Orchestrator {
 		this.opts.url = api+'/Account';
 		this.opts.json = this.config;
 		let token;
-		return new Promise((resolve, reject) => {
+		//return new Promise((resolve, reject) => {
 			request.post(this.opts, function(err, res, body) {
 				if (err) {
 					console.log('uipath orchestrator error: ', err);
-					reject(err);
+					//reject(err);
 				} else {
 					console.log('uipath orchestrator authenticate response: \n', res.statusCode);
-					resolve(body.result);
+					return body.result;
+					//resolve(body.result);
 				}
 			})
-		})
+		//})
 	}//[end log in]
 
 	getAsset (token, assetProperties) {
 		this.opts.headers = { Authorization: 'Bearer ' + token };
 		this.opts.url = odata+`/Assets?$filter=contains(Name, '${assetProperties['assetName']}')&$top=4`;
-			return new Promise((resolve, reject) => {
+			//return new Promise((resolve, reject) => {
 				let valueArr = [];
 				request.get(this.opts, function(err, res, body) {
 					console.log('uipath orchestrator getAsset response: \n', res.statusCode);
@@ -74,18 +75,19 @@ class Orchestrator {
 							valueArr[(arr[asset]['Name'])] = arr[asset];
 						}
 					}
-					resolve(valueArr);
+					return valueArr
+					//resolve(valueArr);
 				}).on('error', err => {
 					console.log('uipath orchestrator error: ', err);
-					reject(err);
+					//reject(err);
 				});
-			})
+			//})
 		this.opts.url = '';
 		this.opts.json = {};
 	}//[end getAsset]
 	
 	putAsset (valueArr, assetProperties) {
-		return new Promise((resolve, reject) => {
+		//return new Promise((resolve, reject) => {
 			let flag = 0;
 			for (let value in valueArr) {
 				for (let para in assetProperties) {
@@ -100,7 +102,7 @@ class Orchestrator {
 						request.put(this.opts, function(err, res, body) {
 							if (err) {
 								console.log('uipath orchestrator error: ', err);
-								reject(err);
+								//reject(err);
 							} else {
 								console.log('uipath orchestrator putAsset response: \n', res.statusCode);
 								flag =flag + 1;
@@ -109,8 +111,9 @@ class Orchestrator {
 					}
 				}
 			}
-				resolve();
-		})//
+			return flag;
+				//resolve(flag);
+		//})//
 		this.opts.url = '';
 		this.opts.json = {};
 	}//[end putAsset]
@@ -118,11 +121,12 @@ class Orchestrator {
 	getReleaseId(processKey){
 		this.opts.url = odata+`/Releases?$filter=contains(ProcessKey,'${processKey}')`;
 		console.log(this.opts);
-		return new Promise((resolve, reject) => {
+		//return new Promise((resolve, reject) => {
 			request.get(this.opts, function(err, res, body) {
-				resolve(body.value(0).Key);
+				return body.value;
+				//resolve(body.value(0).Key);
 			})
-		})
+		//})
 		this.opts.url = '';
 		this.opts.json = {};
 	}//[end getReleaseId]

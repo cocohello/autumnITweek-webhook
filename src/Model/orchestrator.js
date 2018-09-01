@@ -103,7 +103,7 @@ class Orchestrator {
 								reject(err);
 							} else {
 								console.log('uipath orchestrator putAsset response: \n', res.statusCode);
-								flag =f lag + 1;
+								flag =flag + 1;
 							}
 						})
 					}

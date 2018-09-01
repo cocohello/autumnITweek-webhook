@@ -86,6 +86,7 @@ class Orchestrator {
 	
 	putAsset (valueArr, assetProperties) {
 		return new Promise((resolve, reject) => {
+			let flag = 0;
 			for (let value in valueArr) {
 				for (let para in assetProperties) {
 					if (para === value) {
@@ -102,12 +103,13 @@ class Orchestrator {
 								reject(err);
 							} else {
 								console.log('uipath orchestrator putAsset response: \n', res.statusCode);
+								flag =f lag + 1;
 							}
 						})
 					}
 				}
 			}
-				resolve(flag);
+				resolve();
 		})//
 		this.opts.url = '';
 		this.opts.json = {};

@@ -145,7 +145,7 @@ class Orchestrator {
 				reject(err);
 			} else {
 				console.log('uipath orchestrator startJob response: \n', res.statusCode);
-				resolve(body.result);
+				resolve(body);
 			}
 		})
 		

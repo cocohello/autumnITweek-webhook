@@ -71,10 +71,10 @@ const evController = {
 	work2Process : function (parameter) {
 		
 		return;
-	}
+	},
 	
-	robot_finished : fuction () {
-		return 
+	robot_finished : function () {
+		return ;
 	}
 }
 	

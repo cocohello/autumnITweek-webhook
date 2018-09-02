@@ -13,6 +13,7 @@ const O = orchestrator({
 
 //sign in to Orchestrator and get token
 
+const token = O.login();
 
 const evController = {
 	work1Process : function (outputContexts) {
@@ -43,28 +44,23 @@ const evController = {
 		//user name
 		assetProperties['work1_ONameInfor'] = '社員A';//user_name
 		
-/*		token.then( result => {
-			O.getAsset(result, assetProperties).then( result => {
+		token.then( result => {
+			console.log(0);
+			console.log(result);			
+			O.getAsset(assetProperties).then( result => {
+				console.log(1);
+				console.log(result);
 				O.putAsset(result, assetProperties).then(result => {
+					console.log(2);
 					console.log(result);
-					O.getReleaseId('assetTest').then(result => {
+					O.getReleaseId(result, 'assetTest').then(result => {
+						console.log(3);
+						console.log(result);
 					})
 				})
 			})
-		})*/
+		})
 		
-		const token = O.login();
-		console.log(0);
-		console.log(token);
-		var result1 = O.getAsset(token, assetProperties);
-		console.log(1);
-		console.log(result1);
-		var result2 = O.putAsset(result1, assetProperties);
-		console.log(2);
-		console.log(result2);
-		var result3 = O.getReleaseId('assetTest');
-		console.log(3);
-		console.log(result3);
 		
 		
 		return;

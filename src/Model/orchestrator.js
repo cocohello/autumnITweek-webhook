@@ -63,7 +63,6 @@ class Orchestrator {
 
 	getAsset (token, assetProperties) {
 		this.opts.headers = { Authorization: 'Bearer ' + token };
-		console.log(assetProperties);
 		this.opts.url = odata+`/Assets?$filter=contains(Name, '${assetProperties['assetName']}')&$top=4`;
 			return new Promise((resolve, reject) => {
 				let valueArr = [];
@@ -86,32 +85,34 @@ class Orchestrator {
 	}//[end getAsset]
 	
 	putAsset (valueArr, assetProperties) {
-		return new Promise.all((resolve, reject) => {
-			let flag = 0;
-			for (let value in valueArr) {
-				for (let para in assetProperties) {
-					if (para === value) {
-						this.opts.url = odata+`/Assets(${valueArr[value]['Id']})`;
-						if (typeof assetProperties[para] === 'string') {
-							valueArr[value]['StringValue'] = assetProperties[para];
-						} else if (typeof assetProperties[para] === 'number') {
-							valueArr[value]['IntValue'] = assetProperties[para];
-						}
-						this.opts.json = valueArr[value];
+		let flag = 0;
+		let promiseArr = [];
+		for (let value in valueArr) {
+			for (let para in assetProperties) {
+				if (para === value) {
+					this.opts.url = odata+`/Assets(${valueArr[value]['Id']})`;
+					if (typeof assetProperties[para] === 'string') {
+						valueArr[value]['StringValue'] = assetProperties[para];
+					} else if (typeof assetProperties[para] === 'number') {
+						valueArr[value]['IntValue'] = assetProperties[para];
+					}
+					this.opts.json = valueArr[value];
+					promiseArr[flag] = new Promise((resolve, reject) => {
 						request.put(this.opts, function(err, res, body) {
 							if (err) {
 								console.log('uipath orchestrator error: ', err);
 								reject(err);
 							} else {
 								console.log('uipath orchestrator putAsset response: \n', res.statusCode);
-								flag =flag + 1;
+								flag ++ ;
+								resolve(flag);
 							}
-						})
-					}
+						})//request
+					})
 				}
 			}
-				resolve(flag);
-		})//
+		}
+		return new Promise.all(promiseArr)
 		this.opts.url = '';
 		this.opts.json = {};
 	}//[end putAsset]

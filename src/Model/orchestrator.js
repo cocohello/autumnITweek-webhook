@@ -51,7 +51,7 @@ class Orchestrator {
 		return new Promise((resolve, reject) => {
 			request.post(this.opts, function(err, res, body) {
 				if (err) {
-					console.log('uipath orchestrator error: ', err);
+					console.log('uipath orchestrator authenticate error: ', err);
 					reject(err);
 				} else {
 					console.log('uipath orchestrator authenticate response: \n', res.statusCode);
@@ -78,7 +78,7 @@ class Orchestrator {
 					}
 					resolve(valueArr);
 				}).on('error', err => {
-					console.log('uipath orchestrator error: ', err);
+					console.log('uipath orchestrator getAsset error: ', err);
 					reject(err);
 				});
 			})
@@ -87,7 +87,6 @@ class Orchestrator {
 	putAsset (valueArr, assetProperties) {
 		this.opts.url = '';
 		this.opts.json = {};
-		let flag = 0;
 		let promiseArr = [];
 		for (let value in valueArr) {
 			for (let para in assetProperties) {
@@ -102,11 +101,10 @@ class Orchestrator {
 					let prom = new Promise((resolve, reject) => {
 						request.put(this.opts, function(err, res, body) {
 							if (err) {
-								console.log('uipath orchestrator error: ', err);
+								console.log('uipath orchestrator putAsset error: ', err);
 								reject(err);
 							} else {
 								console.log('uipath orchestrator putAsset response: \n', res.statusCode);
-								flag ++ ;
 								resolve(res.statusCode);
 							}
 						})//request
@@ -122,7 +120,6 @@ class Orchestrator {
 		this.opts.url = '';
 		this.opts.json = {};
 		this.opts.url = odata+`/Releases?$filter=contains(ProcessKey,'${processKey}')`;
-		console.log(this.opts);
 		return new Promise((resolve, reject) => {
 			request.get(this.opts, function(err, res, body) {
 				resolve(body.value[0].Key);
@@ -131,14 +128,27 @@ class Orchestrator {
 	}//[end getReleaseId]
 	
 	startJob(releaseId){
-		console.log(releaseId);
-		/*{
-		  "startInfo": {
-		    "ReleaseKey": "9f36c493-770a-40a7-a2a7-7eeb04532fe4",
-		    "Strategy": "All",
-		    "Source": "Manual"
-		  }
-		}*/
+		this.opts.url = '';
+		this.opts.json = {};
+		this.opts.url = odata + `/Jobs/UiPath.Server.Configuration.OData.StartJobs`;
+		this.opts.json = 
+			{
+			  "startInfo": {
+			    "ReleaseKey": releaseId,
+			    "Strategy": "All",
+			    "Source": "Manual"
+			  }
+			}
+		request.post(this.opts, function(err, res, body) {
+			if (err) {
+				console.log('uipath orchestrator startJob error: ', err);
+				reject(err);
+			} else {
+				console.log('uipath orchestrator startJob response: \n', res.statusCode);
+				resolve(body.result);
+			}
+		})
+		
 	}
 	
 }

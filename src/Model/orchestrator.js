@@ -125,10 +125,21 @@ class Orchestrator {
 		console.log(this.opts);
 		return new Promise((resolve, reject) => {
 			request.get(this.opts, function(err, res, body) {
-				resolve(body.value);
+				resolve(body.value[0].Key);
 			})
 		})
 	}//[end getReleaseId]
+	
+	startJob(releaseId){
+		console.log(releaseId);
+		/*{
+		  "startInfo": {
+		    "ReleaseKey": "9f36c493-770a-40a7-a2a7-7eeb04532fe4",
+		    "Strategy": "All",
+		    "Source": "Manual"
+		  }
+		}*/
+	}
 	
 }
 

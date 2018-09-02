@@ -121,7 +121,7 @@ class Orchestrator {
 		console.log(this.opts);
 		return new Promise((resolve, reject) => {
 			request.get(this.opts, function(err, res, body) {
-				resolve(body.value(0).Key);
+				resolve(body.value);
 			})
 		})
 		this.opts.url = '';

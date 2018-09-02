@@ -62,8 +62,10 @@ class Orchestrator {
 	}//[end log in]
 
 	getAsset (token, assetProperties) {
-		this.opts.headers = { Authorization: 'Bearer ' + token };
+		this.opts.url = '';
+		this.opts.json = {};
 		this.opts.url = odata+`/Assets?$filter=contains(Name, '${assetProperties['assetName']}')&$top=4`;
+		this.opts.headers = { Authorization: 'Bearer ' + token };
 			return new Promise((resolve, reject) => {
 				let valueArr = [];
 				request.get(this.opts, function(err, res, body) {
@@ -75,8 +77,6 @@ class Orchestrator {
 						}
 					}
 					resolve(valueArr);
-					this.opts.url = '';
-					this.opts.json = {};
 				}).on('error', err => {
 					console.log('uipath orchestrator error: ', err);
 					reject(err);
@@ -85,6 +85,8 @@ class Orchestrator {
 	}//[end getAsset]
 	
 	putAsset (valueArr, assetProperties) {
+		this.opts.url = '';
+		this.opts.json = {};
 		let flag = 0;
 		let promiseArr = [];
 		for (let value in valueArr) {
@@ -113,23 +115,20 @@ class Orchestrator {
 				}
 			}
 		}
-		this.opts.url = '';
-		this.opts.json = {};
 		return Promise.all(promiseArr);
 	}//[end putAsset]
 	
 	getReleaseId(processKey){
+		this.opts.url = '';
+		this.opts.json = {};
 		this.opts.url = odata+`/Releases?$filter=contains(ProcessKey,'${processKey}')`;
 		console.log(this.opts);
 		return new Promise((resolve, reject) => {
 			request.get(this.opts, function(err, res, body) {
-				resolve(body.value(0));
-				this.opts.url = '';
-				this.opts.json = {};
+				resolve(body.value);
 			})
 		})
 	}//[end getReleaseId]
-	
 	
 }
 

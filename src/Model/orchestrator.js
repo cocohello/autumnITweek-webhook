@@ -55,6 +55,7 @@ class Orchestrator {
 					//reject(err);
 				} else {
 					console.log('uipath orchestrator authenticate response: \n', res.statusCode);
+					console.log(body);
 					return body.result;
 					//resolve(body.result);
 				}
@@ -75,6 +76,7 @@ class Orchestrator {
 							valueArr[(arr[asset]['Name'])] = arr[asset];
 						}
 					}
+					console.log(body);
 					return valueArr
 					//resolve(valueArr);
 				}).on('error', err => {
@@ -106,6 +108,7 @@ class Orchestrator {
 							} else {
 								console.log('uipath orchestrator putAsset response: \n', res.statusCode);
 								flag =flag + 1;
+								console.log(body);
 							}
 						})
 					}
@@ -123,6 +126,7 @@ class Orchestrator {
 		console.log(this.opts);
 		//return new Promise((resolve, reject) => {
 			request.get(this.opts, function(err, res, body) {
+				console.log(body);
 				return body.value;
 				//resolve(body.value(0).Key);
 			})

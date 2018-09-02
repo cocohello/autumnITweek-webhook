@@ -56,11 +56,13 @@ const evController = {
 					O.getReleaseId('assetTest').then(result => {
 						console.log(3);
 						console.log(result);
-						O.startJob(result)
+						O.startJob(result);
 					})
 				})
 			})
 		})
+		
+		
 		
 		
 		
@@ -69,6 +71,10 @@ const evController = {
 	work2Process : function (parameter) {
 		
 		return;
+	}
+	
+	robot_finished : fuction () {
+		return 
 	}
 }
 	

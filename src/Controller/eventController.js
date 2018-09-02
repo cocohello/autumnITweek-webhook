@@ -50,7 +50,7 @@ const evController = {
 			O.getAsset(result, assetProperties).then( result => {
 				console.log(1);
 				console.log(result);
-				O.putAsset(result, assetProperties).then(result => {
+				Promise.all(O.putAsset(result, assetProperties)).then(result => {
 					console.log(2);
 					console.log(result);
 					O.getReleaseId('assetTest').then(result => {

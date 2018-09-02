@@ -112,7 +112,7 @@ class Orchestrator {
 				}
 			}
 		}
-		return new Promise.all(promiseArr)
+		return promiseArr
 		this.opts.url = '';
 		this.opts.json = {};
 	}//[end putAsset]

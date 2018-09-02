@@ -105,14 +105,14 @@ class Orchestrator {
 							} else {
 								console.log('uipath orchestrator putAsset response: \n', res.statusCode);
 								flag ++ ;
-								resolve(flag);
+								resolve(res.statusCode);
 							}
 						})//request
 					})
 				}
 			}
 		}
-		return promiseArr
+		return Promise.all(promiseArr);
 		this.opts.url = '';
 		this.opts.json = {};
 	}//[end putAsset]

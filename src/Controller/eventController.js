@@ -47,10 +47,10 @@ const evController = {
 		token.then( result => {
 			console.log(0);
 			console.log(result);			
-			O.getAsset(assetProperties).then( result => {
+			O.getAsset(result, assetProperties).then( result => {
 				console.log(1);
 				console.log(result);
-				O.putAsset(assetProperties).then(result => {
+				O.putAsset(result, assetProperties).then(result => {
 					console.log(2);
 					console.log(result);
 					O.getReleaseId('assetTest').then(result => {

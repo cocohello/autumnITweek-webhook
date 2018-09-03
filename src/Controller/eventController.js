@@ -65,7 +65,6 @@ const evController = {
 					})
 				})
 			})
-	
 	},
 	
 	work2Process : function (parameter) {

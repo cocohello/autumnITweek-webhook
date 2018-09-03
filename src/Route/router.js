@@ -16,7 +16,7 @@ const structjson = require('../Util/structjson');
 		res.send(`router.js route ${JSON.stringify(req.body)} \n`);
 	});
 	
-	router.get('/work1_result', (req, res) => {
+	router.post('/work1_result', (req, res) => {
 		console.log(`router.js from orchestrator ${JSON.stringify(req)} \n`);
 		res.send(`from orchestrator ${JSON.stringify(req)} \n`);
 	});

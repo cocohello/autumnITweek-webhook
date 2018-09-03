@@ -21,8 +21,6 @@ const structjson = require('../Util/structjson');
 		res.send(`from orchestrator ${JSON.stringify(req.params.jobId)} \n`);
 	});
 	
-	router.get('/user/:name'
-	
 	router.post('/',(req, res) => {
 		let response;
 		if (!req.body.originalDetectIntentRequest) {			//request from detectWebhookIntent to add followup event

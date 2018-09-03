@@ -45,29 +45,29 @@ const evController = {
 		assetProperties['work1_ONameInfor'] = '社員A';//user_name
 		
 		
-		token.then( result => {
-			console.log(0);
-			console.log(result);			
-			O.getAsset(result, assetProperties).then( result => {
-				console.log(1);
-				console.log(result);
-				O.putAsset(result, assetProperties).then(result => {
-					console.log(2);
-					console.log(result);
-					O.getReleaseId('assetTest').then(result => {
-						console.log(3);
+		console.log(
+				token.then( result => {
+					console.log(0);
+					console.log(result);			
+					O.getAsset(result, assetProperties).then( result => {
+						console.log(1);
 						console.log(result);
-						O.startJob(result).then(result => {
-							console.log(4);
+						O.putAsset(result, assetProperties).then(result => {
+							console.log(2);
 							console.log(result);
-							return new Promise((resolve, reject) => {
-								resolve(result);
+							O.getReleaseId('assetTest').then(result => {
+								console.log(3);
+								console.log(result);
+								O.startJob(result).then(result => {
+									console.log(4);
+									console.log(result);
+									return result;
+								})
 							})
 						})
 					})
 				})
-			})
-		})
+		)
 		
 	},
 	

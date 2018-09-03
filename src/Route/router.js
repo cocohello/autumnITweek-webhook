@@ -54,7 +54,7 @@ let endJobId;
 			let detectedEvent = req.body.queryResult.queryText;
 			switch (detectedEvent) {
 				case 'work1_process_event' :
-					console.log(eventController.work1Process(structjson.jsonToStructProto(req.body.queryResult.outputContexts)));
+					eventController.work1Process(structjson.jsonToStructProto(req.body.queryResult.outputContexts));
 					/*.then(result => {
 						console.log(5);
 						console.log(result);

@@ -13,7 +13,7 @@ const structjson = require('../Util/structjson');
 	
 	router.get('/', (req, res) => {		//error handling for get request handling(Dialogflow provide post request only.)
 		console.log(`!router.js app.get ${req} \n`);
-		res.send(`from orchestrator ${req} \n`);
+		res.send(`from orchestrator ${JSON.stringify(req)} \n`);
 	});
 	
 	router.post('/',(req, res) => {

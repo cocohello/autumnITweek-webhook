@@ -44,31 +44,34 @@ const evController = {
 		//user name
 		assetProperties['work1_ONameInfor'] = '社員A';//user_name
 		
-		return new Promise((resolve, reject)=>{
-			let finalRs;
-			token.then( result => {
-				console.log(0);
-				console.log(result);			
-				O.getAsset(result, assetProperties).then( result => {
-					console.log(1);
+		let promise;
+		
+		token.then( result => {
+			console.log(0);
+			console.log(result);			
+			O.getAsset(result, assetProperties).then( result => {
+				console.log(1);
+				console.log(result);
+				O.putAsset(result, assetProperties).then(result => {
+					console.log(2);
 					console.log(result);
-					O.putAsset(result, assetProperties).then(result => {
-						console.log(2);
+					O.getReleaseId('assetTest').then(result => {
+						console.log(3);
 						console.log(result);
-						O.getReleaseId('assetTest').then(result => {
-							console.log(3);
+						O.startJob(result).then(result => {
+							console.log(4);
 							console.log(result);
-							O.startJob(result).then(result => {
-								console.log(4);
-								console.log(result);
-								return finalRs=result;
+							promise = new Promise((resolve, reject) => {
+								resolve(result);
 							})
 						})
 					})
 				})
 			})
 		})
-		resolve(finalRs);
+		
+		return promise;
+			
 	},
 	
 	work2Process : function (parameter) {

@@ -8,6 +8,7 @@ const router = express.Router();
 const eventController = require('../Controller/eventController');
 const structjson = require('../Util/structjson');
 
+let jobId;
 
 	// match slack client with member information in DB 	const memberController = require('../Controller/memberController');
 	
@@ -52,7 +53,8 @@ const structjson = require('../Util/structjson');
 			let detectedEvent = req.body.queryResult.queryText;
 			switch (detectedEvent) {
 				case 'work1_process_event' :
-					eventController.work1Process(structjson.jsonToStructProto(req.body.queryResult.outputContexts));
+					jobId = eventController.work1Process(structjson.jsonToStructProto(req.body.queryResult.outputContexts));
+					console.log(jobId);
 					break;
 				case 'work2_process_event' :
 					eventController.work2Process(req.queryInput);

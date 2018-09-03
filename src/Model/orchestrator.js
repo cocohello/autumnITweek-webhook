@@ -142,10 +142,10 @@ class Orchestrator {
 		request.post(this.opts, function(err, res, body) {
 			if (err) {
 				console.log('uipath orchestrator startJob error: ', err);
-				reject(err);
+				return res.statusCode;
 			} else {
 				console.log('uipath orchestrator startJob response: \n', res.statusCode);
-				resolve(body);
+				return body.value[0].Id;
 			}
 		})
 		

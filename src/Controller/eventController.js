@@ -44,7 +44,6 @@ const evController = {
 		//user name
 		assetProperties['work1_ONameInfor'] = '社員A';//user_name
 		
-		let promise;
 		
 		token.then( result => {
 			console.log(0);
@@ -61,7 +60,7 @@ const evController = {
 						O.startJob(result).then(result => {
 							console.log(4);
 							console.log(result);
-							promise = new Promise((resolve, reject) => {
+							return new Promise((resolve, reject) => {
 								resolve(result);
 							})
 						})
@@ -70,8 +69,6 @@ const evController = {
 			})
 		})
 		
-		return promise;
-			
 	},
 	
 	work2Process : function (parameter) {

@@ -17,8 +17,8 @@ const structjson = require('../Util/structjson');
 	});
 	
 	router.get('/work1_result', (req, res) => {
-		console.log(`router.js from orchestrator ${req} \n`);
-		res.send(`from orchestrator ${req} \n`);
+		console.log(`router.js from orchestrator ${JSON.parse(req)} \n`);
+		res.send(`from orchestrator ${JSON.parse(req)} \n`);
 	});
 	
 	router.post('/',(req, res) => {

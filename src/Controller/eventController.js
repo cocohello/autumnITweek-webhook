@@ -44,7 +44,9 @@ const evController = {
 		//user name
 		assetProperties['work1_ONameInfor'] = '社員A';//user_name
 		
-			console.log(token.then( result => {
+		var promArr;
+		
+			token.then( result => {
 				console.log(0);
 				console.log(result);			
 				O.getAsset(result, assetProperties).then( result => {
@@ -59,12 +61,17 @@ const evController = {
 							O.startJob(result).then(result => {
 								console.log(4);
 								console.log(result);
-								return result;
+								let finalProm = new Promise((resolve, reject) => {
+									resolve(result);
+								});
+								promArr.push(finalProm);
 							})
 						})
 					})
 				})
-			}))
+			})
+			
+		return Promise.all(promArr);	
 	},
 	
 	work2Process : function (parameter) {

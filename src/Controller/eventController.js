@@ -56,7 +56,8 @@ const evController = {
 					O.getReleaseId('assetTest').then(result => {
 						console.log(3);
 						console.log(result);
-						return O.startJob(result);
+						let jobstResult = O.startJob(result);
+						console.log(jobstResult);
 					})
 				})
 			})

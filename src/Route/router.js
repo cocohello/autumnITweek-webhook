@@ -54,6 +54,7 @@ let jobId;
 			switch (detectedEvent) {
 				case 'work1_process_event' :
 					jobId = eventController.work1Process(structjson.jsonToStructProto(req.body.queryResult.outputContexts));
+					console.log(4);
 					console.log(jobId);
 					break;
 				case 'work2_process_event' :

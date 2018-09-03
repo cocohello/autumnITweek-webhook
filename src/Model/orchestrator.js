@@ -139,14 +139,16 @@ class Orchestrator {
 			    "Source": "Manual"
 			  }
 			}
-		request.post(this.opts, function(err, res, body) {
-			if (err) {
-				console.log('uipath orchestrator startJob error: ', err);
-				return res.statusCode;
-			} else {
-				console.log('uipath orchestrator startJob response: \n', res.statusCode);
-				return body.value[0].Id;
-			}
+		return new Promise((resolve, reject) =>{
+			request.post(this.opts, function(err, res, body) {
+				if (err) {
+					console.log('uipath orchestrator startJob error: ', err);
+					reject(res.statusCode);
+				} else {
+					console.log('uipath orchestrator startJob response: \n', res.statusCode);
+					resolve(body.value[0].Id);
+				}
+			})
 		})
 		
 	}

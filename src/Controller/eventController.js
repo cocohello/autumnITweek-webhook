@@ -16,7 +16,7 @@ const O = orchestrator({
 const token = O.login();
 
 const evController = {
-	work1Process : function (outputContexts) {
+	work1Process : async function (outputContexts) {
 		//get the receipt folder path from request query
 		const arr = structjson.structProtoToJson(outputContexts);
 		let output;
@@ -43,10 +43,7 @@ const evController = {
 		assetProperties['work1_OImageCount'] = 1;//img_count
 		//user name
 		assetProperties['work1_ONameInfor'] = '社員A';//user_name
-		
-		var promArr=[];
-		
-			token.then( result => {
+		let finalResult = token.then( result => {
 				console.log(0);
 				console.log(result);			
 				O.getAsset(result, assetProperties).then( result => {
@@ -61,17 +58,17 @@ const evController = {
 							O.startJob(result).then(result => {
 								console.log(4);
 								console.log(result);
-								let finalProm = new Promise((resolve, reject) => {
-									resolve(result);
-								});
-								promArr.push(finalProm);
+								return result;
 							})
 						})
 					})
 				})
 			})
-			
-		return Promise.all(promArr);	
+		
+		finalReslt.then(result => {
+			console.log(5);
+		});
+		
 	},
 	
 	work2Process : function (parameter) {

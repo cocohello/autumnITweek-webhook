@@ -65,7 +65,7 @@ const evController = {
 				})
 			})
 		
-		finalReslt.then(result => {
+		finalResult.then(result => {
 			console.log(5);
 		});
 		

@@ -44,7 +44,7 @@ const evController = {
 		//user name
 		assetProperties['work1_ONameInfor'] = '社員A';//user_name
 		
-		var promArr;
+		var promArr=[];
 		
 			token.then( result => {
 				console.log(0);

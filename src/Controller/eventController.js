@@ -16,11 +16,10 @@ const O = orchestrator({
 const token = O.login();
 
 const evController = {
-	work1Process : async function (outputContexts) {
+	work1Process : function (outputContexts) {
 		//get the receipt folder path from request query
 		const arr = structjson.structProtoToJson(outputContexts);
 		let output;
-		let startJobId;
 		
 		for(let context in arr){
 			let name = arr[context].name;
@@ -60,14 +59,12 @@ const evController = {
 						O.startJob(result).then(result => {
 							console.log(4);
 							console.log(result);
-							 return startJobId = result;
+							 return result;
 						})
 					})
 				})
 			})
 		})
-		
-		return startJobId;
 		
 	},
 	

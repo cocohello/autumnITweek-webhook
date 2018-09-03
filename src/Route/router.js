@@ -12,7 +12,12 @@ const structjson = require('../Util/structjson');
 	// match slack client with member information in DB 	const memberController = require('../Controller/memberController');
 	
 	router.get('/', (req, res) => {		//error handling for get request handling(Dialogflow provide post request only.)
-		console.log(`!router.js app.get ${JSON.stringify(req)} \n`);
+		console.log(`router.js route ${JSON.stringify(req.body)} \n`);
+		res.send(`router.js route ${JSON.stringify(req.body)} \n`);
+	});
+	
+	router.get('/work1_result', (req, res) => {
+		console.log(`router.js from orchestrator ${JSON.stringify(req)} \n`);
 		res.send(`from orchestrator ${JSON.stringify(req)} \n`);
 	});
 	

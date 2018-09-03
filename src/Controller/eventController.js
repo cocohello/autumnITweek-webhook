@@ -43,9 +43,11 @@ const evController = {
 		assetProperties['work1_OImageCount'] = 1;//img_count
 		//user name
 		assetProperties['work1_ONameInfor'] = '社員A';//user_name
+		
+		
 		let finalResult = token.then( result => {
 				console.log(0);
-				console.log(result);			
+				console.log(result);		
 				O.getAsset(result, assetProperties).then( result => {
 					console.log(1);
 					console.log(result);
@@ -58,17 +60,20 @@ const evController = {
 							O.startJob(result).then(result => {
 								console.log(4);
 								console.log(result);
-								return result;
+								return new Promise((resolve, reject) => {
+									console.log(5);
+									console.log(result);
+									resolve(result);
+								})
 							})
 						})
 					})
 				})
 			})
-		
-		finalResult.then(result => {
-			console.log(5);
-		});
-		
+			
+			console.log(6);
+			console.log(finalResult);
+		return finalResult;
 	},
 	
 	work2Process : function (parameter) {

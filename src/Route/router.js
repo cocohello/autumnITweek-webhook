@@ -58,6 +58,7 @@ let endJobId;
 						await eventController.work1Process(structjson.jsonToStructProto(req.body.queryResult.outputContexts))
 					}
 					makeORequest().then(data => {
+						console.log(5);
 						console.log(data);
 					});
 					break;

@@ -45,7 +45,7 @@ const evController = {
 		assetProperties['work1_ONameInfor'] = '社員A';//user_name
 		
 		
-		let finalResult = token.then( result => {
+		/*let finalResult = */token.then( result => {
 				console.log(0);
 				console.log(result);		
 				O.getAsset(result, assetProperties).then( result => {
@@ -60,20 +60,20 @@ const evController = {
 							O.startJob(result).then(result => {
 								console.log(4);
 								console.log(result);
-								return new Promise((resolve, reject) => {
+								/*return new Promise((resolve, reject) => {
 									console.log(5);
 									console.log(result);
 									resolve(result);
-								})
+								})*/
 							})
 						})
 					})
 				})
 			})
 			
-			console.log(6);
+			/*console.log(6);
 			console.log(finalResult);
-		return finalResult;
+		return finalResult;*/
 	},
 	
 	work2Process : function (parameter) {

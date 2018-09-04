@@ -48,16 +48,16 @@ const evController = {
 			token.then(result => {
 				console.log(0);
 				console.log(result);		
-				O.getAsset(result, assetProperties).then( result => {
+				return O.getAsset(result, assetProperties).then( result => {
 					console.log(1);
 					console.log(result);
-					O.putAsset(result, assetProperties).then( result => {
+					return O.putAsset(result, assetProperties).then( result => {
 						console.log(2);
 						console.log(result);
-						O.getReleaseId('assetTest').then( result => {
+						return O.getReleaseId('assetTest').then( result => {
 							console.log(3);
 							console.log(result);
-							O.startJob(result).then( result => {
+							return O.startJob(result).then( result => {
 								console.log(4);
 								console.log(result);
 								return result;

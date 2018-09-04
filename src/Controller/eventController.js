@@ -44,9 +44,8 @@ const evController = {
 		//user name
 		assetProperties['work1_ONameInfor'] = '社員A';//user_name
 		
-		let promiseArr = [];
 		
-		let prom = new Promise((resolve, reject) => {
+		return new Promise((resolve, reject) => {
 			token.then( result => {
 				console.log(0);
 				console.log(result);		
@@ -69,8 +68,6 @@ const evController = {
 			})
 		})	
 		
-		promiseArr.push(prom);
-		return Promise.all(promiseArr);
 	},
 	
 	work2Process : function (parameter) {

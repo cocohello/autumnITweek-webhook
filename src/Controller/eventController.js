@@ -45,7 +45,7 @@ const evController = {
 		assetProperties['work1_ONameInfor'] = '社員A';//user_name
 		
 		
-			console.log(token.then(result => {
+			return token.then(result => {
 				console.log(0);
 				console.log(result);		
 				return O.getAsset(result, assetProperties).then( result => {
@@ -65,7 +65,7 @@ const evController = {
 						})
 					})
 				})
-			}).then(result => {return result;}))
+			}).then(result => {return result;})
 			
 	},
 	

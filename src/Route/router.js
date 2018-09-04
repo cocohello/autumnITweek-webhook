@@ -58,11 +58,6 @@ let endJobId;
 					temp.then(()=>{
 						console.log(5);
 					});
-					/*Promise.all()
-					.then(result => {
-						console.log(result);
-						startJobId = result;
-					});*/
 					break;
 				case 'work2_process_event' :
 					eventController.work2Process(req.queryInput);

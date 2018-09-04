@@ -45,7 +45,6 @@ const evController = {
 		assetProperties['work1_ONameInfor'] = '社員A';//user_name
 		
 		
-		return new Promise((resolve, reject) => {
 			token.then( result => {
 				console.log(0);
 				console.log(result);		
@@ -61,12 +60,12 @@ const evController = {
 							O.startJob(result).then( result => {
 								console.log(4);
 								console.log(result);
+								return result;
 							})
 						})
 					})
 				})
 			})
-		})	
 		
 	},
 	

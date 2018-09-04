@@ -54,10 +54,8 @@ let endJobId;
 			let detectedEvent = req.body.queryResult.queryText;
 			switch (detectedEvent) {
 				case 'work1_process_event' :
-					const makeORequest = async () => {
-						await eventController.work1Process(structjson.jsonToStructProto(req.body.queryResult.outputContexts))
-					}
-					makeORequest().then(data => {
+					const makeORequest = eventController.work1Process(structjson.jsonToStructProto(req.body.queryResult.outputContexts))
+					makeORequest.then(data => {
 						console.log(5);
 						console.log(data);
 					});

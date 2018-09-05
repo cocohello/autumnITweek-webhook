@@ -43,6 +43,8 @@ let resJob;
 						languageCode : lang
 					}
 			}
+			res.setHeader('Content-Type', 'application/json');  
+			res.send(JSON.stringify(response));
 		} else {	//request from detectEventIntent to process login, in this case, UI Path Orchestrator 
 			//console.log(`router.js detectedEvent ${JSON.stringify(req.body)}`);
 			

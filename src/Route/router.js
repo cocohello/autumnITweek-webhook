@@ -20,7 +20,8 @@ let resJob;
 	
 	router.post('/work1_result', (req, res) => {
 		console.log(`router.js from orchestrator ${JSON.stringify(req.body.jobId)} \n`);
-		if(req.body.jobId === startJobId.toString){
+		console.log();
+		if(req.body.jobId.toString === startJobId.toString){
 			this.res = resJob;
 			console.log('come?');
 			//let response = {};

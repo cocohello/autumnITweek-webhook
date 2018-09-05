@@ -19,7 +19,7 @@ let resJob;
 	});
 	
 	router.post('/',(req, res) => {
-		let response;
+		let response={};
 		if (!req.body.originalDetectIntentRequest) {			//request from detectWebhookIntent to add followup event
 			//console.log(`router.js selfmsg ${JSON.stringify(req.body)}`);
 			let text = 'success to catch webhook request';
@@ -43,8 +43,6 @@ let resJob;
 						languageCode : lang
 					}
 			}
-			res.setHeader('Content-Type', 'application/json');  
-			res.send(JSON.stringify(response));
 		} else {	//request from detectEventIntent to process login, in this case, UI Path Orchestrator 
 			//console.log(`router.js detectedEvent ${JSON.stringify(req.body)}`);
 			
@@ -59,8 +57,6 @@ let resJob;
 							let response = {
 									fulfillmentText : 'サーバ障害で処理できませんでした。',
 							}
-							res.setHeader('Content-Type', 'application/json');  
-							res.send(JSON.stringify(response));
 						}else if(typeof result === 'number'){
 							console.log(result);
 							console.log(5);
@@ -75,6 +71,8 @@ let resJob;
 					break;
 			}
 		}
+		res.setHeader('Content-Type', 'application/json');  
+		res.send(JSON.stringify(response));
 	});
 	
 	

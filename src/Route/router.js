@@ -62,8 +62,8 @@ let resJob;
 							res.setHeader('Content-Type', 'application/json');  
 							res.send(JSON.stringify(response));
 						}else if(typeof result === 'number'){
-							console.log(result);
 							console.log(5);
+							console.log(result);
 							startJobId = result;
 							resJob = res;	
 						}

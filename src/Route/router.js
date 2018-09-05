@@ -84,7 +84,7 @@ let resJob;
 		res.json(response);
 		
 		if(Number(req.body.jobId) === startJobId){
-			response = {"webhookPayload": {
+			response = {"payload": {
 				"attachments": [
 					{
 						"title": "chart1",

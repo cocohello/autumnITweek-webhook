@@ -106,7 +106,7 @@ let resJob;
 					]
 			}}
 		}*/
-		res.setHeader('Content-Type', 'application/json');  
+		//res.setHeader('Content-Type', 'application/json');  
 		res.send(JSON.stringify(response));
 	});
 	

@@ -78,14 +78,13 @@ let resJob;
 	});
 	
 	
-	
 	router.post('/work1_result', (req, res) => {
 		console.log(`router.js from orchestrator ${JSON.stringify(req.body.jobId)} \n`);
 		if(Number(req.body.jobId) === startJobId){
 			this.res = resJob;
 			console.log('come?');
-			//let response = {};
-			let response = {"webhookPayload": {
+			let response = {};
+			/*let response = {"webhookPayload": {
 				"attachments": [
 					{
 						"title": "chart1",
@@ -105,7 +104,7 @@ let resJob;
 						"color": "#764FA5"
 					}
 					]
-			}}
+			}}*/
 			this.res.setHeader('Content-Type', 'application/json');  
 			this.res.send(JSON.stringify(response));
 		}

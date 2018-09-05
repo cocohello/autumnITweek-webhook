@@ -53,17 +53,19 @@ let resJob;
 				case 'work1_process_event' :
 					var result = eventController.work1Process(structjson.jsonToStructProto(req.body.queryResult.outputContexts))
 					result.then(result => {
-						if(result === 201){
+						if(typeof result === 'string'){
+							console.log(result);
+							console.log(5);
+							let response = {
+									fulfillmentText : 'サーバ障害で処理できませんでした。',
+							}
+							res.setHeader('Content-Type', 'application/json');  
+							res.send(JSON.stringify(response));
+						}else if(typeof result === 'number'){
 							console.log(result);
 							console.log(5);
 							startJobId = result;
 							resJob = res;	
-						}else{
-							let response = {
-									fulfillmentText : 'サーバ障害で処理できませんでした。',
-								}
-							res.setHeader('Content-Type', 'application/json');  
-							res.send(JSON.stringify(response));
 						}
 					});
 					

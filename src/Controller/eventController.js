@@ -65,7 +65,7 @@ const evController = {
 						})
 					})
 				})
-			}).then(result => {return result;})
+			})
 			
 	},
 	

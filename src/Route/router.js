@@ -82,7 +82,7 @@ let resJob;
 		console.log(`router.js from orchestrator ${JSON.stringify(req.body.jobId)} \n`);
 		let response = {};
 		//res = resJob;
-		/*if(Number(req.body.jobId) === startJobId){
+		//if(Number(req.body.jobId) === startJobId){
 			console.log('come?');
 			let response = {"webhookPayload": {
 				"attachments": [
@@ -105,7 +105,7 @@ let resJob;
 					}
 					]
 			}}
-		}*/
+		//}
 		res.setHeader('Content-Type', 'application/json');  
 		res.send(JSON.stringify(response));
 	});

@@ -82,14 +82,15 @@ let resJob;
 		console.log(res);
 		res.json(response);
 		
+		if(Number(req.body.jobId) === startJobId){
 		res = resJob;
 		res.setHeader('Content-Type', 'application/json');  
 		res.send(JSON.stringify(response));
+		}
 	});
 	
 	router.post('/work_result', (req, res) => {
 		let response = {};
-		if(Number(req.body.jobId) === startJobId){
 			if(queryResult.action === 'intent_work1-uploadfile-event_trigger') {
 				response = {fulfillmentText : 'work2。'};
 			}else{
@@ -115,7 +116,6 @@ let resJob;
 						]
 				}}
 			}
-		}
 		
 		res.setHeader('Content-Type', 'application/json');  
 		res.send(JSON.stringify(response));

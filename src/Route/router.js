@@ -20,6 +20,7 @@ let endJobId;
 	
 	router.get('/work1_result', (req, res) => {
 		console.log(`router.js from orchestrator ${JSON.stringify(req.query.jobId)} \n`);
+		this.res = 
 		res.send(`from orchestrator ${JSON.stringify(req.query.jobId)} \n`);
 	});
 	
@@ -48,6 +49,8 @@ let endJobId;
 						languageCode : lang
 					}
 			}
+			res.setHeader('Content-Type', 'application/json');  
+			res.send(JSON.stringify(response));
 		} else {	//request from detectEventIntent to process login, in this case, UI Path Orchestrator 
 			//console.log(`router.js detectedEvent ${JSON.stringify(req.body)}`);
 			
@@ -58,6 +61,8 @@ let endJobId;
 					result.then(result => {
 						console.log(result);
 						console.log(5);
+						startJobId = result;
+						console.log(res);
 					});
 					
 					break;
@@ -65,9 +70,9 @@ let endJobId;
 					eventController.work2Process(req.queryInput);
 					break;
 			}
+			
+			
 		}
-		res.setHeader('Content-Type', 'application/json');  
-		res.send(JSON.stringify(response));
 	});
 	
 module.exports = router;

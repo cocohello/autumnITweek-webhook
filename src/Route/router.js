@@ -94,8 +94,8 @@ let resJob;
 		let response = {};
 			if(req.body.queryResult.action === 'intent_work1-uploadfile-event_trigger') {
 				response.responseId = req.body.responseId;
-				response.queryRsult = req.body.queryResult;
-				response.queryRsult.webhookPayload = {
+				response.queryResult = req.body.queryResult;
+				response.queryResult.webhookPayload = {
 					"attachments": [
 						{
 							"title": "chart1",

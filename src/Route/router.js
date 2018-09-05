@@ -57,6 +57,8 @@ let resJob;
 							let response = {
 									fulfillmentText : 'サーバ障害で処理できませんでした。',
 							}
+							res.setHeader('Content-Type', 'application/json');  
+							res.send(JSON.stringify(response));
 						}else if(typeof result === 'number'){
 							console.log(result);
 							console.log(5);
@@ -71,45 +73,53 @@ let resJob;
 					break;
 			}
 		}
-		res.setHeader('Content-Type', 'application/json');  
-		res.send(JSON.stringify(response));
 	});
 	
 	
-	router.post('/work1_result', (req, res) => {
+	router.get('/work', (req, res) => {
 		console.log(`router.js from orchestrator ${JSON.stringify(req.body.jobId)} \n`);
 		let response = {};
 		console.log(res);
 		res.json(response);
 		
+		res = resJob;
+		res.setHeader('Content-Type', 'application/json');  
+		res.send(JSON.stringify(response));
+	});
+	
+	router.post('/work_result', (req, res) => {
+		let response = {};
 		if(Number(req.body.jobId) === startJobId){
-			response = {"payload": {
-				"attachments": [
-					{
-						"title": "chart1",
-						"text": "How does this look? @slack-ops - Sent by Julie Dodd",
-						"image_url": "https://www.google.co.jp/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
-						"color": "#764FA5"
-					},
-					{
-						"title": "chart2",
-						"text": "How does this look? @slack-ops - Sent by Julie Dodd",
-						"image_url": "https://www.google.co.jp/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
-						"color": "#764FA5"
-					},
-					{
-						"title": "https://bbbotserver.herokuapp.com",
-						"title_link": "https://bbbotserver.herokuapp.com",
-						"color": "#764FA5"
-					}
-					]
-			}}
+			if(queryResult.action === 'intent_work1-uploadfile-event_trigger') {
+				response = {fulfillmentText : 'work2。'};
+			}else{
+				response = {"payload": {
+					"attachments": [
+						{
+							"title": "chart1",
+							"text": "How does this look? @slack-ops - Sent by Julie Dodd",
+							"image_url": "https://www.google.co.jp/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
+							"color": "#764FA5"
+						},
+						{
+							"title": "chart2",
+							"text": "How does this look? @slack-ops - Sent by Julie Dodd",
+							"image_url": "https://www.google.co.jp/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
+							"color": "#764FA5"
+						},
+						{
+							"title": "https://bbbotserver.herokuapp.com",
+							"title_link": "https://bbbotserver.herokuapp.com",
+							"color": "#764FA5"
+						}
+						]
+				}}
+			}
 		}
 		
-	//	res = resJob;
-	//	res.setHeader('Content-Type', 'application/json');  
-	//	res.send(JSON.stringify(response));
-	});
+		res.setHeader('Content-Type', 'application/json');  
+		res.send(JSON.stringify(response));
+	})
 	
 	
 module.exports = router;

@@ -10,18 +10,13 @@ const structjson = require('../Util/structjson');
 
 let startJobId;
 let endJobId;
+let resJob;
 
 	// match slack client with member information in DB 	const memberController = require('../Controller/memberController');
 	
 	router.get('/', (req, res) => {		//error handling for get request handling(Dialogflow provide post request only.)
 		console.log(`router.js route ${JSON.stringify(req.body)} \n`);
 		res.send(`router.js route ${JSON.stringify(req.body)} \n`);
-	});
-	
-	router.get('/work1_result', (req, res) => {
-		console.log(`router.js from orchestrator ${JSON.stringify(req.query.jobId)} \n`);
-		this.res = 
-		res.send(`from orchestrator ${JSON.stringify(req.query.jobId)} \n`);
 	});
 	
 	router.post('/',(req, res) => {
@@ -62,7 +57,7 @@ let endJobId;
 						console.log(result);
 						console.log(5);
 						startJobId = result;
-						console.log(res);
+						resJob = res;
 					});
 					
 					break;
@@ -70,9 +65,15 @@ let endJobId;
 					eventController.work2Process(req.queryInput);
 					break;
 			}
-			
-			
 		}
 	});
+	
+	router.get('/work1_result', (req, res) => {
+		console.log(`router.js from orchestrator ${JSON.stringify(req.query.jobId)} \n`);
+		this.res = resJob;
+		this.res.setHeader('Content-Type', 'application/json');  
+		this.res.send(JSON.stringify());
+	});
+	
 	
 module.exports = router;

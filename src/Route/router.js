@@ -18,6 +18,37 @@ let resJob;
 		res.send(`router.js route ${JSON.stringify(req.body)} \n`);
 	});
 	
+	router.post('/work1_result', (req, res) => {
+		console.log(`router.js from orchestrator ${JSON.stringify(req.body.jobId)} \n`);
+		if(req.body.jobId === startJobId.toString){
+			this.res = resJob;
+			//let response = {};
+			let response = {"webhookPayload": {
+				"attachments": [
+					{
+						"title": "chart1",
+						"text": "How does this look? @slack-ops - Sent by Julie Dodd",
+						"image_url": "https://www.google.co.jp/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
+						"color": "#764FA5"
+					},
+					{
+						"title": "chart2",
+						"text": "How does this look? @slack-ops - Sent by Julie Dodd",
+						"image_url": "https://www.google.co.jp/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
+						"color": "#764FA5"
+					},
+					{
+						"title": "https://bbbotserver.herokuapp.com",
+						"title_link": "https://bbbotserver.herokuapp.com",
+						"color": "#764FA5"
+					}
+					]
+			}}
+			this.res.setHeader('Content-Type', 'application/json');  
+			this.res.send(JSON.stringify(response));
+		}
+	});
+	
 	router.post('/',(req, res) => {
 		let response;
 		if (!req.body.originalDetectIntentRequest) {			//request from detectWebhookIntent to add followup event
@@ -77,36 +108,6 @@ let resJob;
 		}
 	});
 	
-	router.post('/work1_result', (req, res) => {
-		console.log(`router.js from orchestrator ${JSON.stringify(req.body.jobId)} \n`);
-		if(req.body.jobId === startJobId.toString){
-			this.res = resJob;
-			//let response = {};
-			let response = {"webhookPayload": {
-				    "attachments": [
-						{
-				            "title": "chart1",
-				            "text": "How does this look? @slack-ops - Sent by Julie Dodd",
-				            "image_url": "https://www.google.co.jp/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
-				            "color": "#764FA5"
-				        },
-						{
-							"title": "chart2",
-				            "text": "How does this look? @slack-ops - Sent by Julie Dodd",
-				            "image_url": "https://www.google.co.jp/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
-				            "color": "#764FA5"
-				        },
-				        {
-				            "title": "https://bbbotserver.herokuapp.com",
-				            "title_link": "https://bbbotserver.herokuapp.com",
-				            "color": "#764FA5"
-				        }
-				    ]
-			}}
-			this.res.setHeader('Content-Type', 'application/json');  
-			this.res.send(JSON.stringify(response));
-		}
-	});
 	
 	
 	

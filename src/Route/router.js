@@ -81,7 +81,7 @@ let resJob;
 	router.post('/work1_result', (req, res) => {
 		console.log(`router.js from orchestrator ${JSON.stringify(req.body.jobId)} \n`);
 		if(Number(req.body.jobId) === startJobId){
-			res = resJob;
+			//res = resJob;
 			console.log('come?');
 			let response = {};
 			/*let response = {"webhookPayload": {

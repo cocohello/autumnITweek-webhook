@@ -78,7 +78,7 @@ let resJob;
 	});
 	
 	router.post('/work1_result', (req, res) => {
-		console.log(`router.js from orchestrator ${JSON.stringify(req.query)} \n`);
+		console.log(`router.js from orchestrator ${JSON.stringify(req)} \n`);
 		if(req.query.jobId === startJobId){
 			this.res = resJob;
 			//let response = {};

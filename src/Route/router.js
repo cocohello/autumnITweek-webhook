@@ -92,7 +92,7 @@ let resJob;
 	
 	router.post('/work_result', (req, res) => {
 		let response = {};
-			if(queryResult.action === 'intent_work1-uploadfile-event_trigger') {
+			if(req.body.queryResult.action === 'intent_work1-uploadfile-event_trigger') {
 				response = {fulfillmentText : 'work2。'};
 			}else{
 				response = {"payload": {

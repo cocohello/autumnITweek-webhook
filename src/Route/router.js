@@ -9,7 +9,6 @@ const eventController = require('../Controller/eventController');
 const structjson = require('../Util/structjson');
 
 let startJobId;
-let endJobId;
 let resJob;
 
 	// match slack client with member information in DB 	const memberController = require('../Controller/memberController');
@@ -54,10 +53,18 @@ let resJob;
 				case 'work1_process_event' :
 					var result = eventController.work1Process(structjson.jsonToStructProto(req.body.queryResult.outputContexts))
 					result.then(result => {
-						console.log(result);
-						console.log(5);
-						startJobId = result;
-						resJob = res;
+						if(result === 201){
+							console.log(result);
+							console.log(5);
+							startJobId = result;
+							resJob = res;	
+						}else{
+							let response = {
+									fulfillmentText : 'サーバ障害で処理できませんでした。',
+								}
+							res.setHeader('Content-Type', 'application/json');  
+							res.send(JSON.stringify(response));
+						}
 					});
 					
 					break;
@@ -70,10 +77,15 @@ let resJob;
 	
 	router.get('/work1_result', (req, res) => {
 		console.log(`router.js from orchestrator ${JSON.stringify(req.query.jobId)} \n`);
-		this.res = resJob;
-		this.res.setHeader('Content-Type', 'application/json');  
-		this.res.send(JSON.stringify());
+		if(req.query.jobId === startJobId){
+			this.res = resJob;
+			let response = {};
+			this.res.setHeader('Content-Type', 'application/json');  
+			this.res.send(JSON.stringify(response));
+		}
 	});
+	
+	
 	
 	
 module.exports = router;

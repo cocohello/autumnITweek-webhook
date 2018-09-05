@@ -77,12 +77,12 @@ let resJob;
 		}
 	});
 	
-	router.get('/work1_result', (req, res) => {
+	router.post('/work1_result', (req, res) => {
 		console.log(`router.js from orchestrator ${JSON.stringify(req.query.jobId)} \n`);
 		if(req.query.jobId === startJobId){
 			this.res = resJob;
 			//let response = {};
-			let response = {"payload": {
+			let response = {"webhookPayload": {
 				"slack": {
 				    "attachments": [
 						{

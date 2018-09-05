@@ -22,6 +22,7 @@ let resJob;
 		console.log(`router.js from orchestrator ${JSON.stringify(req.body.jobId)} \n`);
 		if(req.body.jobId === startJobId.toString){
 			this.res = resJob;
+			console.log('come?');
 			//let response = {};
 			let response = {"webhookPayload": {
 				"attachments": [

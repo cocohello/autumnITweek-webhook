@@ -93,7 +93,9 @@ let resJob;
 	router.post('/work_result', (req, res) => {
 		let response = {};
 			if(req.body.queryResult.action === 'intent_work1-uploadfile-event_trigger') {
-				response = {"payload": {
+				response.responseId = req.body.responseId;
+				response.queryRsult = req.body.queryResult;
+				response.queryRsult.webhookPayload = {
 					"attachments": [
 						{
 							"title": "chart1",
@@ -113,7 +115,7 @@ let resJob;
 							"color": "#764FA5"
 						}
 						]
-				}}
+				}
 			}else{
 				response = {fulfillmentText : 'work2。'};
 			}

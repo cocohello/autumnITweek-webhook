@@ -83,14 +83,8 @@ let resJob;
 			this.res = resJob;
 			//let response = {};
 			let response = {"webhookPayload": {
-				"slack": {
 				    "attachments": [
 						{
-				            "title": "https://bbbotserver.herokuapp.com",
-				            "title_link": "https://bbbotserver.herokuapp.com",
-				            "color": "#764FA5"
-				        },
-				        {
 				            "title": "chart1",
 				            "text": "How does this look? @slack-ops - Sent by Julie Dodd",
 				            "image_url": "https://www.google.co.jp/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
@@ -101,9 +95,13 @@ let resJob;
 				            "text": "How does this look? @slack-ops - Sent by Julie Dodd",
 				            "image_url": "https://www.google.co.jp/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
 				            "color": "#764FA5"
+				        },
+				        {
+				            "title": "https://bbbotserver.herokuapp.com",
+				            "title_link": "https://bbbotserver.herokuapp.com",
+				            "color": "#764FA5"
 				        }
 				    ]
-				}
 			}}
 			this.res.setHeader('Content-Type', 'application/json');  
 			this.res.send(JSON.stringify(response));

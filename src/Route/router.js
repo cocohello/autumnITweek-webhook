@@ -92,11 +92,10 @@ let resJob;
 	
 	router.post('/work_result', (req, res) => {
 		let response = {};
-		console.log(req.body);
 			if(req.body.queryResult.action === 'intent_work1-uploadfile-event_trigger') {
 				response.responseId = req.body.responseId;
 				response.queryResult = req.body.queryResult;
-			}else if(false){
+			}else if(req.body.queryResult.action === 'intent_work2-event_trigger'){
 				response.responseId = req.body.responseId;
 				response.queryResult = req.body.queryResult;
 				response.queryResult.webhookPayload = {
@@ -123,6 +122,7 @@ let resJob;
 							}
 							]
 				}
+				console.log(response);
 			}
 		
 		res.setHeader('Content-Type', 'application/json');  

@@ -71,7 +71,8 @@ let resJob;
 					
 					break;
 				case 'work2_process_event' :
-					var result = eventController.work2Process(structjson.jsonToStructProto(req.body.queryResult.outputContexts))
+					
+					//var result = eventController.work2Process(structjson.jsonToStructProto(req.body.queryResult.outputContexts))
 					/*result.then(result => {
 						if(typeof result === 'string'){
 							console.log(result);
@@ -111,14 +112,11 @@ let resJob;
 			if(req.body.queryResult.action === 'intent_work1-uploadfile-event_trigger') {
 				response.responseId = req.body.responseId;
 				response.queryResult = req.body.queryResult;
-			}else{
-				response.responseId = req.body.responseId;
-				response.queryResult = req.body.queryResult;
 				response.queryResult.webhookPayload = {
 						"attachments": [
 							{
-					            "pretext": response.queryResult.fulfillmentText
-					        },
+								"pretext": response.queryResult.fulfillmentText
+							},
 							{
 								"title": "chart1",
 								"text": "How does this look? ",
@@ -138,6 +136,9 @@ let resJob;
 							}
 							]
 				}
+			}else{
+				response.responseId = req.body.responseId;
+				response.queryResult = req.body.queryResult;
 			}
 		
 		res.setHeader('Content-Type', 'application/json');  

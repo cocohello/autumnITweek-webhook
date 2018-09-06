@@ -69,9 +69,54 @@ const evController = {
 			
 	},
 	
-	work2Process : function (parameter) {
+	work2Process : function (outputContexts) {
+		//get the receipt folder path from request query
+		const arr = structjson.structProtoToJson(outputContexts);
+		let output;
 		
-		return;
+		for(let context in arr){
+			let name = arr[context].name;
+			if(name.substr(name.lastIndexOf('/')+1, name.length-1) === 'work2_process_event') { 
+				output = arr[context];
+			}
+		}
+		//let dest_path = output['parameters']['0']['dest_path'];
+		console.log(output);
+		
+		//UI Path//
+		const assetProperties = {};
+/*		//condition to filter assets
+		assetProperties['assetName'] = 'work1';
+		//receipt folder path
+		assetProperties['work1_OFolderPath'] = dest_path;
+		//image file count
+		assetProperties['work1_OImageCount'] = 1;//img_count
+		//user name
+		assetProperties['work1_ONameInfor'] = '社員A';//user_name
+		
+		
+			return token.then(result => {
+				console.log(0);
+				console.log(result);		
+				return O.getAsset(result, assetProperties).then( result => {
+					console.log(1);
+					console.log(result);
+					return O.putAsset(result, assetProperties).then( result => {
+						console.log(2);
+						console.log(result);
+						return O.getReleaseId('assetTest').then( result => {
+							console.log(3);
+							console.log(result);
+							return O.startJob(result).then( result => {
+								console.log(4);
+								console.log(result);
+								return result;
+							})
+						})
+					})
+				})
+			})
+		*/	
 	},
 	
 	robot_finished : function () {

@@ -21,7 +21,7 @@ let resJob;
 	router.post('/',(req, res) => {
 		let response={};
 		if (!req.body.originalDetectIntentRequest) {			//request from detectWebhookIntent to add followup event
-			//console.log(`router.js selfmsg ${JSON.stringify(req.body)}`);
+			console.log(`router.js selfmsg ${JSON.stringify(req.body)}`);
 			let text = 'success to catch webhook request';
 			let eventName;
 			let lang = 'jp';
@@ -30,7 +30,7 @@ let resJob;
 				case 'OK、申請処理始めます。' : 
 					eventName = 'work1_process_event';
 					break;
-				case 'かしこまりました。少々お待ちください。' :
+				case (selfmsg.match(/かしこまりました。.*ですね。しばらくお待ちください。/) || {}).input:
 					eventName = 'work2_process_event';
 					break;
 				default : eventName = null; 
@@ -71,7 +71,23 @@ let resJob;
 					
 					break;
 				case 'work2_process_event' :
-					eventController.work2Process(req.queryInput);
+					var result = eventController.work2Process(structjson.jsonToStructProto(req.body.queryResult.outputContexts))
+					result.then(result => {
+						if(typeof result === 'string'){
+							console.log(result);
+							console.log(5);
+							let response = {
+									fulfillmentText : 'サーバ障害で処理できませんでした。',
+							}
+							res.setHeader('Content-Type', 'application/json');  
+							res.send(JSON.stringify(response));
+						}else if(typeof result === 'number'){
+							console.log(5);
+							console.log(result);
+							startJobId = result;
+							resJob = res;	
+						}
+					});
 					break;
 			}
 		}
@@ -95,29 +111,33 @@ let resJob;
 			if(req.body.queryResult.action === 'intent_work1-uploadfile-event_trigger') {
 				response.responseId = req.body.responseId;
 				response.queryResult = req.body.queryResult;
-				response.queryResult.webhookPayload = {
-					"attachments": [
-						{
-							"title": "chart1",
-							"text": "How does this look? @slack-ops - Sent by Julie Dodd",
-							"image_url": "https://www.google.co.jp/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
-							"color": "#764FA5"
-						},
-						{
-							"title": "chart2",
-							"text": "How does this look? @slack-ops - Sent by Julie Dodd",
-							"image_url": "https://www.google.co.jp/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
-							"color": "#764FA5"
-						},
-						{
-							"title": "https://bbbotserver.herokuapp.com",
-							"title_link": "https://bbbotserver.herokuapp.com",
-							"color": "#764FA5"
-						}
-						]
-				}
 			}else{
-				response = {fulfillmentText : 'work2。'};
+				response.responseId = req.body.responseId;
+				response.queryResult = req.body.queryResult;
+				response.queryResult.webhookPayload = {
+						"attachments": [
+							{
+					            "pretext": response.queryResult.fulfillmentText
+					        },
+							{
+								"title": "chart1",
+								"text": "How does this look? ",
+								"image_url": "https://www.google.co.jp/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
+								"color": "#764FA5"
+							},
+							{
+								"title": "chart2",
+								"text": "How does this look? ",
+								"image_url": "https://www.google.co.jp/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
+								"color": "#764FA5"
+							},
+							{
+								"title": "https://bbbotserver.herokuapp.com",
+								"title_link": "https://bbbotserver.herokuapp.com",
+								"color": "#36a64f"
+							}
+							]
+				}
 			}
 		
 		res.setHeader('Content-Type', 'application/json');  

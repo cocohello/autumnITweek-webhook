@@ -71,9 +71,9 @@ let resJob;
 					
 					break;
 				case 'work2_process_event' :
-					
-					//var result = eventController.work2Process(structjson.jsonToStructProto(req.body.queryResult.outputContexts))
-					/*result.then(result => {
+					console.log(req.body.queryResult);
+					/*var result = eventController.work2Process(structjson.jsonToStructProto(req.body.queryResult.outputContexts))
+					result.then(result => {
 						if(typeof result === 'string'){
 							console.log(result);
 							console.log(5);

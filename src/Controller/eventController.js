@@ -89,7 +89,7 @@ const evController = {
 		//date period from stat
 		assetProperties['work2_OPeriodRequested'] = `${output['date-period'][0].startDate}/${output['date-period'][0].endDate}`;
 		//a type of stat
-		assetProperties['work2_OStatisticRequested'] = output['work_2'].;
+		assetProperties['work2_OStatisticRequested'] = output['work_2'];
 		
 		console.log(assetProperties);
 		/*		

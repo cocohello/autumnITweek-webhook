@@ -29,7 +29,8 @@ const evController = {
 		}
 		
 		let dest_path = output['parameters']['0']['dest_path'];
-		console.log(dest_path);
+		let img_count = output['parameters']['0']['img_count'];
+		let user_name = output['parameters']['0']['user_name'];
 		//set asset value to the receipt folder path in orchestrator
 		
 		//UI Path//
@@ -40,9 +41,9 @@ const evController = {
 		//receipt folder path
 		assetProperties['work1_OFolderPath'] = dest_path;
 		//image file count
-		assetProperties['work1_OImageCount'] = 1;//img_count
+		assetProperties['work1_OImageCount'] = img_count;
 		//user name
-		assetProperties['work1_ONameInfor'] = '社員A';//user_name
+		assetProperties['work1_ONameInfor'] = user_name;
 		
 		
 			return token.then(result => {

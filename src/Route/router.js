@@ -49,47 +49,31 @@ let resJob;
 			//console.log(`router.js detectedEvent ${JSON.stringify(req.body)}`);
 			
 			let detectedEvent = req.body.queryResult.queryText;
+			let result;
 			switch (detectedEvent) {
 				case 'work1_process_event' :
-					var result = eventController.work1Process(structjson.jsonToStructProto(req.body.queryResult.outputContexts))
-					result.then(result => {
-						if(typeof result === 'string'){
-							console.log(result);
-							console.log(5);
-							let response = {
-									fulfillmentText : 'サーバ障害で処理できませんでした。',
-							}
-							res.setHeader('Content-Type', 'application/json');  
-							res.send(JSON.stringify(response));
-						}else if(typeof result === 'number'){
-							console.log(5);
-							console.log(result);
-							startJobId = result;
-							resJob = res;	
-						}
-					});
-					
+					result = eventController.work1Process(structjson.jsonToStructProto(req.body.queryResult.outputContexts))
 					break;
 				case 'work2_process_event' :
-					var result = eventController.work2Process(structjson.jsonToStructProto(req.body.queryResult.outputContexts))
-					/*result.then(result => {
-						if(typeof result === 'string'){
-							console.log(result);
-							console.log(5);
-							let response = {
-									fulfillmentText : 'サーバ障害で処理できませんでした。',
-							}
-							res.setHeader('Content-Type', 'application/json');  
-							res.send(JSON.stringify(response));
-						}else if(typeof result === 'number'){
-							console.log(5);
-							console.log(result);
-							startJobId = result;
-							resJob = res;	
-						}
-					});*/
+					result = eventController.work2Process(structjson.jsonToStructProto(req.body.queryResult.outputContexts))
 					break;
 			}
+			result.then(result => {
+				if(typeof result === 'string'){
+					console.log(result);
+					console.log(5);
+					let response = {
+							fulfillmentText : 'サーバ障害で処理できませんでした。',
+					}
+					res.setHeader('Content-Type', 'application/json');  
+					res.send(JSON.stringify(response));
+				}else if(typeof result === 'number'){
+					console.log(5);
+					console.log(result);
+					startJobId = result;
+					resJob = res;	
+				}
+			});
 		}
 	});
 	
@@ -108,10 +92,11 @@ let resJob;
 	
 	router.post('/work_result', (req, res) => {
 		let response = {};
+		console.log(JSON.stringify(req));
 			if(req.body.queryResult.action === 'intent_work1-uploadfile-event_trigger') {
 				response.responseId = req.body.responseId;
 				response.queryResult = req.body.queryResult;
-			}else{
+			}else if(false){
 				response.responseId = req.body.responseId;
 				response.queryResult = req.body.queryResult;
 				response.queryResult.webhookPayload = {

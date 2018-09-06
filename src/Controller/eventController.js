@@ -39,7 +39,7 @@ const evController = {
 		//condition to filter assets
 		assetProperties['assetName'] = 'work1';
 		//receipt folder path
-		assetProperties['work1_OFolderPath'] = dest_path;
+		assetProperties['work1_OFolderPath'] = `/tmp/uploaded`;
 		//image file count
 		assetProperties['work1_OImageCount'] = img_count;
 		//user name

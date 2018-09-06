@@ -75,14 +75,13 @@ const evController = {
 		let output;
 		console.log('arr');
 		console.log(arr);
-		for(let context in arr){
+/*		for(let context in arr){
 			let name = arr[context].name;
 			if(name.substr(name.lastIndexOf('/')+1, name.length-1) === 'work2_process_event') { 
 				output = arr[context];
-				console.log(context);
 			}
 		}
-		//let dest_path = output['parameters']['0']['dest_path'];
+*/		//let dest_path = output['parameters']['0']['dest_path'];
 		
 		//UI Path//
 		const assetProperties = {};

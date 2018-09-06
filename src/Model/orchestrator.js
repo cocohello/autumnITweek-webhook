@@ -70,6 +70,7 @@ class Orchestrator {
 				let valueArr = [];
 				request.get(this.opts, function(err, res, body) {
 					console.log('uipath orchestrator getAsset response: \n', res.statusCode);
+					console.log(body);
 					let arr = body.value;
 					for(let asset in arr){
 						if (arr[asset]['Name'] !== 'work1_OBatPath') {

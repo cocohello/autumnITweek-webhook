@@ -66,6 +66,7 @@ class Orchestrator {
 		this.opts.json = {};
 		this.opts.url = odata+`/Assets?$filter=contains(Name, '${assetProperties['assetName']}')&$top=4`;
 		this.opts.headers = { Authorization: 'Bearer ' + token };
+		console.log(this.opts);
 			return new Promise((resolve, reject) => {
 				let valueArr = [];
 				request.get(this.opts, function(err, res, body) {

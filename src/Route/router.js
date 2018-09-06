@@ -112,6 +112,9 @@ let resJob;
 			if(req.body.queryResult.action === 'intent_work1-uploadfile-event_trigger') {
 				response.responseId = req.body.responseId;
 				response.queryResult = req.body.queryResult;
+			}else{
+				response.responseId = req.body.responseId;
+				response.queryResult = req.body.queryResult;
 				response.queryResult.webhookPayload = {
 						"attachments": [
 							{
@@ -136,9 +139,6 @@ let resJob;
 							}
 							]
 				}
-			}else{
-				response.responseId = req.body.responseId;
-				response.queryResult = req.body.queryResult;
 			}
 		
 		res.setHeader('Content-Type', 'application/json');  

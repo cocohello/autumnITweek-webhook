@@ -76,23 +76,23 @@ const evController = {
 		for(let context in arr){
 			let name = arr[context].name;
 			if(name.substr(name.lastIndexOf('/')+1, name.length-1) === 'intent_work2-followup') { 
-				output = arr[context];
+				output = arr[context]['parameters'];
 			}
 		}
 		//let dest_path = output['parameters']['0']['dest_path'];
 		console.log(output);
+		
 		//UI Path//
 		const assetProperties = {};
-/*		//condition to filter assets
-		assetProperties['assetName'] = 'work1';
-		//receipt folder path
-		assetProperties['work1_OFolderPath'] = dest_path;
-		//image file count
-		assetProperties['work1_OImageCount'] = 1;//img_count
-		//user name
-		assetProperties['work1_ONameInfor'] = '社員A';//user_name
+		//condition to filter assets
+		assetProperties['assetName'] = 'work2';
+		//date period from stat
+		assetProperties['work2_OPeriodRequested'] = output['date-period'];
+		//a type of stat
+		assetProperties['work2_OStatisticRequested'] = output[work_2];
 		
-		
+		console.log(assetProperties);
+		/*		
 			return token.then(result => {
 				console.log(0);
 				console.log(result);		

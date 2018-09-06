@@ -21,7 +21,7 @@ let resJob;
 	router.post('/',(req, res) => {
 		let response={};
 		if (!req.body.originalDetectIntentRequest) {			//request from detectWebhookIntent to add followup event
-			console.log(`router.js selfmsg ${JSON.stringify(req.body)}`);
+			//console.log(`router.js selfmsg ${JSON.stringify(req.body)}`);
 			let text = 'success to catch webhook request';
 			let eventName;
 			let lang = 'jp';
@@ -71,7 +71,7 @@ let resJob;
 					
 					break;
 				case 'work2_process_event' :
-					console.log(structjson.jsonToStructProto(req.body.queryResult.parameters.fields));
+					console.log(structjson.jsonToStructProto(req.body.queryResult.parameters));
 					/*var result = eventController.work2Process(structjson.jsonToStructProto(req.body.queryResult.outputContexts))
 					result.then(result => {
 						if(typeof result === 'string'){

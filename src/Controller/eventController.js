@@ -81,6 +81,7 @@ const evController = {
 			}
 		}
 		//let dest_path = output['parameters']['0']['dest_path'];
+		console.log('output');
 		console.log(output);
 		
 		//UI Path//

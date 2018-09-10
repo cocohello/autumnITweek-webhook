@@ -93,7 +93,7 @@ let resJob;
 	router.post('/work_result', (req, res) => {
 		let response = {};
 			if(req.body.queryResult.action === 'intent_work1-uploadfile-event_trigger') {
-				console.log(structjson.structProtoToJson(req));
+				console.log(structjson.structJsonToProto(req));
 				response.responseId = req.body.responseId;
 				response.queryResult = req.body.queryResult;
 				response.queryResult.webhookSource = 'C:/Users/user_bbn043/Downloads/Packageインストール方法.pdf';

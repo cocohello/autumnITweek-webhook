@@ -94,11 +94,10 @@ let resJob;
 		let response = {};
 			if(req.body.queryResult.action === 'intent_work1-uploadfile-event_trigger') {
 				console.log('work_result');
-				// parameters: { fields:{ '0': [Object] }
-				console.log(structjson.structProtoToJson(req.body.queryResult.outputContexts[0].parameters));
+				console.log(structjson.structProtoToJson(req.body.queryResult.outputContexts[0].parameters)['0']['dest_path']);
 				response.responseId = req.body.responseId;
 				response.queryResult = req.body.queryResult;
-				response.queryResult.webhookSource = 'C:/Users/user_bbn043/Downloads/Packageインストール方法.pdf';
+				response.queryResult.webhookSource = structjson.structProtoToJson(req.body.queryResult.outputContexts[0].parameters)['0']['dest_path']+'申請結果.pdf';
 			}else if(req.body.queryResult.action === 'intent_work2-event_trigger'){
 				response.responseId = req.body.responseId;
 				response.queryResult = req.body.queryResult;

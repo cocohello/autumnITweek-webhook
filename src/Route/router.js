@@ -94,7 +94,7 @@ let resJob;
 		let response = {};
 			if(req.body.queryResult.action === 'intent_work1-uploadfile-event_trigger') {
 				console.log('work_result');
-				console.log(structjson.structProtoToJson(req.body.queryResult.outputContexts));
+				console.log(structjson.structProtoToJson(req.body.queryResult));
 				response.responseId = req.body.responseId;
 				response.queryResult = req.body.queryResult;
 				response.queryResult.webhookSource = 'C:/Users/user_bbn043/Downloads/Packageインストール方法.pdf';

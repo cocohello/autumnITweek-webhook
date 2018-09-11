@@ -93,6 +93,7 @@ let resJob;
 	router.post('/work_result', (req, res) => {
 		let response = {};
 			if(req.body.queryResult.action === 'intent_work1-uploadfile-event_trigger') {
+				console.log('work_result');
 				console.log(structjson.structProtoToJson(req.body.queryResult.outputContexts));
 				response.responseId = req.body.responseId;
 				response.queryResult = req.body.queryResult;

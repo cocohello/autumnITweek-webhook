@@ -94,8 +94,8 @@ let resJob;
 	let flag = 0;
 	router.post('/work_result', (req, res) => {
 		let response = {};
+		console.log(flag);
 		if(flag === 0){
-			console.log(req.body);
 			if(req.body.queryResult.action === 'intent_work1-uploadfile-event_trigger') {
 				console.log('work_result');
 				console.log(req);

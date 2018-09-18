@@ -81,8 +81,8 @@ let resJob;
 	});
 	
 	
-	router.get('/work', (req, res) => {
-		console.log(`router.js from orchestrator ${JSON.stringify(req.body.jobId)} \n`);
+	router.post('/work', (req, res) => {
+		console.log(`router.js from orchestrator ${JSON.stringify(req.body)} \n`);
 		let response = {};
 		res.json(response);
 		

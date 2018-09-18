@@ -126,9 +126,9 @@ let resJob;
 							}
 							]
 				}
-				console.log(response);
 			}
 		
+		console.log(response);
 		res.setHeader('Content-Type', 'application/json');  
 		res.send(JSON.stringify(response));
 	})

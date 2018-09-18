@@ -81,13 +81,13 @@ let resJob;
 	});
 	
 	
-	router.post('/work', (req, res) => {
-		console.log(`router.js from orchestrator ${JSON.stringify(req.body)} \n`);
+	router.get('/work', (req, res) => {
+		console.log(`router.js from orchestrator ${JSON.stringify(req.body.jobId)} \n`);
 		let response = {};
 		res.json(response);
 		
 		if(Number(req.body.jobId) === startJobId){
-		//resJob.setHeader('Content-Type', 'application/json');  
+		resJob.setHeader('Content-Type', 'application/json');  
 		resJob.send(JSON.stringify(response));
 		}
 	});

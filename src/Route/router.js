@@ -59,10 +59,11 @@ let resJob;
 					break;
 			}
 			result.then(result => {
+				let response={};
 				if(typeof result === 'string'){
 					console.log(result);
 					console.log(5);
-					let response = {
+					response = {
 							fulfillmentText : 'サーバ障害で処理できませんでした。',
 					}
 					res.setHeader('Content-Type', 'application/json');  
@@ -72,6 +73,8 @@ let resJob;
 					console.log(result);
 					startJobId = result;
 					resJob = res;
+					res.setHeader('Content-Type', 'application/json');  
+					res.send(JSON.stringify(response));
 				}
 			});
 		}

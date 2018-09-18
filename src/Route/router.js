@@ -72,12 +72,11 @@ let resJob;
 					console.log(result);
 					startJobId = result;
 					resJob = res;
-					console.log('event detected');
 				}
 			});
 		}
 	});
-	/*
+	
 	
 	router.get('/work', (req, res) => {
 		console.log(`router.js from orchestrator ${JSON.stringify(req.body.jobId)} \n`);
@@ -85,9 +84,8 @@ let resJob;
 		res.json(response);
 		
 		if(Number(req.body.jobId) === startJobId){
-		res = resJob;
-		res.setHeader('Content-Type', 'application/json');  
-		res.send(JSON.stringify(response));
+		resJob.setHeader('Content-Type', 'application/json');  
+		resJob.send(JSON.stringify(response));
 		}
 	});
 	
@@ -132,7 +130,7 @@ let resJob;
 		res.setHeader('Content-Type', 'application/json');  
 		res.send(JSON.stringify(response));
 	})
-	*/
+	
 	
 module.exports = router;
 

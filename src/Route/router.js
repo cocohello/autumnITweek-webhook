@@ -87,7 +87,7 @@ let resJob;
 		res.json(response);
 		
 		if(Number(req.body.jobId) === startJobId){
-		resJob.setHeader('Content-Type', 'application/json');  
+		//resJob.setHeader('Content-Type', 'application/json');  
 		resJob.send(JSON.stringify(response));
 		}
 	});

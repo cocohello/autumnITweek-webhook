@@ -71,7 +71,8 @@ let resJob;
 					console.log(5);
 					console.log(result);
 					startJobId = result;
-					resJob = res;	
+					resJob = res;
+					console.log('event detected');
 				}
 			});
 		}

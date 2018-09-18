@@ -72,7 +72,6 @@ let resJob;
 					console.log(5);
 					console.log(result);
 					startJobId = result;
-					resJob = res;
 					res.setHeader('Content-Type', 'application/json');  
 					res.send(JSON.stringify(response));
 				}

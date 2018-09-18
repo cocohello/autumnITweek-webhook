@@ -92,8 +92,8 @@ let resJob;
 		}
 	});*/
 	let flag = 0;
+	let response = {};
 	router.post('/work_result', (req, res) => {
-		let response = {};
 		console.log(flag);
 		if(flag === 0){
 			if(req.body.queryResult.action === 'intent_work1-uploadfile-event_trigger') {
@@ -139,8 +139,8 @@ let resJob;
 			resJob.send(JSON.stringify(response));
 			res.setHeader('Content-Type', 'application/json');  
 			res.send(JSON.stringify(response));
-
 			flag=0;
+			response = {};
 		}
 	})
 	

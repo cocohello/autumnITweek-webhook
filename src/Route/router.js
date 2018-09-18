@@ -48,7 +48,7 @@ let resJob;
 		} else {	//request from detectEventIntent to process login, in this case, UI Path Orchestrator 
 			//console.log(`router.js detectedEvent ${JSON.stringify(req.body)}`);
 			
-		/*	let detectedEvent = req.body.queryResult.queryText;
+			let detectedEvent = req.body.queryResult.queryText;
 			let result;
 			switch (detectedEvent) {
 				case 'work1_process_event' :
@@ -76,7 +76,7 @@ let resJob;
 					res.setHeader('Content-Type', 'application/json');  
 					res.send(JSON.stringify(response));
 				}
-			});*/
+			});
 		}
 	});
 	

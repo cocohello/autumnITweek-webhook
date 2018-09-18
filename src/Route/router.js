@@ -79,7 +79,7 @@ let resJob;
 	});
 	
 	
-	/*router.get('/work', (req, res) => {
+	router.get('/work', (req, res) => {
 		console.log(`router.js from orchestrator ${JSON.stringify(req.body.jobId)} \n`);
 		let response = {};
 		res.json(response);
@@ -132,7 +132,7 @@ let resJob;
 		res.setHeader('Content-Type', 'application/json');  
 		res.send(JSON.stringify(response));
 	})
-*/	
+	
 	
 module.exports = router;
 

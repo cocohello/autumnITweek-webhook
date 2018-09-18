@@ -94,23 +94,14 @@ let resJob;
 	let flag = 0;
 	router.post('/work_result', (req, res) => {
 		let response = {};
+		if(flag === 0){
 			if(req.body.queryResult.action === 'intent_work1-uploadfile-event_trigger') {
 				console.log('work_result');
 				console.log(req);
 				console.log(structjson.structProtoToJson(req.body.queryResult.outputContexts[0].parameters)['0']['dest_path']);
-				if(flag === 0){
-					flag++;
-					response.responseId = req.body.responseId;
-					response.queryResult = req.body.queryResult;
-					response.queryResult.webhookSource = structjson.structProtoToJson(req.body.queryResult.outputContexts[0].parameters)['0']['dest_path']+'申請結果.pdf';
-					console.log(response);
-					resJob = res;
-				}else{
-					console.log(`router.js from orchestrator ${JSON.stringify(req.body.jobId)} \n`);
-					res.setHeader('Content-Type', 'application/json');  
-					res.send(JSON.stringify(response));
-					flag=0;
-				}
+				response.responseId = req.body.responseId;
+				response.queryResult = req.body.queryResult;
+				response.queryResult.webhookSource = structjson.structProtoToJson(req.body.queryResult.outputContexts[0].parameters)['0']['dest_path']+'申請結果.pdf';
 			}else if(req.body.queryResult.action === 'intent_work2-event_trigger'){
 				response.responseId = req.body.responseId;
 				response.queryResult = req.body.queryResult;
@@ -138,11 +129,16 @@ let resJob;
 							}
 							]
 				}
-				
-				console.log(response);
-				res.setHeader('Content-Type', 'application/json');  
-				res.send(JSON.stringify(response));
 			}
+			console.log(response);
+			resJob = res;
+			flag++;
+		}else{
+			console.log(`router.js from orchestrator ${JSON.stringify(req.body.jobId)} \n`);
+			resJob.setHeader('Content-Type', 'application/json');  
+			resJob.send(JSON.stringify(response));
+			flag=0;
+		}
 	})
 	
 	

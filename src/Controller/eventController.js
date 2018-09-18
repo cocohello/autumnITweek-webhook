@@ -55,7 +55,7 @@ const evController = {
 					return O.putAsset(result, assetProperties).then( result => {
 						console.log(2);
 						console.log(result);
-						return O.getReleaseId('register').then( result => {
+						return O.getReleaseId('module1').then( result => {
 							console.log(3);
 							console.log(result);
 							return O.startJob(result).then( result => {

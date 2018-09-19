@@ -29,7 +29,7 @@ app.use(function (req, res) {
 	console.log('come??');
 	  var delayed = new DelayedResponse(req, res);
 	  // verySlowFunction can now run indefinitely
-	  verySlowFunction(delayed.start());
+	  delayed.start();
 	});
 
 

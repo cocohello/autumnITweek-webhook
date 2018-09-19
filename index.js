@@ -22,11 +22,6 @@ app.use(express.static(path.join(__dirname)));
 const route = require('./src/Route/router');
 app.use('/', route);
 app.use(function (req, res) {
-	if (!req.url.includes('/work_result')) {
-	 console.log('come here??');
-		next();
-	    return;
-	}
 	console.log('come??');
 	  var delayed = new DelayedResponse(req, res);
 	  // verySlowFunction can now run indefinitely

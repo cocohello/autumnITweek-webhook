@@ -21,6 +21,12 @@ app.use(express.static(path.join(__dirname)));
 const route = require('./src/Route/router');
 app.use('/', route);
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
 	console.log('bibiServer listening at port %d', port);
-}).timeout = 0;
+})
+
+server.timeout = 2147483647;
+server.on('connection', function(socket) {
+	  socket.setTimeout(2147483647); 
+	  // 30 second timeout. Change this as you see fit.
+	})

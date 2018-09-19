@@ -142,6 +142,9 @@ let resJob;
 			flag=0;
 			response = {};
 		}
+		var delayed = new DelayedResponse(req, res);
+		// verySlowFunction can now run indefinitely
+		delayed.start();
 	})
 	
 	

@@ -23,7 +23,8 @@ const route = require('./src/Route/router');
 app.use('/', route);
 app.use(function (req, res) {
 	if (!req.url.includes('/work_result')) {
-	    next();
+	 console.log('come here??');
+		next();
 	    return;
 	}
 	console.log('come??');

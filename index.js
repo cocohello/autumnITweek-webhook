@@ -20,13 +20,13 @@ app.use(express.static(path.join(__dirname)));
 
 //route service call to router.js
 const route = require('./src/Route/router');
-app.use('/', route);
 app.use(function (req, res) {
 	console.log('come??');
-	  var delayed = new DelayedResponse(req, res);
-	  // verySlowFunction can now run indefinitely
-	  delayed.start();
-	});
+	var delayed = new DelayedResponse(req, res);
+	// verySlowFunction can now run indefinitely
+	delayed.start();
+});
+app.use('/', route);
 
 
 const server = app.listen(port, () => {

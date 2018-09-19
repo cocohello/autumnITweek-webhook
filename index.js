@@ -23,4 +23,4 @@ app.use('/', route);
 
 app.listen(port, () => {
 	console.log('bibiServer listening at port %d', port);
-});
+}).timeout = 0;

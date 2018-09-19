@@ -66,7 +66,7 @@ const extendTimeoutMiddleware = (req, res, next) => {
 	        // Wait another 15 seconds
 	        waitAndSend();
 	      }
-	    }, 30000);
+	    }, 15000);
 	  };
 console.log('its work?');
 	  waitAndSend();

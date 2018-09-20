@@ -7,6 +7,7 @@ const express = require('express');
 const router = express.Router();
 const eventController = require('../Controller/eventController');
 const structjson = require('../Util/structjson');
+const DelayedResponse = require('http-delayed-response');
 let startJobId;
 let resJob;
 
@@ -91,6 +92,7 @@ let resJob;
 	});*/
 	let flag = 0;
 	let response = {};
+	let delayed;
 	router.post('/work_result', (req, res) => {
 		console.log(flag);
 		if(flag === 0){
@@ -129,12 +131,21 @@ let resJob;
 							]
 				}
 			}
+			
+			s.setHeader('content-type', 'text/html');
+		    res.write('Creating PDf... Wait for it...');
+
+		    delayed = new DelayedResponse(req, res);
+		    delayed.json();
+		    verySlowFunctions(delayed.start(1000,10000));
+
 			resJob = res;
 			flag++;
 		}else{
 			console.log(`router.js from orchestrator ${JSON.stringify(req.body.jobId)} \n`);
 			console.log(response);
 			resJob.send(JSON.stringify(response));
+			delayed.end(null, response);
 			res.send(JSON.stringify(response));
 			flag=0;
 			response = {};

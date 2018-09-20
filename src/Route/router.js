@@ -130,6 +130,9 @@ let resJob;
 							]
 				}
 			}
+			var delayed = new DelayedResponse(req, res);
+			// verySlowFunction can now run indefinitely
+			delayed.start();
 			resJob = res;
 			flag++;
 		}else{
@@ -142,9 +145,6 @@ let resJob;
 			flag=0;
 			response = {};
 		}
-		var delayed = new DelayedResponse(req, res);
-		// verySlowFunction can now run indefinitely
-		delayed.start();
 	})
 	
 	

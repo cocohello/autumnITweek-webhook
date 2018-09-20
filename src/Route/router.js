@@ -92,7 +92,8 @@ let resJob;
 	});*/
 	let flag = 0;
 	let response = {};
-	var delayed;	router.post('/work_result', (req, res) => {
+	var delayed;	
+	router.post('/work_result', (req, res) => {
 		console.log(flag);
 		if(flag === 0){
 			if(req.body.queryResult.action === 'intent_work1-uploadfile-event_trigger') {
@@ -133,7 +134,7 @@ let resJob;
 			// verySlowFunction can now run indefinitely
 			//delayed.start();
 			
-			extendTimeoutMiddleware = (req, res);
+			extendTimeoutMiddleware(req, res);
 			
 			resJob = res;
 			flag++;

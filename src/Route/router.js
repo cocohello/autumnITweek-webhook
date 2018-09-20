@@ -101,7 +101,7 @@ let resJob;
 				console.log(structjson.structProtoToJson(req.body.queryResult.outputContexts[0].parameters)['0']['dest_path']);
 				response.responseId = req.body.responseId;
 				response.queryResult = req.body.queryResult;
-				response.queryResult.webhookSource = structjson.structProtoToJson(req.body.queryResult.outputContexts[0].parameters)['0']['dest_path']+'申請結果.pdf';
+				response.queryResult.webhookSource = structjson.structProtoToJson(req.body.queryResult.outputContexts[0].parameters)['0']['dest_path']+'\\申請結果.pdf';
 			}else if(req.body.queryResult.action === 'intent_work2-event_trigger'){
 				response.responseId = req.body.responseId;
 				response.queryResult = req.body.queryResult;

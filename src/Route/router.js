@@ -142,7 +142,7 @@ let resJob;
 			flag++;
 		}else{
 			console.log(`router.js from orchestrator ${JSON.stringify(req.body.jobId)} \n`);
-			resJob.send(JSON.stringify(response));
+			//resJob.send(JSON.stringify(response));
 			delayed.end(null, response);
 			res.send(JSON.stringify(response));
 			flag=0;

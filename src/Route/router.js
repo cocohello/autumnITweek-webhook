@@ -98,7 +98,6 @@ let resJob;
 		if(flag === 0){
 			if(req.body.queryResult.action === 'intent_work1-uploadfile-event_trigger') {
 				console.log('work_result');
-				console.log(req);
 				console.log(structjson.structProtoToJson(req.body.queryResult.outputContexts[0].parameters)['0']['dest_path']);
 				response.responseId = req.body.responseId;
 				response.queryResult = req.body.queryResult;
@@ -132,9 +131,6 @@ let resJob;
 				}
 			}
 			
-			s.setHeader('content-type', 'text/html');
-		    res.write('Creating PDf... Wait for it...');
-
 		    delayed = new DelayedResponse(req, res);
 		    delayed.json();
 		    verySlowFunctions(delayed.start(1000,10000));
@@ -143,7 +139,6 @@ let resJob;
 			flag++;
 		}else{
 			console.log(`router.js from orchestrator ${JSON.stringify(req.body.jobId)} \n`);
-			console.log(response);
 			resJob.send(JSON.stringify(response));
 			delayed.end(null, response);
 			res.send(JSON.stringify(response));

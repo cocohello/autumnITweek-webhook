@@ -113,6 +113,7 @@ let resJob;
 				
 				console.log(pdfImage);
 				pdfImage.convertFile(0).then(function (imagePaths) {
+					console.log(fs.existsSync(imagePaths));
 					console.log('img '+imagePaths);
 					response.queryResult.webhookSource = imagePaths;
 				});

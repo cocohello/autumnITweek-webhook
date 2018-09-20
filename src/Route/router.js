@@ -111,10 +111,12 @@ let resJob;
 				
 				
 				console.log(pdfImage);
-				pdfImage.convertFile().then(function (imagePaths) {
+				pdfImage.convertFile()/*.then(function (imagePaths) {
 					console.log('img '+imagePaths);
 					response.queryResult.webhookSource = imagePaths;
-				});
+				})*/.catch(function(err){
+			        console.log(err);
+			      });
 				
 			}else if(req.body.queryResult.action === 'intent_work2-event_trigger'){
 				response.responseId = req.body.responseId;

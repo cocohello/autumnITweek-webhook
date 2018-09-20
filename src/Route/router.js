@@ -108,6 +108,7 @@ let resJob;
 				  combinedImage: true
 				});
 				pdfImage.convertFile().then(function (imagePaths) {
+					console.log(imagePaths)
 					response.queryResult.webhookSource = imagePaths;
 				});
 				

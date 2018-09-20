@@ -138,7 +138,7 @@ let resJob;
 			console.log(`router.js from orchestrator ${JSON.stringify(req.body.jobId)} \n`);
 			var a=res;
 			res=resJob;
-			res.setHeader('Content-Type', 'application/json');  
+			//res.setHeader('Content-Type', 'application/json');  
 			res.send(JSON.stringify(response));
 			
 			a.setHeader('Content-Type', 'application/json');  

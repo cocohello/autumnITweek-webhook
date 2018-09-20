@@ -104,7 +104,7 @@ let resJob;
 				response.responseId = req.body.responseId;
 				response.queryResult = req.body.queryResult;
 				
-				let pdf = (structjson.structProtoToJson(req.body.queryResult.outputContexts[0].parameters)['0']['dest_path']+'\\申請結果.pdf').replace(/\\/g, "/").replace("/C:/g","");
+				let pdf = ((structjson.structProtoToJson(req.body.queryResult.outputContexts[0].parameters)['0']['dest_path']+'\\申請結果.pdf').replace(/\\/g, "/")).replace("/C:/g","");
 				console.log('pdf '+ pdf);
 				let pdfImage = new PDFImage(pdf, {
 				  combinedImage: true

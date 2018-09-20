@@ -136,17 +136,17 @@ let resJob;
 		        // anything you need to do to keep the connection alive
 		      });
 		    delayed.json();
-		    delayed.start(1000,10000);
+		    delayed.start(1000);
 
 			resJob = res;
 			flag++;
 		}else{
-			/*console.log(`router.js from orchestrator ${JSON.stringify(req.body.jobId)} \n`);
+			console.log(`router.js from orchestrator ${JSON.stringify(req.body.jobId)} \n`);
 			resJob.send(JSON.stringify(response));
 			delayed.end(null, response);
-			//res.send(JSON.stringify(response));
+			res.send(JSON.stringify(response));
 			flag=0;
-			response = {};*/
+			response = {};
 		}
 	})
 	

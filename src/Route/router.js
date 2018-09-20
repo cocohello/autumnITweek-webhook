@@ -132,11 +132,11 @@ let resJob;
 			}
 			
 		    delayed = new DelayedResponse(req, res);
-		    delayed.on('heartbeat', function () {
-		        // anything you need to do to keep the connection alive
-		      });
 		    delayed.json();
-		    delayed.start(1000);
+		    delayed.on('heartbeat', function () {
+		    	// anything you need to do to keep the connection alive
+		    });
+		    delayed.start(1000, 10000);
 
 			resJob = res;
 			flag++;

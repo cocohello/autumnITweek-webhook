@@ -8,6 +8,7 @@ const router = express.Router();
 const eventController = require('../Controller/eventController');
 const structjson = require('../Util/structjson');
 const DelayedResponse = require('http-delayed-response');
+const PDFImage = require("pdf-image").PDFImage;
 let startJobId;
 let resJob;
 
@@ -101,8 +102,15 @@ let resJob;
 				console.log(structjson.structProtoToJson(req.body.queryResult.outputContexts[0].parameters)['0']['dest_path']);
 				response.responseId = req.body.responseId;
 				response.queryResult = req.body.queryResult;
-				let pdf = structjson.structProtoToJson(req.body.queryResult.outputContexts[0].parameters)['0']['dest_path']+'\\申請結果.pdf';
-				response.queryResult.webhookSource = pdf.replace(/\\/g, "/");
+				
+				let pdf = (structjson.structProtoToJson(req.body.queryResult.outputContexts[0].parameters)['0']['dest_path']+'\\申請結果.pdf').replace(/\\/g, "/");
+				let pdfImage = new PDFImage(pdf, {
+				  combinedImage: true
+				});
+				pdfImage.convertFile().then(function (imagePaths) {
+					response.queryResult.webhookSource = imagePaths;
+				});
+				
 			}else if(req.body.queryResult.action === 'intent_work2-event_trigger'){
 				response.responseId = req.body.responseId;
 				response.queryResult = req.body.queryResult;

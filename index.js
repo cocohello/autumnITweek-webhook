@@ -8,6 +8,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const DelayedResponse = require('http-delayed-response');
 const port = process.env.PORT || 8989;//heroku default port
 
 const app = express();

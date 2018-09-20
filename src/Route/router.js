@@ -7,7 +7,6 @@ const express = require('express');
 const router = express.Router();
 const eventController = require('../Controller/eventController');
 const structjson = require('../Util/structjson');
-const DelayedResponse = require('http-delayed-response');
 let startJobId;
 let resJob;
 

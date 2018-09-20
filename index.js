@@ -28,6 +28,7 @@ app.use((req, res, next) => {
 	  var delayed = new DelayedResponse(req, res);
 	  delayed.json();
 	  delayed.start(1000, 20000);
+	  next();
 });
 
 //route service call to router.js

@@ -92,12 +92,12 @@ let resJob;
 	});*/
 	let flag = 0;
 	let response = {};
-	var delayed;	
 	router.post('/work_result', (req, res) => {
 		console.log(flag);
 		if(flag === 0){
 			if(req.body.queryResult.action === 'intent_work1-uploadfile-event_trigger') {
 				console.log('work_result');
+				console.log(req);
 				console.log(structjson.structProtoToJson(req.body.queryResult.outputContexts[0].parameters)['0']['dest_path']);
 				response.responseId = req.body.responseId;
 				response.queryResult = req.body.queryResult;
@@ -130,74 +130,17 @@ let resJob;
 							]
 				}
 			}
-			//delayed = new DelayedResponse(req, res);
-			// verySlowFunction can now run indefinitely
-			//delayed.start();
-			
-			extendTimeoutMiddleware(req, res);
-			
 			resJob = res;
 			flag++;
-			
 		}else{
 			console.log(`router.js from orchestrator ${JSON.stringify(req.body.jobId)} \n`);
-			var a=res;
-			res=resJob;
-			//res.setHeader('Content-Type', 'application/json');  
+			console.log(response);
+			resJob.send(JSON.stringify(response));
 			res.send(JSON.stringify(response));
-			
-			a.setHeader('Content-Type', 'application/json');  
-			a.send(JSON.stringify(response));
 			flag=0;
 			response = {};
 		}
 	})
-	
-	
-	const extendTimeoutMiddleware = (req, res) => {
-		const space = ' ';
-		let isFinished = false;
-		let isDataSent = false;
-		
-		res.once('finish', () => {
-			isFinished = true;
-		});
-		
-		res.once('end', () => {
-			isFinished = true;
-		});
-		
-		res.once('close', () => {
-			isFinished = true;
-		});
-		
-		res.on('data', (data) => {
-			// Look for something other than our blank space to indicate that real
-			// data is now being sent back to the client.
-			if (data !== space) {
-				isDataSent = true;
-			}
-		});
-		
-		const waitAndSend = () => {
-			setTimeout(() => {
-				// If the response hasn't finished and hasn't sent any data back....
-				if (!isFinished && !isDataSent) {
-					// Need to write the status code/headers if they haven't been sent yet.
-					if (!res.headersSent) {
-						res.writeHead(202);
-					}
-					
-					res.write(space);
-					
-					// Wait another 15 seconds
-					waitAndSend();
-				}
-			}, 20000);
-		};
-		
-		waitAndSend();
-	};
 	
 	
 module.exports = router;

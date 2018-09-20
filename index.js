@@ -17,6 +17,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname)));
 
+app.use((req, res) => {
+		// Only extend the timeout for API requests
+	  if (!req.url.includes('/work_result')) {
+	    next();
+	    return;
+	  }
+	  var delayed = new DelayedResponse(req, res);
+	  delayed.json();
+	  delayed.start(1000, 20000);
+	});
+
 //route service call to router.js
 const route = require('./src/Route/router');
 app.use('/', route);

@@ -99,7 +99,7 @@ let resJob;
 		if(flag === 0){
 			if(req.body.queryResult.action === 'intent_work1-uploadfile-event_trigger') {
 				console.log('work_result');
-				console.log(structjson.structProtoToJson(req.body.queryResult.outputContexts[0].parameters)['0']['dest_path']);
+				//console.log(structjson.structProtoToJson(req.body.queryResult.outputContexts[0].parameters)['0']['dest_path']);
 				response.responseId = req.body.responseId;
 				response.queryResult = req.body.queryResult;
 				

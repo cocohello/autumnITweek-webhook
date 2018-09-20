@@ -26,7 +26,7 @@ const server = app.listen(port, () => {
 	console.log('bibiServer listening at port %d', port);
 })
 
-server.timeout = 0;
+server.timeout = 2147483647;
 server.on('connection', function(socket) {
 	  socket.setTimeout(0); 
 	})

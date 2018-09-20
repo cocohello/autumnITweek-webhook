@@ -8,7 +8,7 @@ const router = express.Router();
 const eventController = require('../Controller/eventController');
 const structjson = require('../Util/structjson');
 const DelayedResponse = require('http-delayed-response');
-const PDFImage = require("pdf-image");
+const PDFImage = require("pdf-image").PDFImage;
 let startJobId;
 let resJob;
 
@@ -108,6 +108,9 @@ let resJob;
 				let pdfImage = new PDFImage(pdf, {
 				  combinedImage: true
 				});
+				
+				
+				console.log(pdfImage);
 				pdfImage.convertFile().then(function (imagePaths) {
 					console.log('img '+imagePaths);
 					response.queryResult.webhookSource = imagePaths;

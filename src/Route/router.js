@@ -9,6 +9,7 @@ const eventController = require('../Controller/eventController');
 const structjson = require('../Util/structjson');
 const DelayedResponse = require('http-delayed-response');
 const PDFImage = require("pdf-image").PDFImage;
+var fs = require('fs');
 let startJobId;
 let resJob;
 
@@ -111,12 +112,10 @@ let resJob;
 				
 				
 				console.log(pdfImage);
-				pdfImage.convertFile()/*.then(function (imagePaths) {
+				pdfImage.convertFile(0).then(function (imagePaths) {
 					console.log('img '+imagePaths);
 					response.queryResult.webhookSource = imagePaths;
-				})*/.catch(function(err){
-			        console.log(err);
-			      });
+				});
 				
 			}else if(req.body.queryResult.action === 'intent_work2-event_trigger'){
 				response.responseId = req.body.responseId;

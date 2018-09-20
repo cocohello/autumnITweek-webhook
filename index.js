@@ -24,10 +24,11 @@ app.use((req, res, next) => {
 	    next();
 	    return;
 	  }
+	  console.log('come');
 	  var delayed = new DelayedResponse(req, res);
 	  delayed.json();
 	  delayed.start(1000, 20000);
-	});
+});
 
 //route service call to router.js
 const route = require('./src/Route/router');

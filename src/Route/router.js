@@ -138,7 +138,6 @@ let resJob;
 			console.log(`router.js from orchestrator ${JSON.stringify(req.body.jobId)} \n`);
 			resJob.setHeader('Content-Type', 'application/json');  
 			resJob.send(JSON.stringify(response));
-			delayed.end();
 			res.setHeader('Content-Type', 'application/json');  
 			res.send(JSON.stringify(response));
 			flag=0;

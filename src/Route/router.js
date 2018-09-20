@@ -133,7 +133,7 @@ let resJob;
 			
 		    delayed = new DelayedResponse(req, res);
 		    delayed.json();
-		    verySlowFunctions(delayed.start(1000,10000));
+		    delayed.start(1000,10000);
 
 			resJob = res;
 			flag++;

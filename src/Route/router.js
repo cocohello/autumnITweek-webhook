@@ -8,7 +8,7 @@ const router = express.Router();
 const eventController = require('../Controller/eventController');
 const structjson = require('../Util/structjson');
 const DelayedResponse = require('http-delayed-response');
-const PDFImage = require("pdf-image").PDFImage;
+const PDFImage = require("pdf-image");
 let startJobId;
 let resJob;
 

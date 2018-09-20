@@ -92,7 +92,7 @@ let resJob;
 	});*/
 	let flag = 0;
 	let response = {};
-	router.post('/work_result', (req, res) => {
+	var delayed;	router.post('/work_result', (req, res) => {
 		console.log(flag);
 		if(flag === 0){
 			if(req.body.queryResult.action === 'intent_work1-uploadfile-event_trigger') {
@@ -130,7 +130,7 @@ let resJob;
 							]
 				}
 			}
-			var delayed = new DelayedResponse(req, res);
+			delayed = new DelayedResponse(this.req, this.res);
 			// verySlowFunction can now run indefinitely
 			delayed.start();
 			resJob = res;
@@ -140,6 +140,7 @@ let resJob;
 			console.log(response);
 			resJob.setHeader('Content-Type', 'application/json');  
 			resJob.send(JSON.stringify(response));
+			delayed.end();
 			res.setHeader('Content-Type', 'application/json');  
 			res.send(JSON.stringify(response));
 			flag=0;

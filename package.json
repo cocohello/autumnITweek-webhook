@@ -11,10 +11,12 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.3",
+    "gm": "^1.23.1",
     "http-delayed-response": "0.0.4",
     "mysql": "^2.16.0",
     "path": "^0.12.7",
     "pdf-image": "^2.0.0",
+    "pdftoimage": "^1.0.0",
     "request": "2.88.0",
     "uipath-orchestrator": "^1.0.2"
   }

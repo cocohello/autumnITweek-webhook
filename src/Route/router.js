@@ -178,10 +178,10 @@ let resJob;
 			console.log(`router.js from orchestrator ${JSON.stringify(req.body.jobId)} \n`);
 			//resJob.send(JSON.stringify(response));
 			if(req.body.chart1||req.body.chart1||req.body.link){
-				response.queryResult.webhookPayload[1]['image_url']=req.body.chart1;
-				response.queryResult.webhookPayload[1]['image_url']=req.body.chart2;
-				response.queryResult.webhookPayload[1]['title']=req.body.link;
-				response.queryResult.webhookPayload[1]['title_link']=req.body.link;
+				response.queryResult.webhookPayload['attachments'][1]['image_url']=req.body.chart1;
+				response.queryResult.webhookPayload['attachments'][1]['image_url']=req.body.chart2;
+				response.queryResult.webhookPayload['attachments'][1]['title']=req.body.link;
+				response.queryResult.webhookPayload['attachments'][1]['title_link']=req.body.link;
 			}
 			delayed.end(null, response);
 			res.send(JSON.stringify(response));

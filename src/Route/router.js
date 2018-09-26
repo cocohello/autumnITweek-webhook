@@ -106,9 +106,9 @@ let resJob;
 				
 				let pdf = (structjson.structProtoToJson(req.body.queryResult.outputContexts[0].parameters)['0']['dest_path']+'\\申請結果.pdf').replace(/\\/g, "/").replace(/C:/g,"");
 				console.log('pdf '+ pdf);
-				let pdfImage = new PDFImage(pdf, {
+				let pdfImage = new PDFImage(pdf/*, {
 				  combinedImage: true
-				});
+				}*/);
 				
 				console.log(pdfImage);
 				pdfImage.convertFile(0).then(function (imagePaths) {

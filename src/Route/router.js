@@ -179,9 +179,9 @@ let resJob;
 			//resJob.send(JSON.stringify(response));
 			if(req.body.chart1||req.body.chart1||req.body.link){
 				response.queryResult.webhookPayload['attachments'][1]['image_url']=req.body.chart1;
-				response.queryResult.webhookPayload['attachments'][1]['image_url']=req.body.chart2;
-				response.queryResult.webhookPayload['attachments'][1]['title']=req.body.link;
-				response.queryResult.webhookPayload['attachments'][1]['title_link']=req.body.link;
+				response.queryResult.webhookPayload['attachments'][2]['image_url']=req.body.chart2;
+				response.queryResult.webhookPayload['attachments'][3]['title']=req.body.link;
+				response.queryResult.webhookPayload['attachments'][3]['title_link']=req.body.link;
 			}
 			delayed.end(null, response);
 			res.send(JSON.stringify(response));

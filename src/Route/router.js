@@ -148,14 +148,14 @@ let resJob;
 								"pretext": response.queryResult.fulfillmentText
 							},
 							{
-								"title": "chart1",
-								"text": "How does this look? ",
+								"title": "経費平均申請金額",
+								"text": "経費統計折り線図",
 								"image_url": "https://www.google.co.jp/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
 								"color": "#764FA5"
 							},
 							{
-								"title": "chart2",
-								"text": "How does this look? ",
+								"title": "個人経費申請",
+								"text": "個人経費統計・一回当たり",
 								"image_url": "https://www.google.co.jp/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
 								"color": "#764FA5"
 							},

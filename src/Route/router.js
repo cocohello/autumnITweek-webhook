@@ -8,8 +8,8 @@ const router = express.Router();
 const eventController = require('../Controller/eventController');
 const structjson = require('../Util/structjson');
 const DelayedResponse = require('http-delayed-response');
-//const PDFImage = require("pdf-image").PDFImage;
-var pdftoimage = require('pdftoimage');
+const path = require('path');
+const pdf = require('pdf-poppler');
 var fs = require('fs');
 let startJobId;
 let resJob;
@@ -106,20 +106,22 @@ let resJob;
 				response.queryResult = req.body.queryResult;
 				
 				var dir = (structjson.structProtoToJson(req.body.queryResult.outputContexts[0].parameters)['0']['dest_path']).replace(/\\/g, "/");
-				var file = (dir+'\\申請結果.pdf');
-
-				// Returns a Promise
-				pdftoimage(file, {
-				  format: 'png',  // png, jpeg, tiff or svg, defaults to png
-				  prefix: 'img',  // prefix for each image except svg, defaults to input filename
-				  outdir: dir   // path to output directory, defaults to current directory
-				})
-				.then(function(){
-				  console.log('Conversion done');
-				})
-				.catch(function(err){
-				  console.log(err);
-				});
+				let file = (dir+'\\申請結果.pdf');
+				 
+				let opts = {
+				    format: 'png',
+				    out_dir: path.dirname(file),
+				    out_prefix: path.baseName(file, path.extname(file)),
+				    page: null
+				}
+				 
+				pdf.convert(file, opts)
+				    .then(res => {
+				        console.log('Successfully converted');
+				    })
+				    .catch(error => {
+				        console.error(error);
+				    })
 				
 				/*let pdf = (structjson.structProtoToJson(req.body.queryResult.outputContexts[0].parameters)['0']['dest_path']+'\\申請結果.pdf').replace(/\\/g, "/").replace(/C:/g,"");
 				console.log('pdf '+ pdf);

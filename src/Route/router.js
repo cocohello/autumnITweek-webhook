@@ -110,12 +110,13 @@ let resJob;
 				  combinedImage: true
 				});
 				
-				
 				console.log(pdfImage);
 				pdfImage.convertFile(0).then(function (imagePaths) {
 					console.log(fs.existsSync(imagePaths));
 					console.log('img '+imagePaths);
 					response.queryResult.webhookSource = imagePaths;
+				}, function(err){
+					console.log(err);
 				});
 				
 			}else if(req.body.queryResult.action === 'intent_work2-event_trigger'){

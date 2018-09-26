@@ -14,7 +14,6 @@ var fs = require('fs');
 let startJobId;
 let resJob;
 
-
 	// match slack client with member information in DB 	const memberController = require('../Controller/memberController');
 	
 	router.get('/', (req, res) => {		//error handling for get request handling(Dialogflow provide post request only.)

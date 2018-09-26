@@ -105,8 +105,8 @@ let resJob;
 				response.responseId = req.body.responseId;
 				response.queryResult = req.body.queryResult;
 				
-				var dir = structjson.structProtoToJson(req.body.queryResult.outputContexts[0].parameters)['0']['dest_path'];
-				var file = (dir+'\\申請結果.pdf').replace(/\\/g, "/");
+				var dir = (structjson.structProtoToJson(req.body.queryResult.outputContexts[0].parameters)['0']['dest_path']).replace(/\\/g, "/");
+				var file = (dir+'\\申請結果.pdf');
 
 				// Returns a Promise
 				pdftoimage(file, {

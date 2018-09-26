@@ -102,11 +102,12 @@ let resJob;
 			if(req.body.queryResult.action === 'intent_work1-uploadfile-event_trigger') {
 				console.log('work_result');
 				//console.log(structjson.structProtoToJson(req.body.queryResult.outputContexts[0].parameters)['0']['dest_path']);
-				response.responseId = req.body.responseId;
-				response.queryResult = req.body.queryResult;
-				
 				var dir = (structjson.structProtoToJson(req.body.queryResult.outputContexts[0].parameters)['0']['dest_path']).replace(/\\/g, "/");
 				let file = (dir+'\\申請結果.pdf');
+
+				response.responseId = req.body.responseId;
+				response.queryResult = req.body.queryResult;
+				response.queryResult.webhookSource = file;
 				  
 //				let opts = {
 //				    format: 'png',
@@ -176,6 +177,12 @@ let resJob;
 		}else{
 			console.log(`router.js from orchestrator ${JSON.stringify(req.body.jobId)} \n`);
 			//resJob.send(JSON.stringify(response));
+			if(req.body.chart1||req.body.chart1||req.body.link){
+				response.queryResult.webhookPayload[1]['image_url']=req.body.chart1;
+				response.queryResult.webhookPayload[1]['image_url']=req.body.chart2;
+				response.queryResult.webhookPayload[1]['title']=req.body.link;
+				response.queryResult.webhookPayload[1]['title_link']=req.body.link;
+			}
 			delayed.end(null, response);
 			res.send(JSON.stringify(response));
 			flag=0;

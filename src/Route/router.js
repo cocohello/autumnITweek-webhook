@@ -107,7 +107,7 @@ let resJob;
 				
 				var dir = (structjson.structProtoToJson(req.body.queryResult.outputContexts[0].parameters)['0']['dest_path']).replace(/\\/g, "/");
 				let file = (dir+'\\申請結果.pdf');
-				 
+				  
 //				let opts = {
 //				    format: 'png',
 //				    out_dir: path.dirname(file),
